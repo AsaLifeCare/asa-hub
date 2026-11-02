@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Your interview — ASA LifeCare</title>
+<!--
+  THE CANDIDATE'S CALENDAR — one page, one purpose (operator, 2026-08-21:
+  "uma página do asamylife, mas completamente unica sem login sem SPA sem
+  nada só calendário e com os dias e quando clica em um dia aparece um modal
+  para inserir o horário. E um botão agendar, o proximo passo a parece uma
+  screen, obrigado e a janela fecha depois de 3 segundos").
+
+  WHY IT IS NOT PART OF THE APPLICATION. The person opening this has no
+  account and never will have one at this moment. Serving them the SPA means
+  downloading the whole platform, booting a router and reading a session that
+  is not theirs — and a stale login in that browser used to turn a stranger's
+  interview into "Session expired". This file is the opposite: no bundle, no
+  router, no session, no framework. The signed token in the URL is the entire
+  identity and it can only ever see its own appointment.
+
+  IT LIVES IN `public/` SO IT TRAVELS WITH THE BUILD. Vite copies public/
+  into dist/, so every front-end deploy carries this page and no deploy can
+  sweep it away — the failure mode of a hand-placed file in the served
+  directory.
+
+  THE HOURS COME FROM THE SERVER (`times`), never from a copy kept here:
+  interviewSlotSubmitPub_ refuses anything outside the company's own list,
+  and a page offering an hour the backend rejects is a form that accepts and
+  then says no.
+
+  NO BROWSER DIALOGS ANYWHERE. Every question is asked in the page's own
+  modal — a platform law, and on a page like this an alert() is also the
+  fastest way to look like a scam.
+-->
+<style>
+  :root {
+    --ink: #1c2024;
+    --ink-soft: #5b6470;
+    --line: #e3e6ea;
+    --paper: #f5f6f8;
+    --card: #ffffff;
+    --accent: #2f6f5f;
+    --accent-soft: #eaf3f0;
+    --danger: #b3261e;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 28px 14px 60px;
+  }
+  .wrap { width: 100%; max-width: 560px; }
+
+  .head { text-align: center; margin-bottom: 18px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--ink-soft); margin: 0 0 6px;
+  }
+  h1 { font-size: 24px; line-height: 31px; letter-spacing: -.3px; margin: 0 0 6px; }
+  .sub { color: var(--ink-soft); font-size: 14px; margin: 0; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
+  }
+  .bar { height: 4px; background: var(--accent); }
+  .pad { padding: 18px 18px 20px; }
+
+  .month {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 0 0 12px;
+  }
+  .month strong { font-size: 15px; }
+  .nav { display: flex; gap: 6px; }
+  .nav button {
+    width: 32px; height: 32px; border-radius: 9px; border: 1px solid var(--line);
+    background: #fff; color: var(--ink); font-size: 16px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav button:hover:not(:disabled) { background: var(--accent-soft); border-color: var(--accent); }
+  .nav button:disabled { opacity: .35; cursor: default; }
+
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .dow {
+    text-align: center; font-size: 11px; letter-spacing: .6px; text-transform: uppercase;
+    color: var(--ink-soft); padding-bottom: 4px;
+  }
+  .day {
+    aspect-ratio: 1 / 1; border: 1px solid var(--line); border-radius: 11px;
+    background: #fff; color: var(--ink); font-size: 15px; font-weight: 600;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; transition: background .12s, border-color .12s, transform .08s;
+  }
+  .day small { font-size: 9.5px; font-weight: 600; color: var(--accent); letter-spacing: .3px; }
+  .day:hover { background: var(--accent-soft); border-color: var(--accent); }
+  .day:active { transform: scale(.97); }
+  .day.off { visibility: hidden; }
+  .day.dead {
+    background: var(--paper); color: #b8bec7; cursor: default; border-style: dashed;
+  }
+  .day.dead:hover { background: var(--paper); border-color: var(--line); }
+  .day.chosen { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .day.chosen small { color: #d9ece6; }
+
+  .slots { display: grid; gap: 10px; }
+  .slot {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    border: 1px solid var(--line); border-radius: 11px; background: #fff;
+    padding: 14px 16px; font-size: 15px; text-align: left; cursor: pointer; color: var(--ink);
+  }
+  .slot:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .slot.chosen { border-color: var(--accent); background: var(--accent-soft); }
+  .slot span.when { font-weight: 600; }
+  .slot span.tick { color: var(--accent); font-weight: 700; }
+
+  .foot { margin-top: 14px; text-align: center; font-size: 12.5px; color: var(--ink-soft); }
+  /* separate from #foot, which the script rewrites and clears */
+  .copy { margin-top: 18px; text-align: center; font-size: 11px; color: var(--ink-soft); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 13px 18px; border: 0; border-radius: 10px;
+    background: var(--accent); color: #fff; font-size: 15px; font-weight: 700;
+    cursor: pointer;
+  }
+  .btn:disabled { opacity: .5; cursor: default; }
+  .btn.ghost { background: #fff; color: var(--ink); border: 1px solid var(--line); font-weight: 600; }
+
+  /* the modal — the page's own, never the browser's */
+  .veil {
+    position: fixed; inset: 0; background: rgba(16, 24, 40, .38);
+    display: flex; align-items: center; justify-content: center; padding: 16px;
+    opacity: 0; pointer-events: none; transition: opacity .14s;
+  }
+  .veil.open { opacity: 1; pointer-events: auto; }
+  .modal {
+    width: 100%; max-width: 380px; background: #fff; border-radius: var(--radius);
+    box-shadow: 0 20px 60px rgba(16, 24, 40, .22); overflow: hidden;
+    transform: translateY(6px); transition: transform .14s;
+  }
+  .veil.open .modal { transform: translateY(0); }
+  .modal h2 { font-size: 17px; margin: 0 0 2px; }
+  .modal p.when { color: var(--ink-soft); font-size: 13.5px; margin: 0 0 14px; }
+
+  .msg {
+    border-radius: 10px; padding: 12px 14px; font-size: 13.5px; margin-top: 12px;
+    background: #fdecea; color: var(--danger); border: 1px solid #f5c6c2;
+  }
+  .msg.info { background: var(--accent-soft); color: var(--accent); border-color: #cfe4dd; }
+
+  .done { text-align: center; padding: 34px 22px 30px; }
+  .done .mark {
+    width: 62px; height: 62px; border-radius: 50%; background: var(--accent-soft);
+    color: var(--accent); font-size: 30px; display: flex; align-items: center;
+    justify-content: center; margin: 0 auto 14px;
+  }
+  .done h2 { margin: 0 0 6px; font-size: 21px; }
+  .done p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+  .skel { color: var(--ink-soft); text-align: center; padding: 40px 0; font-size: 14px; }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8ebef; --ink-soft: #9aa3ae; --line: #2a3038;
+      --paper: #14181d; --card: #1b2026; --accent: #5fb49c; --accent-soft: #1f2f2b;
+    }
+    .day, .slot, .nav button, .btn.ghost, .modal { background: var(--card); }
+    .day.dead { background: #171c21; color: #4d555f; }
+    .msg { background: #2a1a19; border-color: #5b2a26; color: #f0a29c; }
+    .msg.info { background: var(--accent-soft); border-color: #2f4a43; color: var(--accent); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <p class="eyebrow">ASA LifeCare</p>
+    <h1 id="title">Your in-person interview</h1>
+    <p class="sub" id="sub">Pick the day that suits you best.</p>
+  </div>
+
+  <div class="card">
+    <div class="bar"></div>
+    <div class="pad" id="body">
+      <div class="skel" id="loading">Opening your calendar…</div>
+    </div>
+  </div>
+
+  <p class="foot" id="foot">This link is personal to you — please do not forward it.</p>
+  <footer class="copy">© 2026 Asa LifeCare. All rights reserved.</footer>
+</div>
+
+<!-- the hour, asked in our own modal -->
+<div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+  <div class="modal">
+    <div class="bar"></div>
+    <div class="pad">
+      <h2 id="mtitle">What time works?</h2>
+      <p class="when" id="mwhen"></p>
+      <div class="slots" id="mslots"></div>
+      <div id="merr"></div>
+      <div style="display:grid;gap:8px;margin-top:16px;">
+        <button class="btn" id="mgo" disabled>Schedule</button>
+        <button class="btn ghost" id="mcancel">Choose another day</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* THE DOOR. Same origin: /gas is the Hub's own door, so this
+     page makes no cross-origin request and carries no key of its own. */
+  var GAS = '/gas';
+
+  var qs = new URLSearchParams(location.search);
+  var TOKEN = qs.get('t') || '';
+
+  var WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var MO = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December'];
+  var MOS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  var el = function (id) { return document.getElementById(id); };
+  var ctx = null;          // what the server says this link is
+  var view = null;         // { y, m } the month on screen
+  var pickedDate = '';
+  var pickedTime = '';
+
+  function post(action, payload) {
+    return fetch(GAS, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: 'body=' + encodeURIComponent(JSON.stringify({ action: action, payload: payload }))
+    }).then(function (r) { return r.json(); });
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function iso(y, m, d) { return y + '-' + pad(m + 1) + '-' + pad(d); }
+
+  function timeLabel(t) {
+    var m = /^([01]?\d|2[0-3]):([0-5]\d)$/.exec(t || '');
+    if (!m) return t || '';
+    var h = Number(m[1]);
+    var ap = h >= 12 ? 'PM' : 'AM';
+    var hh = h % 12; if (hh === 0) hh = 12;
+    return hh + ':' + m[2] + ' ' + ap;
+  }
+
+  function dayLabel(isoDate) {
+    var p = /^(\d{4})-(\d{2})-(\d{2})$/.exec(isoDate || '');
+    if (!p) return isoDate || '';
+    var d = new Date(Number(p[1]), Number(p[2]) - 1, Number(p[3]), 12);
+    return WD[d.getDay()] + ', ' + MOS[d.getMonth()] + ' ' + d.getDate();
+  }
+
+  function show(html) { el('body').innerHTML = html; }
+
+  function fail(message) {
+    show('<div class="msg">' + escapeHtml(message) + '</div>');
+    el('foot').textContent = 'If you think this is a mistake, reply to the message we sent you.';
+  }
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* the calendar                                                      */
+  /* ---------------------------------------------------------------- */
+
+  /* A day is offerable when it is a future weekday AND at least one of the
+     company's hours is still free on it. `taken` carries the slots already
+     confirmed for somebody else — offering one twice is a double booking
+     that only shows up when two people arrive at the same door. */
+  function freeTimesOn(isoDate) {
+    var times = (ctx && ctx.times) || [];
+    var taken = (ctx && ctx.taken) || [];
+    return times.filter(function (t) { return taken.indexOf(isoDate + 'T' + t) === -1; });
+  }
+
+  function isOfferable(y, m, d) {
+    var when = new Date(y, m, d, 23, 59, 59);
+    var now = new Date();
+    if (when <= now) return false;
+    var dow = new Date(y, m, d, 12).getDay();
+    if (dow === 0 || dow === 6) return false;      // the office runs on weekdays
+    // THE INTERVIEWER'S DAYS ARE THE CALENDAR (2026-08-25): when she chose,
+    // every other day paints gray and blocked — the server refuses them too.
+    var allowed = (ctx && ctx.allowed_days) || [];
+    if (allowed.length && allowed.indexOf(iso(y, m, d)) === -1) return false;
+    return freeTimesOn(iso(y, m, d)).length > 0;
+  }
+
+
+  /* ------------------------------------------------------------------ */
+  /* THE INTERVIEWER'S SLOT PICKER (mode 'slots', 2026-08-30): the same  */
+  /* month calendar, collecting N date+time pairs on DIFFERENT days —    */
+  /* saving writes the offer and the candidate's link goes out itself.   */
+  /* ------------------------------------------------------------------ */
+  var slotsChosen = [];   // [{date, time}]
+  var collecting = false;
+
+  function slotsWanted() { return Number(ctx.slots_wanted || 3); }
+
+  function drawSlotsBar() {
+    var bar = el('slotsbar');
+    if (!bar) return;
+    var chips = slotsChosen.map(function (s0, i) {
+      return '<button class="slot chosen" style="width:auto;display:inline-flex;gap:8px;margin:0 8px 8px 0" data-rm="' + i + '">' +
+               '<span class="when">' + escapeHtml(dayLabel(s0.date)) + ' · ' + escapeHtml(timeLabel(s0.time)) + '</span>' +
+               '<span class="tick">×</span>' +
+             '</button>';
+    }).join('');
+    bar.innerHTML =
+      '<p style="margin:14px 0 8px"><strong>' + slotsChosen.length + ' of up to ' + slotsWanted() +
+      '</strong> — your agenda rules; the candidate adapts to the times you send.</p>' +
+      '<div>' + (chips || '<span style="color:var(--muted,#6b7280)">Tap a day on the calendar, then pick the hour.</span>') + '</div>' +
+      '<div style="margin-top:12px"><button class="btn" id="ssave"' +
+      (slotsChosen.length >= 1 ? '' : ' disabled') + '>' +
+      (slotsChosen.length >= 1
+        ? 'Send ' + (slotsChosen.length === 1 ? 'this time' : 'these ' + slotsChosen.length + ' times') +
+          ' to ' + escapeHtml(ctx.candidate_first || 'the candidate')
+        : 'Pick a day and an hour above') +
+      '</button></div>' +
+      (slotsChosen.length < slotsWanted()
+        ? '<p style="margin:8px 0 0;color:var(--muted,#6b7280);font-size:13px">Running out of ' +
+          'days this month? Use the &#8250; arrow — next month is open too.</p>'
+        : '') +
+      '<div id="serr"></div>';
+    Array.prototype.forEach.call(bar.querySelectorAll('[data-rm]'), function (b2) {
+      b2.onclick = function () {
+        slotsChosen.splice(Number(b2.getAttribute('data-rm')), 1);
+        drawSlotsBar();
+        drawMonth();
+      };
+    });
+    var sv = el('ssave');
+    if (sv) sv.onclick = function () {
+      sv.disabled = true;
+      post('interviewSlotsSubmit', { t: TOKEN, slots: slotsChosen })
+        .then(function (env) {
+          if (env && Number(env.status) === 200) {
+            show('<p><strong>Saved.</strong> ' + escapeHtml(ctx.candidate_first || 'The candidate') +
+                 ' now picks one of your ' + slotsChosen.length +
+                 ' times — you get the confirmation the moment they choose. You can close this page.</p>');
+          } else {
+            verifyThenComplain(sv, (env && env.message) || 'Could not save — please try again.');
+          }
+        })
+        .catch(function () { verifyThenComplain(sv, 'Could not save — please check your connection and try again.'); });
+    };
+  }
+
+  /**
+   * THE WORK MAY HAVE LANDED WHILE THE REPLY DIED (2026-08-30, measured live:
+   * the save sends the candidate's offer inside the request, the relay gave
+   * up waiting, the page cried "unreachable" — and the interview was already
+   * booked). So a failed save RE-READS the ask before complaining: saved
+   * slots on the server mean success, whatever the transport said.
+   */
+  function verifyThenComplain(btn, message) {
+    post('interviewSlotContext', { t: TOKEN })
+      .then(function (env2) {
+        var d2 = env2 && Number(env2.status) === 200 ? env2.data : null;
+        if (d2 && ((d2.chosen_slots || []).length >= slotsChosen.length || d2.mode === 'choose3')) {
+          show('<p><strong>Saved.</strong> The reply was slow but your times landed — ' +
+               escapeHtml(ctx.candidate_first || 'the candidate') +
+               ' now picks one of them. You can close this page.</p>');
+          return;
+        }
+        btn.disabled = false;
+        var er = el('serr');
+        if (er) er.innerHTML = '<p style="color:#b91c1c;margin-top:8px">' + escapeHtml(message) + '</p>';
+      })
+      .catch(function () {
+        btn.disabled = false;
+        var er = el('serr');
+        if (er) er.innerHTML = '<p style="color:#b91c1c;margin-top:8px">' + escapeHtml(message) + '</p>';
+      });
+  }
+
+  function drawSlotsCollector() {
+    collecting = true;
+    slotsChosen = (ctx.chosen_slots || []).slice(0, slotsWanted());
+    el('sub').textContent = 'Pick up to ' + slotsWanted() + ' times on different days — date AND ' +
+                            'hour. One is enough; the candidate adapts to your agenda.';
+    var now = new Date();
+    view = { y: now.getFullYear(), m: now.getMonth() };
+    drawMonth();
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* THE INTERVIEWER'S OWN VIEW (mode 'days', 2026-08-25): she picks the */
+  /* days the candidate MAY choose; saving releases their calendar.      */
+  /* ------------------------------------------------------------------ */
+  var daysChosen = {};
+  function drawDays() {
+    (ctx.chosen || []).forEach(function (d0) { daysChosen[d0] = true; });
+    var html = '<p style="margin:0 0 12px">Tap every day that works for you' +
+      (ctx.candidate_first ? ' to interview <strong>' + ctx.candidate_first + '</strong>' : '') +
+      '. Days you leave out will be <strong>gray and blocked</strong> on their calendar. ' +
+      'The moment you save, their calendar goes out by itself.</p><div class="grid">';
+    var now = new Date();
+    var horizon = Number(ctx.horizon_days || 14);
+    for (var i = 1; i <= horizon; i++) {
+      var d1 = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i, 12);
+      var dow = d1.getDay();
+      if (dow === 0 || dow === 6) continue;
+      var dIso = iso(d1.getFullYear(), d1.getMonth(), d1.getDate());
+      html += '<button class="day' + (daysChosen[dIso] ? ' chosen' : '') + '" data-day="' + dIso + '">' +
+        (d1.getMonth() + 1) + '/' + d1.getDate() + '<small>' + WD[dow] + '</small></button>';
+    }
+    html += '</div><div style="margin-top:14px"><button class="btn" id="dsave">Save my days</button></div>';
+    show(html);
+    Array.prototype.forEach.call(document.querySelectorAll('.day[data-day]'), function (b) {
+      b.onclick = function () {
+        var k = b.getAttribute('data-day');
+        daysChosen[k] = !daysChosen[k];
+        b.classList.toggle('chosen', !!daysChosen[k]);
+      };
+    });
+    el('dsave').onclick = function () {
+      var days = Object.keys(daysChosen).filter(function (k) { return daysChosen[k]; }).sort();
+      if (!days.length) { alert('Pick at least one day.'); return; }
+      el('dsave').disabled = true;
+      post('interviewDaysSubmit', { t: TOKEN, days: days })
+        .then(function (env) {
+          if (env && Number(env.status) === 200) {
+            show('<p><strong>Saved.</strong> The candidate\'s calendar is on its way — ' +
+                 'only your ' + days.length + ' day(s) are open on it. You can close this page.</p>');
+          } else {
+            el('dsave').disabled = false;
+            alert((env && env.message) || 'Could not save — please try again.');
+          }
+        })
+        .catch(function () { el('dsave').disabled = false; alert('Could not save — please try again.'); });
+    };
+  }
+
+  function drawMonth() {
+    var y = view.y, m = view.m;
+    var first = new Date(y, m, 1, 12).getDay();
+    var days = new Date(y, m + 1, 0).getDate();
+    var now = new Date();
+    var atFloor = (y === now.getFullYear() && m === now.getMonth());
+
+    var html = '' +
+      '<div class="month">' +
+        '<strong>' + MO[m] + ' ' + y + '</strong>' +
+        '<span class="nav">' +
+          '<button id="prev" ' + (atFloor ? 'disabled' : '') + ' aria-label="Previous month">&#8249;</button>' +
+          '<button id="next" aria-label="Next month">&#8250;</button>' +
+        '</span>' +
+      '</div><div class="grid">';
+
+    for (var w = 0; w < 7; w++) html += '<div class="dow">' + WD[w] + '</div>';
+    for (var b = 0; b < first; b++) html += '<div class="day off"></div>';
+    for (var d = 1; d <= days; d++) {
+      var can = isOfferable(y, m, d);
+      var date = iso(y, m, d);
+      var free = can ? freeTimesOn(date).length : 0;
+      var slotHere = collecting && slotsChosen.some(function (s0) { return s0.date === date; });
+      html += '<button class="day ' + (can ? '' : 'dead') + ((pickedDate === date && !collecting) || slotHere ? ' chosen' : '') + '"' +
+              (can ? ' data-date="' + date + '"' : ' disabled') + '>' + d +
+              (can ? '<small>' + free + '</small>' : '') + '</button>';
+    }
+    html += '</div>';
+    if (collecting) html += '<div id="slotsbar"></div>';
+    show(html);
+    if (collecting) drawSlotsBar();
+
+    el('prev').onclick = function () { step(-1); };
+    el('next').onclick = function () { step(1); };
+    Array.prototype.forEach.call(document.querySelectorAll('.day[data-date]'), function (b2) {
+      b2.onclick = function () { openHour(b2.getAttribute('data-date')); };
+    });
+  }
+
+  function step(by) {
+    var m = view.m + by, y = view.y;
+    if (m < 0) { m = 11; y--; }
+    if (m > 11) { m = 0; y++; }
+    view = { y: y, m: m };
+    drawMonth();
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* the three offered times (after the interviewer proposed them)     */
+  /* ---------------------------------------------------------------- */
+
+  function drawChoose3() {
+    el('sub').textContent = 'Our interviewer offered these three times — take the one that suits you.';
+    var html = '<div class="slots">';
+    (ctx.slots || []).forEach(function (s, i) {
+      html += '<button class="slot" data-i="' + i + '">' +
+                '<span class="when">' + escapeHtml(dayLabel(s.date)) + ' · ' + escapeHtml(timeLabel(s.time)) + '</span>' +
+                '<span class="tick">Choose</span>' +
+              '</button>';
+    });
+    html += '</div><div id="err3"></div>' +
+            '<div style="margin-top:16px"><button class="btn" id="go3" disabled>Schedule</button></div>';
+    show(html);
+
+    Array.prototype.forEach.call(document.querySelectorAll('.slot'), function (b) {
+      b.onclick = function () {
+        var s = ctx.slots[Number(b.getAttribute('data-i'))];
+        pickedDate = s.date; pickedTime = s.time;
+        Array.prototype.forEach.call(document.querySelectorAll('.slot'), function (o) { o.classList.remove('chosen'); });
+        b.classList.add('chosen');
+        el('go3').disabled = false;
+      };
+    });
+    el('go3').onclick = function () { submit(el('go3'), 'err3'); };
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* the hour modal                                                    */
+  /* ---------------------------------------------------------------- */
+
+  function openHour(date) {
+    pickedDate = date;
+    pickedTime = '';
+    el('mwhen').textContent = dayLabel(date);
+    el('merr').innerHTML = '';
+    el('mgo').disabled = true;
+
+    var free = freeTimesOn(date);
+    el('mslots').innerHTML = free.map(function (t) {
+      return '<button class="slot" data-t="' + t + '">' +
+               '<span class="when">' + escapeHtml(timeLabel(t)) + '</span>' +
+               '<span class="tick">Choose</span>' +
+             '</button>';
+    }).join('');
+
+    Array.prototype.forEach.call(el('mslots').querySelectorAll('.slot'), function (b) {
+      b.onclick = function () {
+        pickedTime = b.getAttribute('data-t');
+        Array.prototype.forEach.call(el('mslots').querySelectorAll('.slot'), function (o) { o.classList.remove('chosen'); });
+        b.classList.add('chosen');
+        el('mgo').disabled = false;
+      };
+    });
+
+    el('veil').classList.add('open');
+  }
+
+  function closeHour() {
+    el('veil').classList.remove('open');
+    pickedTime = '';
+  }
+
+  el('mcancel').onclick = closeHour;
+  el('veil').onclick = function (e) { if (e.target === el('veil')) closeHour(); };
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && el('veil').classList.contains('open')) closeHour();
+  });
+  el('mgo').onclick = function () {
+    if (collecting) {
+      slotsChosen = slotsChosen.filter(function (s0) { return s0.date !== pickedDate; });
+      if (slotsChosen.length >= slotsWanted()) {
+        el('merr').innerHTML = '<p style="color:#b91c1c;margin-top:8px">You already have ' +
+          slotsWanted() + ' — remove one below to swap it.</p>';
+        return;
+      }
+      slotsChosen.push({ date: pickedDate, time: pickedTime });
+      slotsChosen.sort(function (a2, b2) { return (a2.date + a2.time) < (b2.date + b2.time) ? -1 : 1; });
+      closeHour();
+      drawMonth();
+      return;
+    }
+    submit(el('mgo'), 'merr');
+  };
+
+  /* ---------------------------------------------------------------- */
+  /* sending                                                           */
+  /* ---------------------------------------------------------------- */
+
+  function submit(button, errorId) {
+    if (!pickedDate || !pickedTime) return;
+    button.disabled = true;
+    button.textContent = 'Scheduling…';
+    post('interviewSlotSubmit', { t: TOKEN, date: pickedDate, time: pickedTime })
+      .then(function (env) {
+        if (env && Number(env.status) === 200) { thanks(); return; }
+        var m = (env && env.message) || 'That did not go through — please try again.';
+        el(errorId).innerHTML = '<div class="msg">' + escapeHtml(m) + '</div>';
+        button.disabled = false;
+        button.textContent = 'Schedule';
+      })
+      .catch(function () {
+        el(errorId).innerHTML = '<div class="msg">We could not reach us just now — ' +
+          'please check your connection and try again.</div>';
+        button.disabled = false;
+        button.textContent = 'Schedule';
+      });
+  }
+
+  /* THE THANK YOU, THEN THE WINDOW CLOSES AFTER 3 SECONDS (the operator's
+     own words). A tab the candidate opened from a link may refuse to close
+     itself — the note stays behind for that case rather than leaving them
+     looking at a page that promised to go away. */
+  function thanks() {
+    el('veil').classList.remove('open');
+    el('title').textContent = 'Thank you';
+    el('sub').textContent = '';
+    el('foot').textContent = '';
+    show('<div class="done">' +
+           '<div class="mark">&#10003;</div>' +
+           '<h2>You are booked in</h2>' +
+           '<p>' + escapeHtml(dayLabel(pickedDate)) + ' at ' + escapeHtml(timeLabel(pickedTime)) + '.<br>' +
+           'We confirm it with our interviewer and write to you.</p>' +
+         '</div>');
+    setTimeout(function () {
+      try { window.close(); } catch (e) { /* the note above remains */ }
+    }, 3000);
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* boot                                                              */
+  /* ---------------------------------------------------------------- */
+
+  if (!TOKEN) {
+    fail('This link is missing its key — please open the exact link we sent you.');
+    return;
+  }
+
+  post('interviewSlotContext', { t: TOKEN })
+    .then(function (env) {
+      if (!env || Number(env.status) !== 200 || !env.data) {
+        fail((env && env.message) ||
+             'This link is no longer valid — please reach out and we will send you a fresh one.');
+        return;
+      }
+      ctx = env.data;
+      // A MODE THIS PAGE DOES NOT KNOW = a STALE CACHED COPY (2026-08-30: the
+      // operator's browser held the old page, fell through to the candidate
+      // grid, and submitted the interviewer's token down the wrong door). An
+      // outdated page must say so, never impersonate another view.
+      if (ctx.mode && ['pick', 'days', 'choose3', 'slots'].indexOf(ctx.mode) === -1) {
+        fail('This page is out of date — please reload it (pull down to refresh, or Ctrl+Shift+R).');
+        return;
+      }
+      if (ctx.mode === 'slots') {
+        el('title').textContent = 'Pick the interview times' +
+          (ctx.candidate_first ? ' for ' + ctx.candidate_first : '');
+        drawSlotsCollector();
+        return;
+      }
+      if (ctx.mode === 'days') {
+        el('title').textContent = 'Choose the days that work for you';
+        drawDays();
+        return;
+      }
+      if (ctx.candidate_first) {
+        el('title').textContent = ctx.candidate_first + ', pick your interview time';
+      }
+      if (ctx.mode === 'choose3' && (ctx.slots || []).length) { drawChoose3(); return; }
+      var now = new Date();
+      view = { y: now.getFullYear(), m: now.getMonth() };
+      drawMonth();
+    })
+    .catch(function () {
+      fail('We could not open your calendar just now — please try the link again in a minute.');
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# asa-hub-app: the real environment holds the database DSN, the relay's shared token and the Drive credentials.
+.env
+__pycache__/
+.sa-*.json

@@ -1,0 +1,2491 @@
+{
+  "emitted_at": "2026-10-28T17:02:08.832Z",
+  "resources": [
+    {
+      "resource": "activity",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "activity",
+      "apps": [
+        "audit-library",
+        "chat",
+        "credentials",
+        "email-designs",
+        "emergency-contacts",
+        "leadership",
+        "logs",
+        "mail",
+        "my-calendar",
+        "my-inbox",
+        "my-profile",
+        "my-work",
+        "myasa",
+        "overview",
+        "owners",
+        "playground",
+        "production-actions",
+        "psi-log",
+        "quality",
+        "release-users",
+        "suggestions"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "onboarding",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "alertsTriage",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "leadership"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "audits",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "audits",
+      "apps": [
+        "audits"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "behaviorBoard",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "behavior"
+      ],
+      "roles": [
+        "admin"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "billingClaims",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "billing_claims",
+      "apps": [
+        "billing"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "books",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "books",
+      "apps": [
+        "books"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "calendarConflicts",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "calendarbuilder"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {
+        "calendarbuilder": [
+          "every-house"
+        ]
+      }
+    },
+    {
+      "resource": "calendarGrid",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "calendarbuilder"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {
+        "calendarbuilder": [
+          "house-manager"
+        ]
+      }
+    },
+    {
+      "resource": "calendarHours",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "calendarbuilder"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {
+        "calendarbuilder": [
+          "every-house"
+        ]
+      }
+    },
+    {
+      "resource": "calendarHouses",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "calendarbuilder"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {
+        "calendarbuilder": [
+          "every-house"
+        ]
+      }
+    },
+    {
+      "resource": "calendarRequests",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "calendarbuilder"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {
+        "calendarbuilder": [
+          "every-house"
+        ]
+      }
+    },
+    {
+      "resource": "calendarStaff",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "calendarbuilder"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {
+        "calendarbuilder": [
+          "every-house"
+        ]
+      }
+    },
+    {
+      "resource": "callOffs",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "callOffs",
+      "apps": [
+        "calendarbuilder",
+        "call-offs",
+        "leadership",
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {
+        "calendarbuilder": [
+          "every-house"
+        ]
+      }
+    },
+    {
+      "resource": "candidates",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "candidates",
+      "apps": [
+        "hiring",
+        "interviews",
+        "simulator"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "interviewer",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "careDocs",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "care_docs",
+      "apps": [
+        "care-plans",
+        "family"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "certMatrix",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "certMatrix",
+      "apps": [
+        "compliance",
+        "employee-tracker"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "clients",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "clients",
+      "apps": [
+        "clients",
+        "family",
+        "imagebank"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "commAttendance",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "commCalls",
+      "shelf": "private",
+      "mode": "derived",
+      "sheet": "comm_calls",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "commPunchBoard",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "commRoutes",
+      "shelf": "private",
+      "mode": "derived",
+      "sheet": "",
+      "apps": [
+        "people",
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager"
+      ]
+    },
+    {
+      "resource": "commWhen",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "comm_when",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "commWhenMoments",
+      "shelf": "private",
+      "mode": "derived",
+      "sheet": "",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ]
+    },
+    {
+      "resource": "commWorkItems",
+      "shelf": "private",
+      "mode": "derived",
+      "sheet": "comm_work_items",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ]
+    },
+    {
+      "resource": "compliance",
+      "shelf": "private",
+      "mode": "live",
+      "held": "unrouted",
+      "apps": [
+        "compliance"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "complianceEngineEvents",
+      "shelf": "private",
+      "mode": "live",
+      "held": "unrouted",
+      "apps": [
+        "compliance-engine"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "complianceEngineReqs",
+      "shelf": "private",
+      "mode": "live",
+      "held": "unrouted",
+      "apps": [
+        "compliance-engine",
+        "employee-tracker"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "complianceEngineStates",
+      "shelf": "private",
+      "mode": "live",
+      "held": "unrouted",
+      "apps": [
+        "compliance-engine"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "contactLists",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "contactLists",
+      "apps": [
+        "policy-acks"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "cortexChat",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "cortex"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "cortexContacts",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "users",
+        "settings"
+      ],
+      "roles": [
+        "admin"
+      ]
+    },
+    {
+      "resource": "cortexMesh",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "cortex"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "coverageSuggestions",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "calendarbuilder"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {
+        "calendarbuilder": [
+          "every-house"
+        ]
+      }
+    },
+    {
+      "resource": "credentials",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "credentials"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "directors",
+      "shelf": "private",
+      "mode": "adapter",
+      "apps": [
+        "directors"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "diseases",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "diseases",
+      "apps": [
+        "diseases"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "documents",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "documents",
+      "apps": [
+        "administration",
+        "docs"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "drAppointments",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "drAppointments",
+      "apps": [
+        "dr-appointments"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "dtBritt",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "directors"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "dtCassy",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "directors"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "dtMonthlyDocReview",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "directors"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "dtNat",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "directors"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "dtNotes",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "directors"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "dtRegina",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "directors"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "dtTammy",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "directors"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "dtTieara",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "directors"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "equipment",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "equipment",
+      "apps": [
+        "equipment"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "events",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "events",
+      "apps": [
+        "calendar",
+        "calendarbuilder",
+        "schedule",
+        "shiftboard"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "expenseReports",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "expenseReports",
+      "apps": [
+        "expenses"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "financeClients",
+      "shelf": "private",
+      "mode": "live",
+      "held": "unrouted",
+      "apps": [
+        "finance"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "finances",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "finances"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "financeSummary",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "finances"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "fleetVehicles",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "fleetVehicles",
+      "apps": [
+        "transportation"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "formFiles",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "form_files",
+      "apps": [
+        "digestlab"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "forms",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "forms",
+      "apps": [
+        "forms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "formSubmissions",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "form_submissions",
+      "apps": [
+        "forms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "guardianHealth",
+      "shelf": "private",
+      "mode": "live",
+      "held": "unrouted",
+      "apps": [
+        "guardian"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "helpfulContacts",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "helpful_contacts",
+      "apps": [
+        "suggestions"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "interviewer",
+        "manager",
+        "onboarding",
+        "staff"
+      ]
+    },
+    {
+      "resource": "hiringAnalysis",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "talent-pipeline"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "hiringCadences",
+      "shelf": "private",
+      "mode": "adapter",
+      "apps": [
+        "hiring"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ]
+    },
+    {
+      "resource": "houses",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "client-candidates",
+        "client-profiles",
+        "family-profiles",
+        "houses",
+        "locations",
+        "scheduling",
+        "ssa-profiles",
+        "staff-candidates",
+        "staff-profiles",
+        "support-desk",
+        "timeoff",
+        "vehicle-calendar"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "hrTracker",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "staffissues"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "hydrationProfiles",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "hydrationProfiles",
+      "apps": [
+        "hydration"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "inventoryItems",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "inventoryItems",
+      "apps": [
+        "inventory"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "invoices",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "invoices"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "isps",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "isps",
+      "apps": [
+        "isp"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "istRecords",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "ist_records",
+      "apps": [
+        "ist"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "learnSkills",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "learn_skills",
+      "apps": [
+        "learning"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "marEntries",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "mar_entries",
+      "apps": [
+        "mar"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "marErrors",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "mar_errors",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager"
+      ]
+    },
+    {
+      "resource": "marketingIntel",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "marketing"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mealIdeals",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "mealIdeals",
+      "apps": [
+        "ideal-meals"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mealLog",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "meal_log",
+      "apps": [
+        "meals"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mealPlans",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "mealPlans",
+      "apps": [
+        "meals"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "medCatalog",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "med_catalog",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "medCorrelation",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "medDelFlows",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "meddel_flows",
+      "apps": [
+        "med-delegation"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "medDelFlowsRaw",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "meddel_flows",
+      "apps": [
+        "med-delegation"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ]
+    },
+    {
+      "resource": "medDeliveries",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "med_deliveries",
+      "apps": [
+        "med-deliveries"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "medications",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "medications",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mileageLogs",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "mileageLogs",
+      "apps": [
+        "transportation"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "missingMedications",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "missing_medications",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager"
+      ]
+    },
+    {
+      "resource": "mmAbnormalDeliveries",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mmDrContacts",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mmDrsMeds",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mmFormResponses1",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mmFormResponses4",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mmLowRefills",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "mmMedicationControl",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "medications"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "onboarding",
+      "shelf": "private",
+      "mode": "adapter",
+      "apps": [
+        "onboarding"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "people",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "people",
+      "apps": [
+        "employee-tracker",
+        "imagebank",
+        "payroll",
+        "people",
+        "performance",
+        "training",
+        "user-support",
+        "users"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "phoneScreens",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "entity_phone_screens",
+      "apps": [
+        "hiring"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ]
+    },
+    {
+      "resource": "photos",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "photos",
+      "apps": [
+        "imagebank"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "policies",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "policies",
+      "apps": [
+        "policy-acks"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "policyAcks",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "policyAcks",
+      "apps": [
+        "administration"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "potentialClients",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "potentialClients",
+      "apps": [
+        "potential-clients"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "projects",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "projects",
+      "apps": [
+        "projects"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "psiPunches",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "psi_punches",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "questionnaireResponses",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "questionnaireResponses",
+      "apps": [
+        "questionnaires"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "questionnaires",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "questionnaires",
+      "apps": [
+        "questionnaires"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "reconErrors",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "time-recon"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "recruitBook",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "recruitment",
+      "shelf": "private",
+      "mode": "adapter",
+      "apps": [
+        "hiring"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ]
+    },
+    {
+      "resource": "reminders",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "reminders",
+      "apps": [
+        "reminders"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "renderSheets",
+      "shelf": "private",
+      "mode": "live",
+      "held": "unrouted",
+      "apps": [
+        "render-sheet"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "repairInventory",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "house-repair"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "repairRequests",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "house-repair"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "resolverHealth",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "settings"
+      ],
+      "roles": [
+        "admin"
+      ]
+    },
+    {
+      "resource": "resumeCoverage",
+      "shelf": "private",
+      "mode": "derived",
+      "sheet": "",
+      "apps": [
+        "people",
+        "staff-performance",
+        "behavior"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager"
+      ]
+    },
+    {
+      "resource": "rosterProfile",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "calendarbuilder"
+      ],
+      "roles": [
+        "admin"
+      ]
+    },
+    {
+      "resource": "routes",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "routes",
+      "apps": [
+        "transportation"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "screeningNotes",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "interviews"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "sheetTasks",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "sheet_tasks",
+      "apps": [
+        "taskboard-sheet"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "shiftCards",
+      "shelf": "private",
+      "mode": "derived",
+      "sheet": "shiftCards",
+      "apps": [
+        "calendarbuilder",
+        "opsdash",
+        "shiftboard"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "shiftMatrix",
+      "shelf": "private",
+      "mode": "derived",
+      "sheet": "shiftMatrix",
+      "apps": [
+        "calendarbuilder",
+        "shiftboard"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "shifts",
+      "shelf": "private",
+      "mode": "derived",
+      "sheet": "shifts",
+      "apps": [
+        "calendarbuilder",
+        "shiftboard",
+        "shifts"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "shiftTimeline",
+      "shelf": "private",
+      "mode": "derived",
+      "sheet": "shiftTimeline",
+      "apps": [
+        "calendarbuilder",
+        "shiftboard"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "shopperItems",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "shopper_items",
+      "apps": [
+        "shopper"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "sleepProfiles",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "sleepProfiles",
+      "apps": [
+        "sleep"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "smartCommsActivity",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "smart_comms_sent",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "smartCommsDesk",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "smart_comms",
+      "apps": [
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "staffCerts",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "staffCerts",
+      "apps": [
+        "compliance",
+        "employee-tracker"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "staffIssues",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "staffissues"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "staffPerfBoard",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "employee-tracker"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ]
+    },
+    {
+      "resource": "staffRequests",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "staff_requests",
+      "apps": [
+        "support-requests"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "supportQueue",
+      "shelf": "private",
+      "mode": "adapter",
+      "apps": [
+        "hotline",
+        "smartcomms"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "talentPool",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "talentPool",
+      "apps": [
+        "talent-pipeline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "tasks",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "tasks",
+      "apps": [
+        "taskboard"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "teamTasks",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "sheet": "team_tasks",
+      "apps": [
+        "teamboard"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "techDocs",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "technology"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "techEngineering",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "technology"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "techProjects",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "technology"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "travelTrips",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "travel_trips",
+      "apps": [
+        "travel"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "uiIncidents",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "uiIncidents",
+      "apps": [
+        "incidents",
+        "smartcomms",
+        "ui-incidents"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbCategoryKnowledge",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbCategoryMap",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbClientNames",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbFollowUpsIncidents",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbFollowUpsMain",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbGeneralRules",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbHomes",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbPolicies",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbSchedule",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbStaffNames",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "vbSubProcess",
+      "shelf": "private",
+      "mode": "live",
+      "held": "by-design",
+      "apps": [
+        "hotline"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "videos",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "videos",
+      "apps": [
+        "academy"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "visits",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "visits",
+      "apps": [
+        "compliance",
+        "people",
+        "visits"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "widgets",
+      "shelf": "private",
+      "mode": "sheet",
+      "sheet": "widgets",
+      "apps": [
+        "widgets"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "workforceForecast",
+      "shelf": "private",
+      "mode": "derived",
+      "apps": [
+        "leadership"
+      ],
+      "roles": [
+        "admin",
+        "manager"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "workOrders",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "workOrders",
+      "apps": [
+        "house-repair",
+        "work-orders"
+      ],
+      "roles": [
+        "admin",
+        "client",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    },
+    {
+      "resource": "workoutPlans",
+      "shelf": "private",
+      "mode": "adapter",
+      "sheet": "workoutPlans",
+      "apps": [
+        "workout"
+      ],
+      "roles": [
+        "admin",
+        "director",
+        "manager",
+        "staff"
+      ],
+      "gates": {}
+    }
+  ]
+}

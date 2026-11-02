@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- open box -->
+  <path d="M96 148 L160 116 L224 148 L160 180 Z" opacity="0.9"/>
+  <path d="M96 148 L96 188 L160 220 L160 180"/>
+  <path d="M224 148 L224 188 L160 220"/>
+  <path d="M96 148 L64 128 L128 96 L160 116" opacity="0.6"/>
+  <path d="M224 148 L256 128 L192 96 L160 116" opacity="0.6"/>
+  <!-- floating cards -->
+  <rect x="120" y="46" width="52" height="34" rx="8" opacity="0.55"/>
+  <line x1="130" y1="58" x2="162" y2="58" opacity="0.55"/>
+  <line x1="130" y1="68" x2="152" y2="68" opacity="0.55"/>
+  <rect x="186" y="66" width="44" height="30" rx="8" opacity="0.4"/>
+  <line x1="195" y1="77" x2="221" y2="77" opacity="0.4"/>
+  <rect x="82" y="76" width="38" height="26" rx="7" opacity="0.4"/>
+  <!-- green spark -->
+  <path d="M238 40 L238 56 M230 48 L246 48" stroke="#17B26A" stroke-width="3"/>
+  <circle cx="92" cy="52" r="3" fill="#17B26A" stroke="none"/>
+</svg>

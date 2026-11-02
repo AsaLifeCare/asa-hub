@@ -1,0 +1,99 @@
+THE TEMPLATE FOR Props.gs — the real one lives in the PROJECT, never here.
+
+WHY. A secret committed to git once is in the history forever, outliving every
+rotation of it. push_apps_script.py builds its payload from the REMOTE file
+list and only replaces the files it is named, so a file that exists in the
+project and not on disk survives every push, untouched. That is why this is a
+.txt: as a .gs it would show up as `local != HEAD` on every version check,
+forever, for a file nobody wants in the project.
+
+HOW TO CREATE IT, once:
+
+  1. In the editor, run runExportScriptProps() (ScriptProps.gs). It reads the
+     store and prints a finished Props.gs — the values, the version stamp and
+     the seed — leaving out everything the code writes for itself.
+  2. Editor → + → Script → name it `Props` → paste → save.
+  3. Run runSeedProps() once.
+
+FROM THEN ON THE FILE IS THE SOURCE. Edit a value, bump HUB_PROPS_VERSION,
+run runSeedProps() again. Reads through hubProp_ see the new value with no
+round trip at all; the seed is what keeps the files that still call
+getProperty directly (Files.gs, CalendarFiles.gs, Screening.gs) in step.
+
+------------------------------------------------------------------------
+
+var HUB_PROPS_VERSION = '2026-08-22a';
+
+var HUB_PROPS = {
+  // the signing key for the candidate's scheduling link AND the registration
+  // invitation — both refuse to mint a link without it
+  INTERVIEW_LINK_SECRET: '',
+
+  // the first-time password every new hire's account starts on
+  ONBOARDING_USER_PASSWORD: '',
+  FIRST_USER_PASSWORD: '',
+
+  // the platform's own mailboxes, ALL FIVE. The FIRST is the voice every
+  // automatic letter leaves from; the other four are read in the Mail app and
+  // exist for the simulation. Both halves or nothing: an address with no
+  // password is not a mailbox, and the numbers may have gaps.
+  PLATFORM_EMAIL: '',
+  PLATFORM_EMAIL_PASSWORD: '',
+  PLATFORM_EMAIL_2: '',
+  PLATFORM_EMAIL_PASSWORD_2: '',
+  PLATFORM_EMAIL_3: '',
+  PLATFORM_EMAIL_PASSWORD_3: '',
+  PLATFORM_EMAIL_4: '',
+  PLATFORM_EMAIL_PASSWORD_4: '',
+  PLATFORM_EMAIL_5: '',
+  PLATFORM_EMAIL_PASSWORD_5: '',
+
+  // the model keys, still read straight from the store by Screening.gs —
+  // planting them is what keeps that lane working
+  GROK_API_KEY: '',
+  GROQ_KEY1: '',
+  GROQ_KEY2: '',
+
+  // the transport switch: anything but on/true/1 and the platform records
+  // every message without sending one
+  HUB_RPC_SEND: 'on',
+
+  // where the CJIS copies are filed
+  HUB_FOLDER_ORIGINAL_DOCS: ''
+};
+
+/**
+ * Plant every value in the store, in ONE remote call.
+ *
+ * setProperties(obj, false) MERGES — it never deletes. That matters: the store
+ * also holds what the CODE writes for itself (folder ids, the PII salt, the
+ * sweep cursors), and a seed that wiped those would make the platform
+ * re-discover every folder and orphan every hash made with the old salt.
+ */
+function hubPropsSeed_() {
+  var p = PropertiesService.getScriptProperties();
+  p.setProperties(HUB_PROPS, false);
+  p.setProperty('HUB_PROPS_VERSION', HUB_PROPS_VERSION);
+  return Object.keys(HUB_PROPS).length;
+}
+
+/**
+ * Plant them only when the file has moved on — ONE cheap read, then nothing.
+ * Safe to call from doPost if you want the store to catch up by itself.
+ *
+ * NEVER seed unconditionally on a request: forty setProperty calls is forty
+ * remote writes on a backend that runs ONE execution at a time.
+ */
+function hubPropsEnsure_() {
+  try {
+    var p = PropertiesService.getScriptProperties();
+    if (String(p.getProperty('HUB_PROPS_VERSION') || '') === HUB_PROPS_VERSION) return false;
+    hubPropsSeed_();
+    return true;
+  } catch (e) { return false; }
+}
+
+/** ▶ Plant them now. */
+function runSeedProps() {
+  Logger.log(hubPropsSeed_() + ' propert(ies) planted at version ' + HUB_PROPS_VERSION);
+}

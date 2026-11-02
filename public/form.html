@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>ASA LifeCare</title>
+<!--
+  A FORM, DETACHED (operator, 2026-08-23: "uma pagina do house repairs
+  'destacavel', onde eu possa enviar so o link como um google forms, a pessoa
+  preenche e cai direto no nosso hub").
+
+  ONE PAGE FOR EVERY FORM. It draws whatever the definition says, so a new
+  form is a row somebody saved, never a file somebody deployed.
+
+  DRAWN THE WAY THE ORIGINAL IS DRAWN (operator, 2026-09-07: "só copie
+  exatamente o que está lá e mapeie aqui dentro exato"). The anatomy mirrors
+  Google Forms: an accent-topped title card, one card PER question, section
+  headers as accent-barred cards carrying their instructions, and scales as
+  a HORIZONTAL row of circles with the numbers above and the anchor words at
+  the ends — never a vertical list of radios wearing numbers.
+
+  WHY IT IS NOT PART OF THE APPLICATION. The person opening this is a
+  contractor, a family member, a member of staff on their own phone. They
+  have no account and will not make one to report a broken door.
+
+  IT ASKS AND IT NEVER TELLS. The door behind this page can write an answer
+  and cannot read one. A link with the wrong key and a link to a form that
+  does not exist get the SAME answer.
+
+  NO BROWSER DIALOGS. Every message is drawn in the page.
+-->
+<style>
+  :root{
+    --bg:#f0f0f7; --card:#fff; --ink:#111418; --ink2:#4b5563; --ink3:#7c8698;
+    --line:#e4e7ec; --accent:#1f6feb; --accent-soft:#e8f0fe; --accent-ink:#fff;
+    --bad:#b42318; --good:#067647; --radius:12px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0e1116; --card:#161b22; --ink:#e6edf3; --ink2:#adbac7; --ink3:#768390;
+           --line:#22272e; --accent:#4184e4; --accent-soft:#12233d; --bad:#e5534b; --good:#57ab5a; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased;padding:20px 14px 64px}
+  .wrap{max-width:720px;margin:0 auto}
+  .brand{font-size:12px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+        padding:20px 22px;margin-bottom:12px}
+  /* the title card wears the accent band across the top, like the original */
+  .card.head{border-top:10px solid var(--accent);border-top-left-radius:var(--radius);
+             border-top-right-radius:var(--radius);padding-top:18px}
+  h1{font-size:26px;margin:0 0 8px;font-weight:600;letter-spacing:-.01em}
+  .intro{color:var(--ink2);margin:0;white-space:pre-wrap;font-size:14px}
+  /* a SECTION: the accent bar on the left edge, exactly where Google draws it */
+  .card.sect{border-left:8px solid var(--accent);background:var(--card)}
+  .card.sect h2{font-size:17px;margin:0 0 6px;font-weight:600}
+  .card.sect p{margin:0;color:var(--ink2);font-size:14px;white-space:pre-wrap}
+  label.q{display:block;font-weight:500;margin-bottom:10px;font-size:15px}
+  .help{font-weight:400;color:var(--ink3);font-size:13px;margin:-6px 0 10px;white-space:pre-wrap}
+  .req{color:var(--bad);margin-left:4px}
+  input[type=text],input[type=number],input[type=date],input[type=time],
+  input[type=email],input[type=tel],textarea,select{
+    width:100%;padding:11px 12px;border:0;border-bottom:1px solid var(--line);border-radius:0;
+    background:transparent;color:var(--ink);font:inherit;outline:none}
+  input:focus,textarea:focus{border-bottom:2px solid var(--accent)}
+  input::placeholder,textarea::placeholder{color:var(--ink3)}
+  input[type=text],input[type=email],input[type=tel]{max-width:420px}
+  textarea{min-height:72px;resize:vertical;width:100%;max-width:none}
+  .opts{display:flex;flex-direction:column;gap:12px}
+  .opt{display:flex;align-items:flex-start;gap:11px;font-weight:400;color:var(--ink);font-size:14px}
+  .opt input{margin-top:2px;width:18px;height:18px;accent-color:var(--accent)}
+  /* THE SCALE — horizontal, the numbers above the circles, the anchor words
+     at the ends: the exact shape the original draws */
+  .scale{display:flex;align-items:flex-end;gap:8px;padding:6px 0 2px;overflow-x:auto}
+  .scale .anch{color:var(--ink2);font-size:13px;padding-bottom:8px;white-space:nowrap}
+  .scale .anch.left{margin-right:6px}
+  .scale .anch.right{margin-left:6px}
+  .scale .steps{display:flex;flex:1;justify-content:space-around;gap:4px;min-width:0}
+  .scale .step{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;
+               font-size:13px;color:var(--ink2);min-width:30px}
+  .scale .step input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+  /* THE FILE QUESTION — a drop zone in the house anatomy: dashed line,
+     accent on dragover, one row per file with size/type chips and its own
+     progress. Phones tap to browse; nothing here is a dialog. */
+  .drop{border:2px dashed var(--line);border-radius:var(--radius);padding:22px 16px;
+        text-align:center;color:var(--ink3);font-size:14px;cursor:pointer;
+        transition:border-color .12s, background .12s}
+  .drop.over{border-color:var(--accent);background:var(--accent-soft);color:var(--ink2)}
+  .drop input{display:none}
+  .frow{display:flex;align-items:center;gap:10px;margin-top:10px;padding:10px 12px;
+        border:1px solid var(--line);border-radius:8px;font-size:13px}
+  .frow .fname{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+  .fchip{background:var(--accent-soft);color:var(--ink2);border-radius:999px;
+         padding:2px 8px;font-size:11px;white-space:nowrap}
+  .frow .fx{border:0;background:none;color:var(--ink3);font-size:16px;cursor:pointer;padding:2px 6px}
+  .frow .fx:hover{color:var(--bad)}
+  .fbar{height:3px;border-radius:2px;background:var(--line);margin-top:6px;overflow:hidden}
+  .fbar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+  .frow.err{border-color:var(--bad)}
+  .ferr{color:var(--bad);font-size:12px;margin-top:6px}
+  .fretry{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;font-size:12px;padding:0}
+  /* THE STARS — a rating question wears stars, exactly as the original does
+     (2026-09-08: "onde tem estrelinha tem que copiar estrelinha"). The radio
+     hides under the glyph; picking N lights every star up to N. */
+  .scale.stars .step{position:relative}
+  .scale.stars .step input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0}
+  .scale.stars .star{font-size:26px;line-height:1;color:var(--ink3);transition:color .12s}
+  .scale.stars .step.on .star{color:#f4b400}
+  button{appearance:none;border:0;border-radius:6px;padding:10px 24px;font:inherit;
+         font-weight:600;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+  button[disabled]{opacity:.5;cursor:default}
+  .note{margin-top:12px;font-size:14px}
+  .note.bad{color:var(--bad)}
+  .note.good{color:var(--good)}
+  .center{text-align:center;padding:40px 20px}
+  .center h1{margin-bottom:10px}
+  .hide{display:none}
+  .copy{text-align:center;color:var(--ink2);font-size:11px;margin-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">ASA LifeCare</div>
+  <div id="loading" class="card center"><h1>Opening…</h1></div>
+
+  <form id="form" class="hide" autocomplete="on">
+    <div class="card head">
+      <h1 id="title"></h1>
+      <p class="intro" id="intro"></p>
+    </div>
+    <div class="card" id="who">
+      <div class="field">
+        <label class="q" for="f_name">Your name<span class="req">*</span></label>
+        <input type="text" id="f_name" name="name" required>
+      </div>
+      <div class="field" style="margin-top:16px">
+        <label class="q" for="f_email">E-mail <span class="help" style="display:inline;margin:0">so we can come back to you</span></label>
+        <input type="email" id="f_email" name="email">
+      </div>
+      <div class="field" style="margin-top:16px">
+        <label class="q" for="f_phone">Phone</label>
+        <input type="tel" id="f_phone" name="phone">
+      </div>
+    </div>
+    <div id="fields"></div>
+    <div class="card" style="background:transparent;border:0;padding:6px 0">
+      <button type="submit" id="send">Send</button>
+      <div class="note" id="note"></div>
+    </div>
+  </form>
+
+  <div id="done" class="card center hide"><h1 id="doneTitle">Thank you</h1><p class="intro" id="doneText"></p></div>
+  <div id="dead" class="card center hide"><h1>This link is not available</h1><p class="intro" id="deadText"></p></div>
+  <footer class="copy">© 2026 Asa LifeCare. All rights reserved.</footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  /* THE DOOR. Same origin: /gas is the Hub's own door, so this
+     page carries no key of its own and no session it should not have. */
+  var GAS = '/gas';
+  var q = new URLSearchParams(location.search);
+  var SLUG = q.get('f') || '';
+  var TOKEN = q.get('t') || '';
+  var FIELDS = [];
+
+  function el(id) { return document.getElementById(id); }
+  function show(id) { el(id).classList.remove('hide'); }
+  function hide(id) { el(id).classList.add('hide'); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+    });
+  }
+
+  /**
+   * ONE INTERSTITIAL IS NOT AN ANSWER (2026-09-09, live: *"Backend
+   * unreachable through the relay: pre-execution interstitial"* while
+   * sending a document). Google's front sometimes serves its own HTML to an
+   * anonymous POST — most often the long ones, which is exactly what a file
+   * upload is — and it clears on the very next request. The whole platform
+   * already retries this blip (gasAction has since day one); this page did
+   * not, so a person watched their upload fail for a page nobody sees.
+   *
+   * Retried up to twice, and only for THIS: an envelope that arrives and
+   * says something — even a refusal — is the answer and is returned at once.
+   */
+  /* A STORE CARRYING AN UPLOAD KEY IS IDEMPOTENT BY CONSTRUCTION: the same
+     key returns the file it already made. So the "saved, receipt lost"
+     answer — which left the operator holding a stored file and no handle on
+     2026-09-09 — is worth one more ask, where a SUBMIT never would be. */
+  function repeatable(action, payload) {
+    return action === 'formPublicFileStore' && payload && payload.upload_id;
+  }
+
+  /** One key per picked file, minted here and sent with every attempt. */
+  function uploadKey() {
+    try {
+      var a = new Uint8Array(8);
+      (window.crypto || window.msCrypto).getRandomValues(a);
+      return 'up_' + Array.prototype.map.call(a, function (b) {
+        return ('0' + b.toString(16)).slice(-2);
+      }).join('');
+    } catch (e) {
+      return 'up_' + String(Date.now()) + Math.random().toString(16).slice(2, 10);
+    }
+  }
+
+  function call(action, payload, attempt) {
+    attempt = attempt || 0;
+    return fetch(GAS, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: 'body=' + encodeURIComponent(JSON.stringify({ action: action, payload: payload }))
+    }).then(function (r) { return r.json(); }).then(function (env) {
+      var msg = String((env && env.message) || '');
+      /* 409 IS THE ECHO'S ANSWER, and the relay returns it on purpose so the
+         platform does not paint its "API down" badge. For a call that carries
+         an upload key it is not a refusal at all — the same key returns the
+         same file — so it is worth exactly one more ask (2026-09-10, a .jpeg
+         that had already landed). */
+      var repeat = repeatable(action, payload);
+      var blip = env && (
+        (env.status >= 500 && /interstitial|unreachable/i.test(msg)) ||
+        (repeat && (env.status === 409 || env.status >= 500) &&
+         /confirmation was lost|interstitial|unreachable|try again/i.test(msg)));
+      if (blip && attempt < 2) {
+        return new Promise(function (done) {
+          setTimeout(function () { done(call(action, payload, attempt + 1)); },
+                     1200 * (attempt + 1));
+        });
+      }
+      return env;
+    }).catch(function (err) {
+      if (attempt < 2) {
+        return new Promise(function (done) {
+          setTimeout(function () { done(call(action, payload, attempt + 1)); },
+                     1200 * (attempt + 1));
+        });
+      }
+      throw err;
+    });
+  }
+
+  /* ONE CARD PER QUESTION, sections as accent-barred cards — the original's
+     own anatomy. An unknown kind draws a plain box rather than nothing. */
+  function draw(f, i) {
+    var id = 'q_' + i;
+    var kind = String(f.kind || 'text');
+    if (kind === 'heading') {
+      /* A SECTION of the original form: its title and its instructions. */
+      return '<div class="card sect">' +
+             (f.label ? '<h2>' + esc(f.label) + '</h2>' : '') +
+             (f.help ? '<p>' + esc(f.help) + '</p>' : '') +
+             '</div>';
+    }
+    var req = String(f.required) === 'true' || f.required === true;
+    /* A TYPED question's help is its FUNDO DE TELA — the grey words inside
+       the input, as Google draws a hint ("May use DODD ID instead."). Kinds
+       whose inputs cannot show a placeholder (date, time, choices, scales)
+       keep the visible help line. */
+    var ph = (kind === 'text' || kind === 'long' || kind === 'number' ||
+              kind === 'email' || kind === 'phone') && f.help ? String(f.help) : '';
+    var head = '<label class="q" for="' + id + '">' + esc(f.label) +
+               (req ? '<span class="req">*</span>' : '') + '</label>' +
+               (f.help && !ph ? '<div class="help">' + esc(f.help) + '</div>' : '');
+    var body;
+    var opts = f.options || [];
+    if (kind === 'long') {
+      body = '<textarea id="' + id + '"' + (req ? ' required' : '') +
+             (ph ? ' placeholder="' + esc(ph) + '"' : '') + '></textarea>';
+    } else if (kind === 'scale') {
+      /* horizontal: number above each circle, anchors at the ends — and a
+         rating draws STARS under the numbers, as the original does */
+      var star = String(f.style || '') === 'star';
+      body = '<div class="scale' + (star ? ' stars' : '') + '">' +
+        (f.left ? '<span class="anch left">' + esc(f.left) + '</span>' : '') +
+        '<div class="steps">' + opts.map(function (o, n) {
+          return '<label class="step"><span>' + esc(o) + '</span>' +
+                 '<input type="radio" name="' + id + '" value="' + esc(o) + '"' +
+                 (req && n === 0 ? ' required' : '') + '>' +
+                 (star ? '<span class="star">☆</span>' : '') + '</label>';
+        }).join('') + '</div>' +
+        (f.right ? '<span class="anch right">' + esc(f.right) + '</span>' : '') +
+        '</div>';
+    } else if (kind === 'choice' || kind === 'yes_no') {
+      var list = kind === 'yes_no' ? ['Yes', 'No'] : opts;
+      body = '<div class="opts">' + list.map(function (o, n) {
+        return '<label class="opt"><input type="radio" name="' + id + '" value="' + esc(o) + '"' +
+               (req && n === 0 ? ' required' : '') + '> <span>' + esc(o) + '</span></label>';
+      }).join('') + '</div>';
+    } else if (kind === 'multi') {
+      body = '<div class="opts">' + opts.map(function (o) {
+        return '<label class="opt"><input type="checkbox" name="' + id + '" value="' + esc(o) + '"> <span>' + esc(o) + '</span></label>';
+      }).join('') + '</div>';
+    } else if (kind === 'file') {
+      /* THE DOCUMENT QUESTION: a drop zone; each picked file is stored
+         through its own public call the moment it is picked (the split
+         transport — an anonymous submit must stay small), and the submit
+         carries only the handles. */
+      var acc = (f.accept && f.accept.length)
+        ? f.accept.map(function (a) { return '.' + a; }).join(',') : '';
+      body = '<div class="drop" id="' + id + '_drop" tabindex="0">' +
+             'Drop files here, or tap to choose' +
+             '<input type="file" id="' + id + '_pick" multiple' +
+             (acc ? ' accept="' + esc(acc) + '"' : '') + '></div>' +
+             '<div id="' + id + '_list"></div>';
+    } else {
+      var type = kind === 'number' ? 'number' : kind === 'date' ? 'date'
+               : kind === 'time' ? 'time' : kind === 'email' ? 'email'
+               : kind === 'phone' ? 'tel' : 'text';
+      body = '<input type="' + type + '" id="' + id + '"' + (req ? ' required' : '') +
+             (ph ? ' placeholder="' + esc(ph) + '"' : '') + '>';
+    }
+    return '<div class="card">' + head + body + '</div>';
+  }
+
+  function read(f, i) {
+    var id = 'q_' + i;
+    var kind = String(f.kind || 'text');
+    if (kind === 'choice' || kind === 'yes_no' || kind === 'scale') {
+      var one = document.querySelector('input[name="' + id + '"]:checked');
+      return one ? one.value : '';
+    }
+    if (kind === 'multi') {
+      return Array.prototype.slice.call(
+        document.querySelectorAll('input[name="' + id + '"]:checked')
+      ).map(function (n) { return n.value; }).join(', ');
+    }
+    if (kind === 'file') {
+      // the stored handles — the submit carries these, never bytes
+      return (FILE_STATE[i] || []).filter(function (h) { return h.file_id; })
+        .map(function (h) {
+          return { file_id: h.file_id, file_name: h.file_name,
+                   mime_type: h.mime_type, size_bytes: h.size_bytes };
+        });
+    }
+    var node = el(id);
+    return node ? node.value.trim() : '';
+  }
+
+  /* ── the file kind's machinery ──────────────────────────────────── */
+  var FILE_STATE = {};        // question index -> [{file_id?, name, status}]
+  var UPLOADS_IN_FLIGHT = 0;
+
+  function fmtSize(n) {
+    if (!(n > 0)) return '';
+    if (n < 1024) return n + ' B';
+    if (n < 1048576) return Math.round(n / 1024) + ' KB';
+    return (n / 1048576).toFixed(1) + ' MB';
+  }
+
+  function fileToB64(file) {
+    return new Promise(function (resolve, reject) {
+      var r = new FileReader();
+      r.onload = function () {
+        var s = String(r.result || '');
+        resolve(s.slice(s.indexOf(',') + 1));
+      };
+      r.onerror = function () { reject(new Error('read failed')); };
+      r.readAsDataURL(file);
+    });
+  }
+
+  function renderFileList(i) {
+    var list = el('q_' + i + '_list');
+    if (!list) return;
+    list.innerHTML = (FILE_STATE[i] || []).map(function (h, n) {
+      var chips = '<span class="fchip">' + esc(fmtSize(h.size_bytes)) + '</span>' +
+                  '<span class="fchip">' + esc((h.file_name.split('.').pop() || '').toUpperCase()) + '</span>';
+      var tail = h.status === 'up'
+        ? '<div class="fbar"><i style="width:' +
+          (h.pct === undefined ? 70 : Math.max(3, h.pct)) + '%"></i></div>'
+        : h.status === 'err'
+          ? '<div class="ferr">' + esc(h.error || 'That did not upload.') +
+            ' <button type="button" class="fretry" data-q="' + i + '" data-n="' + n + '">Try again</button></div>'
+          : '';
+      return '<div class="frow' + (h.status === 'err' ? ' err' : '') + '">' +
+             '<span class="fname">' + (h.status === 'ok' ? '✓ ' : '') + esc(h.file_name) + '</span>' +
+             chips +
+             '<button type="button" class="fx" title="Remove" data-q="' + i + '" data-n="' + n + '">×</button>' +
+             '</div>' + tail;
+    }).join('');
+  }
+
+  function sendGate() {
+    el('send').disabled = UPLOADS_IN_FLIGHT > 0;
+    el('send').textContent = UPLOADS_IN_FLIGHT > 0 ? 'Uploading…' : 'Send';
+  }
+
+  /* THE BIG LANE (2026-09-09). Google's front refuses a 30MB anonymous POST,
+     so past this size the bytes never ride one request: the platform mints a
+     Drive upload session and this page sends the file to it in pieces,
+     through the Hub's door, which only carries them. The small lane stays exactly
+     as it was — one call, one file, no ceremony. */
+  var BIG_LANE_BYTES = 8 * 1024 * 1024;
+  var CHUNK_BYTES = 8 * 1024 * 1024;
+
+  function putChunk(session, blob, start, total) {
+    return fetch('/upload-chunk', {
+      method: 'POST',
+      headers: { 'X-Upload-Session': session,
+                 'Content-Range': 'bytes ' + start + '-' + (start + blob.size - 1) + '/' + total },
+      body: blob
+    }).then(function (r) { return r.json(); });
+  }
+
+  function uploadBig(i, f, entry) {
+    entry.status = 'up';
+    entry.pct = 0;
+    UPLOADS_IN_FLIGHT++;
+    renderFileList(i); sendGate();
+    return call('formPublicFileSession', {
+      f: SLUG, t: TOKEN, key: String(f.key || ''),
+      filename: entry.file_name, size_bytes: entry.raw.size,
+      upload_id: entry.upload_id
+    }).then(function (env) {
+      if (!env || env.status !== 200 || !env.data || !env.data.session) {
+        throw new Error((env && env.message) || 'That did not upload.');
+      }
+      var session = env.data.session;
+      var total = entry.raw.size;
+      var start = 0;
+      function step() {
+        if (start >= total) return null;
+        var end = Math.min(start + CHUNK_BYTES, total);
+        var piece = entry.raw.slice(start, end);
+        return putChunk(session, piece, start, total).then(function (got) {
+          if (!got || !got.ok) {
+            throw new Error((got && got.reason) || 'The upload was interrupted.');
+          }
+          start = end;
+          entry.pct = Math.round((start / total) * 100);
+          renderFileList(i);
+          if (got.done && got.file_id) {
+            entry.status = 'ok';
+            entry.file_id = got.file_id;
+            entry.mime_type = env.data.mime_type;
+            entry.size_bytes = total;
+            return null;
+          }
+          return step();
+        });
+      }
+      return step();
+    }).catch(function (err) {
+      entry.status = 'err';
+      entry.error = (err && err.message) || 'That did not upload.';
+    }).then(function () {
+      if (entry.status === 'up') entry.status = 'err';
+      UPLOADS_IN_FLIGHT--;
+      renderFileList(i); sendGate();
+    });
+  }
+
+  function uploadOne(i, f, entry) {
+    /* past the envelope's reach, the file takes the other lane */
+    if (entry.raw && entry.raw.size > BIG_LANE_BYTES) return uploadBig(i, f, entry);
+    entry.status = 'up';
+    UPLOADS_IN_FLIGHT++;
+    renderFileList(i); sendGate();
+    fileToB64(entry.raw).then(function (b64) {
+      return call('formPublicFileStore', {
+        f: SLUG, t: TOKEN, key: String(f.key || ''),
+        filename: entry.file_name, base64: b64,
+        upload_id: entry.upload_id
+      });
+    }).then(function (env) {
+      if (!env || env.status !== 200 || !env.data) {
+        entry.status = 'err';
+        entry.error = (env && env.message) || 'That did not upload.';
+      } else {
+        entry.status = 'ok';
+        entry.file_id = env.data.file_id;
+        entry.mime_type = env.data.mime_type;
+        entry.size_bytes = env.data.size_bytes;
+      }
+    }).catch(function () {
+      entry.status = 'err';
+      entry.error = 'That did not upload — check the connection.';
+    }).then(function () {
+      UPLOADS_IN_FLIGHT--;
+      renderFileList(i); sendGate();
+    });
+  }
+
+  function wireFiles() {
+    FIELDS.forEach(function (f, i) {
+      if (String(f.kind) !== 'file') return;
+      FILE_STATE[i] = FILE_STATE[i] || [];
+      var drop = el('q_' + i + '_drop');
+      var pick = el('q_' + i + '_pick');
+      if (!drop || !pick) return;
+      function take(files) {
+        Array.prototype.slice.call(files || []).forEach(function (raw) {
+          var entry = { raw: raw, file_name: raw.name, size_bytes: raw.size,
+                        status: 'up', upload_id: uploadKey() };
+          FILE_STATE[i].push(entry);
+          uploadOne(i, f, entry);
+        });
+      }
+      drop.addEventListener('click', function () { pick.click(); });
+      pick.addEventListener('change', function () { take(pick.files); pick.value = ''; });
+      drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.classList.add('over'); });
+      drop.addEventListener('dragleave', function () { drop.classList.remove('over'); });
+      drop.addEventListener('drop', function (e) {
+        e.preventDefault(); drop.classList.remove('over');
+        take(e.dataTransfer && e.dataTransfer.files);
+      });
+      el('q_' + i + '_list').addEventListener('click', function (e) {
+        var t = e.target;
+        if (!t || t.dataset == null || t.dataset.n == null) return;
+        var n = Number(t.dataset.n);
+        if (t.className === 'fx') {
+          FILE_STATE[i].splice(n, 1);          // the pending__ orphan stays visible in Drive
+          renderFileList(i);
+        } else if (t.className === 'fretry') {
+          uploadOne(i, f, FILE_STATE[i][n]);
+        }
+      });
+    });
+  }
+
+  function dead(msg) {
+    hide('loading'); hide('form');
+    el('deadText').textContent = msg || '';
+    show('dead');
+  }
+
+  if (!SLUG || !TOKEN) { dead('The link is missing part of its address.'); return; }
+
+  call('formPublicGet', { f: SLUG, t: TOKEN }).then(function (env) {
+    if (!env || env.status !== 200 || !env.data) {
+      dead((env && env.message) || 'Please ask whoever sent it for a fresh one.');
+      return;
+    }
+    var d = env.data;
+    document.title = (d.title || 'Form') + ' — ASA LifeCare';
+    el('title').textContent = d.title || '';
+    el('intro').textContent = d.intro || '';
+    FIELDS = d.fields || [];
+    /* THE CONTACT BLOCK IS OPT-IN (operator, 2026-09-08: the original never
+       carries it — "remova de todas as máscaras"). Only a definition that
+       explicitly says so shows Your name / E-mail / Phone. */
+    if (d.asks_contact !== true) {
+      hide('who');
+      /* Disabled controls are skipped by native validation and post '' —
+         a hidden required name would make Send do nothing, forever. */
+      el('f_name').required = false;
+      el('f_name').disabled = true;
+      el('f_email').disabled = true;
+      el('f_phone').disabled = true;
+    }
+    /* the stars light up to the picked one */
+    el('fields').addEventListener('change', function (ev) {
+      var lab = ev.target && ev.target.closest ? ev.target.closest('.scale.stars .step') : null;
+      if (!lab) return;
+      var steps = lab.parentNode.querySelectorAll('.step');
+      var hit = false;
+      for (var s = 0; s < steps.length; s++) {
+        steps[s].classList.toggle('on', !hit);
+        steps[s].querySelector('.star').textContent = hit ? '☆' : '★';
+        if (steps[s] === lab) hit = true;
+      }
+    });
+    el('fields').innerHTML = FIELDS.map(draw).join('') ||
+      '<p class="intro">This form has no questions yet.</p>';
+    wireFiles();
+    el('doneText').textContent = d.thank_you || '';
+    hide('loading'); show('form');
+  }).catch(function () {
+    dead('We could not open the form. Please try again in a moment.');
+  });
+
+  el('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = el('send'), note = el('note');
+    note.className = 'note'; note.textContent = '';
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    if (UPLOADS_IN_FLIGHT > 0) {
+      note.className = 'note bad';
+      note.textContent = 'A file is still uploading — one moment.';
+      btn.disabled = false; btn.textContent = 'Send';
+      return;
+    }
+    /* The browser cannot demand "at least one box" on its own — say it here
+       rather than after a round-trip. */
+    for (var i = 0; i < FIELDS.length; i++) {
+      var f = FIELDS[i];
+      var must = String(f.required) === 'true' || f.required === true;
+      var kindI = String(f.kind);
+      if (must && kindI === 'multi' && !read(f, i)) {
+        note.className = 'note bad';
+        note.textContent = 'Still needed: ' + f.label + '.';
+        btn.disabled = false; btn.textContent = 'Send';
+        return;
+      }
+      if (must && kindI === 'file' && !(read(f, i) || []).length) {
+        note.className = 'note bad';
+        note.textContent = 'Still needed: ' + f.label + ' — attach the file(s).';
+        btn.disabled = false; btn.textContent = 'Send';
+        return;
+      }
+    }
+    var answers = {};
+    FIELDS.forEach(function (f, i) {
+      if (String(f.kind) === 'heading') return; // a heading has no answer
+      answers[String(f.key)] = read(f, i);
+    });
+
+    /* THE SESSION, IF THERE IS ONE. This page is served from the platform's
+       own origin, so somebody already signed in has their token right here —
+       and the ledger records WHO uploaded instead of a blank (operator,
+       2026-09-09). A stranger has none, sends none, and the row says so. */
+    var mine = '';
+    try { mine = localStorage.getItem('asa-hub-token') || ''; } catch (eLS) { mine = ''; }
+    call('formPublicSubmit', {
+      f: SLUG, t: TOKEN, answers: answers, session: mine,
+      name: el('f_name').disabled ? '' : el('f_name').value.trim(),
+      email: el('f_email').disabled ? '' : el('f_email').value.trim(),
+      phone: el('f_phone').disabled ? '' : el('f_phone').value.trim()
+    }).then(function (env) {
+      if (!env || env.status !== 200) {
+        note.className = 'note bad';
+        note.textContent = (env && env.message) || 'That did not send. Please try again.';
+        btn.disabled = false; btn.textContent = 'Send';
+        return;
+      }
+      el('doneText').textContent = (env.data && env.data.thank_you) || 'Thank you.';
+      hide('form'); show('done');
+      window.scrollTo(0, 0);
+    }).catch(function () {
+      note.className = 'note bad';
+      note.textContent = 'That did not send. Please try again.';
+      btn.disabled = false; btn.textContent = 'Send';
+    });
+  });
+})();
+</script>
+</body>
+</html>

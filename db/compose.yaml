@@ -1,0 +1,66 @@
+# asa-hub-db: the Hub's own Postgres, holding every ASA spreadsheet as one table per tab (schema.sql).
+# asa-hub-db-sync stores the record books' staged checks into it every HUB_DB_SYNC_EVERY_S seconds (db/sync.py); the
+# old platform's mirror it once copied is off (HUB_DB_MIRROR).
+name: asa-hub-db
+
+services:
+  asa-hub-db:
+    image: pgvector/pgvector:pg16
+    container_name: asa-hub-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-asa_hub}
+      POSTGRES_USER: ${POSTGRES_USER:-asa_hub}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in db/.env}
+    command: ["postgres", "-c", "shared_buffers=512MB", "-c", "max_wal_size=4GB"]
+    shm_size: 256m
+    mem_limit: 2g
+    volumes:
+      - asa_hub_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+    networks:
+      - backend
+
+  asa-hub-db-sync:
+    image: python:3.12-slim
+    container_name: asa-hub-db-sync
+    restart: unless-stopped
+    working_dir: /app
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-asa_hub}
+      POSTGRES_USER: ${POSTGRES_USER:-asa_hub}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in db/.env}
+      # the copies are no longer loaded from the sheet keeper's mirror in the old platform's database (it left with
+      # the old platform, 2026-10-27): no DSN of it is given; HUB_DB_MIRROR stays off (db/sync.py)
+      HUB_DB_MIRROR: "off"
+      HUB_DB_HOST: asa-hub-db
+      HUB_RULES_DIR: /rules
+      HUB_DB_SYNC_EVERY_S: ${HUB_DB_SYNC_EVERY_S:-60}
+      HUB_DB_FULL_EVERY_S: ${HUB_DB_FULL_EVERY_S:-1800}
+      PYTHONDONTWRITEBYTECODE: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+    command: ["sh", "-c", "pip install --no-cache-dir --root-user-action=ignore -q -r requirements.txt && exec python -u sync.py"]
+    volumes:
+      - ./:/app:ro
+      # the one withholding rule of every copy (server/redaction.py); the sync refuses to copy without it
+      - ../server/redaction.py:/rules/redaction.py:ro
+    mem_limit: 2g
+    depends_on:
+      asa-hub-db:
+        condition: service_healthy
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true
+    name: backend_network
+
+volumes:
+  asa_hub_db_data:
+    name: asa_hub_db_data

@@ -1,0 +1,554 @@
+{
+ "what": "GET /hub-lanes/hotline/lanes, answered by the real module against fake books",
+ "built_by": "tools/emit-hotline-lanes-door.py",
+ "read_by": "tools/test-hotline-lanes-contract.mjs",
+ "module": {
+  "path": "server/hotline_lanes.py",
+  "sha256": "3578081a0b9e9999b4a722cdbf6c958520a4e1c7f2d75ba3e00504a9dd4d7838"
+ },
+ "surface": {
+  "lane_keys": [
+   "callOffs",
+   "supportQueue",
+   "uiIncidents"
+  ],
+  "fields": {
+   "callOffs": [
+    "id",
+    "createdAt",
+    "updatedAt",
+    "timestamp",
+    "employee_name",
+    "date",
+    "type",
+    "how_late",
+    "notes",
+    "your_name",
+    "call_id",
+    "name_from"
+   ],
+   "supportQueue": [
+    "id",
+    "status",
+    "urgency",
+    "date_received",
+    "requestor",
+    "requestor_phone",
+    "type_of_request",
+    "description_of_request",
+    "notes",
+    "processed"
+   ],
+   "uiIncidents": [
+    "id",
+    "timestamp",
+    "your_name",
+    "client_name",
+    "incident_category",
+    "incident_location",
+    "incident_date",
+    "incident_time",
+    "incident_reported_date",
+    "incident_reported_time",
+    "employees_involved",
+    "summary_of_incident",
+    "immediate_action_taken",
+    "cause_and_contributing_factors",
+    "prevention_plan"
+   ]
+  },
+  "lane_words": [
+   "age_ms",
+   "at",
+   "count",
+   "error",
+   "label",
+   "name",
+   "ok",
+   "read_at",
+   "reason",
+   "rows",
+   "source",
+   "stale",
+   "version"
+  ],
+  "answer_words": [
+   "built_at",
+   "lanes",
+   "unchanged",
+   "version"
+  ]
+ },
+ "answers": {
+  "full": {
+   "built_at": "2026-09-17T23:19:37Z",
+   "version": "d6777da404cfb2f4",
+   "unchanged": false,
+   "lanes": {
+    "callOffs": {
+     "name": "callOffs",
+     "label": "Call Offs",
+     "ok": true,
+     "reason": "",
+     "error": "",
+     "stale": false,
+     "rows": [
+      {
+       "id": "ROW_1",
+       "createdAt": "createdAt 1",
+       "updatedAt": "updatedAt 1",
+       "timestamp": "timestamp 1",
+       "employee_name": "employee_name 1",
+       "date": "date 1",
+       "type": "type 1",
+       "how_late": "how_late 1",
+       "notes": "notes 1",
+       "your_name": "your_name 1",
+       "call_id": "call_id 1",
+       "name_from": "name_from 1"
+      },
+      {
+       "id": "ROW_2",
+       "createdAt": "createdAt 2",
+       "updatedAt": "updatedAt 2",
+       "timestamp": "timestamp 2",
+       "employee_name": "employee_name 2",
+       "date": "date 2",
+       "type": "type 2",
+       "how_late": "how_late 2",
+       "notes": "notes 2",
+       "your_name": "your_name 2",
+       "call_id": "call_id 2",
+       "name_from": "name_from 2"
+      }
+     ],
+     "count": 2,
+     "version": "1fdc9d90aab0d2d0",
+     "read_at": "2026-09-17T23:19:37Z",
+     "at": "2026-09-17T23:19:37Z",
+     "source": {
+      "book": "the Call Offs house",
+      "tab": "Data",
+      "fields": [
+       "id",
+       "createdAt",
+       "updatedAt",
+       "timestamp",
+       "employee_name",
+       "date",
+       "type",
+       "how_late",
+       "notes",
+       "your_name",
+       "call_id",
+       "name_from"
+      ],
+      "pointer": "named",
+      "fact": ""
+     },
+     "age_ms": 86
+    },
+    "supportQueue": {
+     "name": "supportQueue",
+     "label": "Support Queue",
+     "ok": true,
+     "reason": "",
+     "error": "",
+     "stale": false,
+     "rows": [
+      {
+       "id": "ROW_1",
+       "status": "status 1",
+       "urgency": "urgency 1",
+       "date_received": "2026-09-05T17:56:14.107Z",
+       "requestor": "requestor 1",
+       "requestor_phone": "requestor_phone 1",
+       "type_of_request": "type_of_request 1",
+       "description_of_request": "description_of_request 1",
+       "notes": "notes 1",
+       "processed": "processed 1"
+      },
+      {
+       "id": "ROW_2",
+       "status": "status 2",
+       "urgency": "urgency 2",
+       "date_received": "2026-09-06T17:56:14.107Z",
+       "requestor": "requestor 2",
+       "requestor_phone": "requestor_phone 2",
+       "type_of_request": "type_of_request 2",
+       "description_of_request": "description_of_request 2",
+       "notes": "notes 2",
+       "processed": "processed 2"
+      }
+     ],
+     "count": 2,
+     "version": "87d5bf9606571cc1",
+     "read_at": "2026-09-17T23:19:37Z",
+     "at": "2026-09-17T23:19:37Z",
+     "source": {
+      "book": "the Employee Support Queue",
+      "tab": "Requests",
+      "fields": [
+       "id",
+       "status",
+       "urgency",
+       "date_received",
+       "requestor",
+       "requestor_phone",
+       "type_of_request",
+       "description_of_request",
+       "notes",
+       "processed"
+      ],
+      "pointer": "named",
+      "fact": ""
+     },
+     "age_ms": 86
+    },
+    "uiIncidents": {
+     "name": "uiIncidents",
+     "label": "Incidents",
+     "ok": true,
+     "reason": "",
+     "error": "",
+     "stale": false,
+     "rows": [
+      {
+       "id": "ROW_1",
+       "timestamp": "2026-09-05T17:56:14.107Z",
+       "your_name": "your_name 1",
+       "client_name": "client_name 1",
+       "incident_category": "incident_category 1",
+       "incident_location": "incident_location 1",
+       "incident_date": "2026-09-05T17:56:14.107Z",
+       "incident_time": "13:10",
+       "incident_reported_date": "2026-09-05T17:56:14.107Z",
+       "incident_reported_time": "13:10",
+       "employees_involved": "employees_involved 1",
+       "summary_of_incident": "summary_of_incident 1",
+       "immediate_action_taken": "immediate_action_taken 1",
+       "cause_and_contributing_factors": "cause_and_contributing_factors 1",
+       "prevention_plan": "prevention_plan 1"
+      },
+      {
+       "id": "ROW_2",
+       "timestamp": "2026-09-06T17:56:14.107Z",
+       "your_name": "your_name 2",
+       "client_name": "client_name 2",
+       "incident_category": "incident_category 2",
+       "incident_location": "incident_location 2",
+       "incident_date": "2026-09-06T17:56:14.107Z",
+       "incident_time": "13:10",
+       "incident_reported_date": "2026-09-06T17:56:14.107Z",
+       "incident_reported_time": "13:10",
+       "employees_involved": "employees_involved 2",
+       "summary_of_incident": "summary_of_incident 2",
+       "immediate_action_taken": "immediate_action_taken 2",
+       "cause_and_contributing_factors": "cause_and_contributing_factors 2",
+       "prevention_plan": "prevention_plan 2"
+      }
+     ],
+     "count": 2,
+     "version": "ef9c19c391646bdd",
+     "read_at": "2026-09-17T23:19:37Z",
+     "at": "2026-09-17T23:19:37Z",
+     "source": {
+      "book": "the UI/MUI incidents book",
+      "tab": "UIs and MUIs",
+      "fields": [
+       "id",
+       "timestamp",
+       "your_name",
+       "client_name",
+       "incident_category",
+       "incident_location",
+       "incident_date",
+       "incident_time",
+       "incident_reported_date",
+       "incident_reported_time",
+       "employees_involved",
+       "summary_of_incident",
+       "immediate_action_taken",
+       "cause_and_contributing_factors",
+       "prevention_plan"
+      ],
+      "pointer": "named",
+      "fact": ""
+     },
+     "age_ms": 86
+    }
+   }
+  },
+  "unchanged": {
+   "built_at": "2026-09-17T23:19:37Z",
+   "version": "d6777da404cfb2f4",
+   "unchanged": true,
+   "lanes": {
+    "callOffs": {
+     "name": "callOffs",
+     "label": "Call Offs",
+     "ok": true,
+     "reason": "",
+     "error": "",
+     "stale": false,
+     "count": 2,
+     "version": "1fdc9d90aab0d2d0",
+     "read_at": "2026-09-17T23:19:37Z",
+     "at": "2026-09-17T23:19:37Z",
+     "source": {
+      "book": "the Call Offs house",
+      "tab": "Data",
+      "fields": [
+       "id",
+       "createdAt",
+       "updatedAt",
+       "timestamp",
+       "employee_name",
+       "date",
+       "type",
+       "how_late",
+       "notes",
+       "your_name",
+       "call_id",
+       "name_from"
+      ],
+      "pointer": "named",
+      "fact": ""
+     },
+     "age_ms": 86
+    },
+    "supportQueue": {
+     "name": "supportQueue",
+     "label": "Support Queue",
+     "ok": true,
+     "reason": "",
+     "error": "",
+     "stale": false,
+     "count": 2,
+     "version": "87d5bf9606571cc1",
+     "read_at": "2026-09-17T23:19:37Z",
+     "at": "2026-09-17T23:19:37Z",
+     "source": {
+      "book": "the Employee Support Queue",
+      "tab": "Requests",
+      "fields": [
+       "id",
+       "status",
+       "urgency",
+       "date_received",
+       "requestor",
+       "requestor_phone",
+       "type_of_request",
+       "description_of_request",
+       "notes",
+       "processed"
+      ],
+      "pointer": "named",
+      "fact": ""
+     },
+     "age_ms": 86
+    },
+    "uiIncidents": {
+     "name": "uiIncidents",
+     "label": "Incidents",
+     "ok": true,
+     "reason": "",
+     "error": "",
+     "stale": false,
+     "count": 2,
+     "version": "ef9c19c391646bdd",
+     "read_at": "2026-09-17T23:19:37Z",
+     "at": "2026-09-17T23:19:37Z",
+     "source": {
+      "book": "the UI/MUI incidents book",
+      "tab": "UIs and MUIs",
+      "fields": [
+       "id",
+       "timestamp",
+       "your_name",
+       "client_name",
+       "incident_category",
+       "incident_location",
+       "incident_date",
+       "incident_time",
+       "incident_reported_date",
+       "incident_reported_time",
+       "employees_involved",
+       "summary_of_incident",
+       "immediate_action_taken",
+       "cause_and_contributing_factors",
+       "prevention_plan"
+      ],
+      "pointer": "named",
+      "fact": ""
+     },
+     "age_ms": 86
+    }
+   }
+  },
+  "degraded": {
+   "built_at": "2026-09-17T23:19:48Z",
+   "version": "d30b6a0bbe782dcf",
+   "unchanged": false,
+   "lanes": {
+    "callOffs": {
+     "name": "callOffs",
+     "label": "Call Offs",
+     "ok": true,
+     "reason": "",
+     "error": "",
+     "stale": false,
+     "rows": [
+      {
+       "id": "ROW_1",
+       "createdAt": "createdAt 1",
+       "updatedAt": "updatedAt 1",
+       "timestamp": "timestamp 1",
+       "employee_name": "employee_name 1",
+       "date": "date 1",
+       "type": "type 1",
+       "how_late": "how_late 1",
+       "notes": "notes 1",
+       "your_name": "your_name 1",
+       "call_id": "call_id 1",
+       "name_from": "name_from 1"
+      },
+      {
+       "id": "ROW_2",
+       "createdAt": "createdAt 2",
+       "updatedAt": "updatedAt 2",
+       "timestamp": "timestamp 2",
+       "employee_name": "employee_name 2",
+       "date": "date 2",
+       "type": "type 2",
+       "how_late": "how_late 2",
+       "notes": "notes 2",
+       "your_name": "your_name 2",
+       "call_id": "call_id 2",
+       "name_from": "name_from 2"
+      }
+     ],
+     "count": 2,
+     "version": "1fdc9d90aab0d2d0",
+     "read_at": "2026-09-17T23:19:42Z",
+     "at": "2026-09-17T23:19:42Z",
+     "source": {
+      "book": "the Call Offs house",
+      "tab": "Data",
+      "fields": [
+       "id",
+       "createdAt",
+       "updatedAt",
+       "timestamp",
+       "employee_name",
+       "date",
+       "type",
+       "how_late",
+       "notes",
+       "your_name",
+       "call_id",
+       "name_from"
+      ],
+      "pointer": "named",
+      "fact": ""
+     },
+     "age_ms": 6093
+    },
+    "supportQueue": {
+     "name": "supportQueue",
+     "label": "Support Queue",
+     "ok": false,
+     "reason": "unreadable",
+     "error": "The Employee Support Queue could not be read (HTTP 500). Showing the copy read at 23:19:37Z.",
+     "stale": true,
+     "rows": [
+      {
+       "id": "ROW_1",
+       "status": "status 1",
+       "urgency": "urgency 1",
+       "date_received": "2026-09-05T17:56:14.107Z",
+       "requestor": "requestor 1",
+       "requestor_phone": "requestor_phone 1",
+       "type_of_request": "type_of_request 1",
+       "description_of_request": "description_of_request 1",
+       "notes": "notes 1",
+       "processed": "processed 1"
+      },
+      {
+       "id": "ROW_2",
+       "status": "status 2",
+       "urgency": "urgency 2",
+       "date_received": "2026-09-06T17:56:14.107Z",
+       "requestor": "requestor 2",
+       "requestor_phone": "requestor_phone 2",
+       "type_of_request": "type_of_request 2",
+       "description_of_request": "description_of_request 2",
+       "notes": "notes 2",
+       "processed": "processed 2"
+      }
+     ],
+     "count": 2,
+     "version": "ecd7ff614eee9f96",
+     "read_at": "2026-09-17T23:19:37Z",
+     "at": "2026-09-17T23:19:37Z",
+     "source": {
+      "book": "the Employee Support Queue",
+      "tab": "Requests",
+      "fields": [
+       "id",
+       "status",
+       "urgency",
+       "date_received",
+       "requestor",
+       "requestor_phone",
+       "type_of_request",
+       "description_of_request",
+       "notes",
+       "processed"
+      ],
+      "pointer": "named",
+      "fact": ""
+     },
+     "age_ms": 11093
+    },
+    "uiIncidents": {
+     "name": "uiIncidents",
+     "label": "Incidents",
+     "ok": false,
+     "reason": "unreadable",
+     "error": "The header of the UI/MUI incidents book could not be read (HTTP 500).",
+     "stale": false,
+     "rows": null,
+     "count": null,
+     "version": "6d2c10520ced377a",
+     "read_at": "",
+     "at": "",
+     "source": {
+      "book": "the UI/MUI incidents book",
+      "tab": "UIs and MUIs",
+      "fields": [
+       "id",
+       "timestamp",
+       "your_name",
+       "client_name",
+       "incident_category",
+       "incident_location",
+       "incident_date",
+       "incident_time",
+       "incident_reported_date",
+       "incident_reported_time",
+       "employees_involved",
+       "summary_of_incident",
+       "immediate_action_taken",
+       "cause_and_contributing_factors",
+       "prevention_plan"
+      ],
+      "pointer": "",
+      "fact": ""
+     },
+     "age_ms": null
+    }
+   }
+  }
+ }
+}

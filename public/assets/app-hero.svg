@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <!-- 3x3 grid of rounded app tiles, one lifting off with a green trail -->
+  <g stroke="currentColor" stroke-width="2" opacity="0.55">
+    <rect x="200" y="60" width="64" height="64" rx="16"/>
+    <rect x="288" y="60" width="64" height="64" rx="16"/>
+    <rect x="376" y="60" width="64" height="64" rx="16"/>
+    <rect x="200" y="148" width="64" height="64" rx="16"/>
+    <rect x="376" y="148" width="64" height="64" rx="16"/>
+    <rect x="200" y="236" width="64" height="64" rx="16"/>
+    <rect x="288" y="236" width="64" height="64" rx="16"/>
+    <rect x="376" y="236" width="64" height="64" rx="16"/>
+  </g>
+  <!-- empty slot where the lifting tile was -->
+  <rect x="288" y="148" width="64" height="64" rx="16" stroke="currentColor" stroke-width="2" stroke-dasharray="6 6" opacity="0.4"/>
+  <!-- green trail -->
+  <path d="M320 196 C 330 150, 360 120, 392 84" stroke="#17B26A" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 10"/>
+  <!-- lifting tile -->
+  <g transform="rotate(8 400 70)">
+    <rect x="368" y="38" width="64" height="64" rx="16" fill="#17B26A"/>
+    <circle cx="400" cy="64" r="10" fill="#fff" opacity="0.9"/>
+    <rect x="382" y="82" width="36" height="5" rx="2.5" fill="#fff" opacity="0.6"/>
+  </g>
+  <!-- sparkles -->
+  <path d="M452 36 L452 52 M444 44 L460 44" stroke="#17B26A" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="186" cy="128" r="3" fill="#17B26A"/>
+</svg>

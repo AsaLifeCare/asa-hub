@@ -1,0 +1,1192 @@
+{
+ "frozen_at": "2026-08-29T13:06:10.593Z",
+ "tabs": {
+  "entity_candidates": {
+   "rows": [
+    {
+     "candidate_id": "CAN_24A360F6398D5015B3CD",
+     "candidate_name": "Person 001",
+     "status": "Onboarding",
+     "resume_link": "",
+     "created_at": "2026-07-24T21:44:50.246953Z",
+     "updated_at": "2026-07-31T21:10:23.776973+00:00",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_9846AF0A9143057C7C2E",
+     "candidate_name": "Person 002",
+     "status": "Hired",
+     "resume_link": "(set)",
+     "created_at": "2026-07-25T09:32:51.671292Z",
+     "updated_at": "2026-08-26T10:08:45.065Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "2026-08-15T17:51:30.813Z",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_ECDA2B5FC79AAE47E11A",
+     "candidate_name": "Person 003",
+     "status": "Not Hiring",
+     "resume_link": "",
+     "created_at": "2026-07-25T12:34:19.837732Z",
+     "updated_at": "2026-07-27T19:14:20.966Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_BFC0AB085C6E365DE143",
+     "candidate_name": "Person 004",
+     "status": "Not Hiring",
+     "resume_link": "",
+     "created_at": "2026-07-25T16:10:00.455983Z",
+     "updated_at": "2026-08-25T14:11:56.654Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_9B36B4B37FD60C5097D2",
+     "candidate_name": "Person 005",
+     "status": "Onboarding",
+     "resume_link": "(set)",
+     "created_at": "2026-07-25T20:32:42.791032Z",
+     "updated_at": "2026-08-26T04:42:36.440Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "2026-08-26T04:42:35.513Z",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_156F8E7F93939687D907",
+     "candidate_name": "Person 006",
+     "status": "Phone Screen",
+     "resume_link": "(set)",
+     "created_at": "2026-07-25T21:53:35.025509Z",
+     "updated_at": "2026-08-26T12:01:13.723Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_800891A50BBD7FAFDC29",
+     "candidate_name": "Person 007",
+     "status": "Hired",
+     "resume_link": "(set)",
+     "created_at": "2026-07-27T19:17:23.259158Z",
+     "updated_at": "2026-08-26T10:08:49.020Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "2026-08-15T17:51:32.899Z",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_7DF46D98345D8F032F02",
+     "candidate_name": "Person 008",
+     "status": "New",
+     "resume_link": "",
+     "created_at": "2026-07-28T13:47:43.181211Z",
+     "updated_at": "2026-07-28T13:47:43.181211Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_249556B0A7C2C70C7C73",
+     "candidate_name": "Person 009",
+     "status": "In Person",
+     "resume_link": "(set)",
+     "created_at": "2026-07-30T21:39:45.295Z",
+     "updated_at": "2026-08-04T14:22:18.307Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_CFEA7CE713095581517B",
+     "candidate_name": "Person 010",
+     "status": "Hired",
+     "resume_link": "(set)",
+     "created_at": "2026-07-31T12:00:00.000Z",
+     "updated_at": "2026-08-05T12:53:25.354Z",
+     "archived": "TRUE",
+     "docs_folder_id": "(set)",
+     "source": "Direct",
+     "hired_complete_at": "2026-08-04T12:45:26.963Z",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_31967C24120F1BC7BF47",
+     "candidate_name": "Person 011",
+     "status": "Not Hiring",
+     "resume_link": "(set)",
+     "created_at": "2026-08-04T12:00:00.000Z",
+     "updated_at": "2026-08-04T20:39:04.828Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "Direct",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_449D36A8DF745DD75524",
+     "candidate_name": "Person 012",
+     "status": "Minimal Internal Documentation Ready",
+     "resume_link": "(set)",
+     "created_at": "2026-08-04T21:14:00.931Z",
+     "updated_at": "2026-08-26T10:08:52.838Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "2026-08-06T12:57:15.631Z",
+     "manual_onboarding": "TRUE",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_23FAB4E02E803B9396DA",
+     "candidate_name": "Person 013",
+     "status": "Phone Screen",
+     "resume_link": "(set)",
+     "created_at": "2026-08-04T22:33:45.097Z",
+     "updated_at": "2026-08-06T10:47:53.668Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "Referral",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_7952F2F4CA36D4245BA1",
+     "candidate_name": "Person 014",
+     "status": "Becoming Staff",
+     "resume_link": "(set)",
+     "created_at": "2026-08-05T07:41:25.144Z",
+     "updated_at": "2026-08-29T12:59:37.166Z",
+     "archived": "",
+     "docs_folder_id": "(set)",
+     "source": "Referral",
+     "hired_complete_at": "2026-08-06T18:35:40.163Z",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_66674C5698ED36E4CFE6",
+     "candidate_name": "Person 015",
+     "status": "Onboarding",
+     "resume_link": "(set)",
+     "created_at": "2026-08-10T12:00:00.000Z",
+     "updated_at": "2026-08-10T18:16:08.284Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "Direct",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "2026-08-10T17:00:01.348Z",
+     "packet_hold_since": "2026-08-10T18:16:07.045Z",
+     "packet_hold_until": "2026-08-11T18:16:07.045Z"
+    },
+    {
+     "candidate_id": "CAN_86A1B71848306F8AA771",
+     "candidate_name": "Person 016",
+     "status": "Phone Screen",
+     "resume_link": "(set)",
+     "created_at": "2026-08-11T15:54:38.361Z",
+     "updated_at": "2026-08-26T12:01:17.635Z",
+     "archived": "",
+     "docs_folder_id": "(set)",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_1D603F8387552832915B",
+     "candidate_name": "Person 017",
+     "status": "Not Hiring",
+     "resume_link": "(set)",
+     "created_at": "2026-08-11T15:55:12.856Z",
+     "updated_at": "2026-08-25T14:11:38.598Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_00A9B95F4D47496659DE",
+     "candidate_name": "Person 018",
+     "status": "New",
+     "resume_link": "(set)",
+     "created_at": "2026-08-11T15:55:48.546Z",
+     "updated_at": "2026-08-11T15:55:48.546Z",
+     "archived": "",
+     "docs_folder_id": "(set)",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_52B8CA150FB566A27736",
+     "candidate_name": "Person 019",
+     "status": "Not Hiring",
+     "resume_link": "(set)",
+     "created_at": "2026-08-11T15:56:24.858Z",
+     "updated_at": "2026-08-25T14:10:28.133Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_C9DD0A0801D67A511CBE",
+     "candidate_name": "Person 020",
+     "status": "Not Hiring",
+     "resume_link": "(set)",
+     "created_at": "2026-08-11T15:56:57.954Z",
+     "updated_at": "2026-08-25T14:05:30.370Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_D7DC35364DE129CF16B3",
+     "candidate_name": "Person 010",
+     "status": "Not Hiring",
+     "resume_link": "",
+     "created_at": "2026-08-14T13:35:12.044Z",
+     "updated_at": "2026-08-25T14:05:33.600Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "Referral",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_5F2D6AD3285EDDA1E9DB",
+     "candidate_name": "Person 021",
+     "status": "Not Hiring",
+     "resume_link": "",
+     "created_at": "2026-08-24T10:14:56.983Z",
+     "updated_at": "2026-08-25T09:48:13.717Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "Simulator",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_117FAF8C09022C6E1078",
+     "candidate_name": "Person 022",
+     "status": "New",
+     "resume_link": "(set)",
+     "created_at": "2026-08-25T13:46:38.574Z",
+     "updated_at": "2026-08-26T12:01:20.404Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_793B9507BB3094A54CF1",
+     "candidate_name": "Person 023",
+     "status": "New",
+     "resume_link": "(set)",
+     "created_at": "2026-08-25T13:51:28.789Z",
+     "updated_at": "2026-08-25T13:51:28.789Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_693FEACAAE3AE8B953CD",
+     "candidate_name": "Person 024",
+     "status": "New",
+     "resume_link": "(set)",
+     "created_at": "2026-08-25T14:04:13.241Z",
+     "updated_at": "2026-08-25T14:04:13.241Z",
+     "archived": "",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_802AC1489FA56CAC7F46",
+     "candidate_name": "Person 025",
+     "status": "Ready to Start",
+     "resume_link": "",
+     "created_at": "2026-08-27T20:39:23.401Z",
+     "updated_at": "2026-08-27T21:32:40.383Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_CF9F652DADE2A4A8C727",
+     "candidate_name": "Person 026",
+     "status": "Ready to Start",
+     "resume_link": "(set)",
+     "created_at": "2026-08-27T20:42:48.142Z",
+     "updated_at": "2026-08-27T21:32:41.964Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_2453270D207F15BBF4E8",
+     "candidate_name": "Person 027",
+     "status": "Ready to Start",
+     "resume_link": "",
+     "created_at": "2026-08-27T21:18:29.135Z",
+     "updated_at": "2026-08-27T21:32:44.413Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_DCCAFD2ED0285B14E2B2",
+     "candidate_name": "Person 028",
+     "status": "Ready to Start",
+     "resume_link": "(set)",
+     "created_at": "2026-08-27T23:15:28.053Z",
+     "updated_at": "2026-08-27T23:44:23.423Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    },
+    {
+     "candidate_id": "CAN_7B73F8D88623C667F110",
+     "candidate_name": "Person 029",
+     "status": "Ready to Start",
+     "resume_link": "(set)",
+     "created_at": "2026-08-27T23:19:10.928Z",
+     "updated_at": "2026-08-27T23:44:25.799Z",
+     "archived": "TRUE",
+     "docs_folder_id": "",
+     "source": "",
+     "hired_complete_at": "",
+     "manual_onboarding": "",
+     "packet_requested_at": "",
+     "packet_hold_since": "",
+     "packet_hold_until": ""
+    }
+   ]
+  },
+  "entity_resume_analyses": {
+   "rows": [
+    {
+     "candidate_id": "CAN_24A360F6398D5015B3CD",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_9B36B4B37FD60C5097D2",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_9846AF0A9143057C7C2E",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_ECDA2B5FC79AAE47E11A",
+     "composite_score": "",
+     "decision_status": "Decline",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_800891A50BBD7FAFDC29",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_156F8E7F93939687D907",
+     "composite_score": "9",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_7DF46D98345D8F032F02",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-07-28T13:51:51.965222+00:00"
+    },
+    {
+     "candidate_id": "CAN_CFEA7CE713095581517B",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_BFC0AB085C6E365DE143",
+     "composite_score": "",
+     "decision_status": "Decline",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_249556B0A7C2C70C7C73",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_31967C24120F1BC7BF47",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_449D36A8DF745DD75524",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_7952F2F4CA36D4245BA1",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_23FAB4E02E803B9396DA",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_66674C5698ED36E4CFE6",
+     "composite_score": "",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_86A1B71848306F8AA771",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_86A1B71848306F8AA771",
+     "composite_score": "9",
+     "decision_status": "Advance",
+     "cjis_status": "Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": "2026-08-11T15:54:39.479Z"
+    },
+    {
+     "candidate_id": "CAN_1D603F8387552832915B",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_1D603F8387552832915B",
+     "composite_score": "12",
+     "decision_status": "Decline",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-11T15:55:15.126Z"
+    },
+    {
+     "candidate_id": "CAN_00A9B95F4D47496659DE",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_00A9B95F4D47496659DE",
+     "composite_score": "17.5",
+     "decision_status": "",
+     "cjis_status": "On file",
+     "cjis_report_url": "(set)",
+     "analyzed_at": "2026-08-11T15:55:49.800Z"
+    },
+    {
+     "candidate_id": "CAN_52B8CA150FB566A27736",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_52B8CA150FB566A27736",
+     "composite_score": "14.5",
+     "decision_status": "Decline",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-11T15:56:26.505Z"
+    },
+    {
+     "candidate_id": "CAN_C9DD0A0801D67A511CBE",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_C9DD0A0801D67A511CBE",
+     "composite_score": "0.5",
+     "decision_status": "Decline",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-11T15:56:59.096Z"
+    },
+    {
+     "candidate_id": "CAN_9B36B4B37FD60C5097D2",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-21T20:55:09.258Z"
+    },
+    {
+     "candidate_id": "CAN_9B36B4B37FD60C5097D2",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-24T20:19:11.527Z"
+    },
+    {
+     "candidate_id": "CAN_66674C5698ED36E4CFE6",
+     "composite_score": "2",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-24T20:21:10.106Z"
+    },
+    {
+     "candidate_id": "CAN_66674C5698ED36E4CFE6",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-24T20:23:11.425Z"
+    },
+    {
+     "candidate_id": "CAN_5F2D6AD3285EDDA1E9DB",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "On file",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_117FAF8C09022C6E1078",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_117FAF8C09022C6E1078",
+     "composite_score": "17.5",
+     "decision_status": "",
+     "cjis_status": "Verified - Clear",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-25T13:47:41.241Z"
+    },
+    {
+     "candidate_id": "CAN_793B9507BB3094A54CF1",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_793B9507BB3094A54CF1",
+     "composite_score": "12.5",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-25T13:52:18.032Z"
+    },
+    {
+     "candidate_id": "CAN_693FEACAAE3AE8B953CD",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_693FEACAAE3AE8B953CD",
+     "composite_score": "16.5",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-25T14:04:49.748Z"
+    },
+    {
+     "candidate_id": "CAN_D7DC35364DE129CF16B3",
+     "composite_score": "",
+     "decision_status": "Decline",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_249556B0A7C2C70C7C73",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-25T14:25:11.222Z"
+    },
+    {
+     "candidate_id": "CAN_249556B0A7C2C70C7C73",
+     "composite_score": "9",
+     "decision_status": "",
+     "cjis_status": "",
+     "cjis_report_url": "",
+     "analyzed_at": "2026-08-25T14:25:34.461Z"
+    },
+    {
+     "candidate_id": "CAN_802AC1489FA56CAC7F46",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "Verified - Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_CF9F652DADE2A4A8C727",
+     "composite_score": "15.5",
+     "decision_status": "",
+     "cjis_status": "Clear (1 records, no exclusion matches)",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_2453270D207F15BBF4E8",
+     "composite_score": "",
+     "decision_status": "",
+     "cjis_status": "Verified - Clear",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_DCCAFD2ED0285B14E2B2",
+     "composite_score": "9.5",
+     "decision_status": "",
+     "cjis_status": "Clear (9 records, no exclusion matches)",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    },
+    {
+     "candidate_id": "CAN_7B73F8D88623C667F110",
+     "composite_score": "13.5",
+     "decision_status": "",
+     "cjis_status": "Clear (1 records, no exclusion matches)",
+     "cjis_report_url": "(set)",
+     "analyzed_at": ""
+    }
+   ]
+  },
+  "entity_phone_screens": {
+   "rows": [
+    {
+     "candidate_id": "CAN_9B36B4B37FD60C5097D2",
+     "screen_status": "Completed",
+     "final_result": "Advance"
+    },
+    {
+     "candidate_id": "CAN_249556B0A7C2C70C7C73",
+     "screen_status": "Completed",
+     "final_result": "Advance"
+    },
+    {
+     "candidate_id": "CAN_7952F2F4CA36D4245BA1",
+     "screen_status": "Completed",
+     "final_result": "Advance"
+    },
+    {
+     "candidate_id": "CAN_5F2D6AD3285EDDA1E9DB",
+     "screen_status": "Completed",
+     "final_result": "Decline"
+    }
+   ]
+  },
+  "entity_in_person_interviews": {
+   "rows": [
+    {
+     "candidate_id": "CAN_CFEA7CE713095581517B",
+     "scheduled_for": "2026-08-04T14:00:00.000Z",
+     "score": "8",
+     "comments": "(set)",
+     "recommendation": "Advance",
+     "access_from": "2026-07-27T03:00:00.000Z",
+     "access_until": "2026-08-10T02:59:59.999Z"
+    },
+    {
+     "candidate_id": "CAN_BFC0AB085C6E365DE143",
+     "scheduled_for": "2026-08-05T10:00:00.000Z",
+     "score": "9",
+     "comments": "(set)",
+     "recommendation": "Advance",
+     "access_from": "",
+     "access_until": ""
+    },
+    {
+     "candidate_id": "CAN_9B36B4B37FD60C5097D2",
+     "scheduled_for": "2026-08-25T18:35:48.438Z",
+     "score": "10",
+     "comments": "(set)",
+     "recommendation": "Advance",
+     "access_from": "",
+     "access_until": ""
+    },
+    {
+     "candidate_id": "CAN_156F8E7F93939687D907",
+     "scheduled_for": "2026-08-04T14:00:00.000Z",
+     "score": "",
+     "comments": "",
+     "recommendation": "",
+     "access_from": "",
+     "access_until": ""
+    },
+    {
+     "candidate_id": "CAN_31967C24120F1BC7BF47",
+     "scheduled_for": "2026-08-04T20:39:03.809Z",
+     "score": "3",
+     "comments": "(set)",
+     "recommendation": "Decline",
+     "access_from": "",
+     "access_until": ""
+    },
+    {
+     "candidate_id": "CAN_449D36A8DF745DD75524",
+     "scheduled_for": "2026-08-04T21:16:56.589Z",
+     "score": "9",
+     "comments": "(set)",
+     "recommendation": "Advance",
+     "access_from": "",
+     "access_until": ""
+    },
+    {
+     "candidate_id": "CAN_7952F2F4CA36D4245BA1",
+     "scheduled_for": "2026-08-05T17:50:14.232Z",
+     "score": "8",
+     "comments": "(set)",
+     "recommendation": "Advance",
+     "access_from": "",
+     "access_until": ""
+    },
+    {
+     "candidate_id": "CAN_66674C5698ED36E4CFE6",
+     "scheduled_for": "2026-08-11T10:00:00.000Z",
+     "score": "9",
+     "comments": "(set)",
+     "recommendation": "Advance",
+     "access_from": "",
+     "access_until": ""
+    },
+    {
+     "candidate_id": "CAN_5F2D6AD3285EDDA1E9DB",
+     "scheduled_for": "2026-08-27 14:00:00",
+     "score": "",
+     "comments": "",
+     "recommendation": "",
+     "access_from": "",
+     "access_until": ""
+    }
+   ]
+  },
+  "onboarding_packet": {
+   "rows": [
+    {
+     "CandidateId": "OB-TY001",
+     "BackgroundCheck": "FALSE",
+     "CompleteTraining": "FALSE",
+     "QuestionnaireComplete": "FALSE",
+     "TutorialsComplete": "FALSE",
+     "updated_by": "",
+     "updated_at": "",
+     "FullName": "",
+     "PacketAcknowledged": "",
+     "HubCandidateId": "",
+     "DocumentsComplete": "",
+     "CompletedAt": "",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1775482614632",
+     "BackgroundCheck": "FALSE",
+     "CompleteTraining": "FALSE",
+     "QuestionnaireComplete": "FALSE",
+     "TutorialsComplete": "FALSE",
+     "updated_by": "",
+     "updated_at": "",
+     "FullName": "",
+     "PacketAcknowledged": "",
+     "HubCandidateId": "",
+     "DocumentsComplete": "",
+     "CompletedAt": "",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1775497699093",
+     "BackgroundCheck": "FALSE",
+     "CompleteTraining": "FALSE",
+     "QuestionnaireComplete": "FALSE",
+     "TutorialsComplete": "FALSE",
+     "updated_by": "",
+     "updated_at": "",
+     "FullName": "",
+     "PacketAcknowledged": "",
+     "HubCandidateId": "",
+     "DocumentsComplete": "",
+     "CompletedAt": "",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1775498200255",
+     "BackgroundCheck": "FALSE",
+     "CompleteTraining": "FALSE",
+     "QuestionnaireComplete": "FALSE",
+     "TutorialsComplete": "FALSE",
+     "updated_by": "",
+     "updated_at": "",
+     "FullName": "",
+     "PacketAcknowledged": "",
+     "HubCandidateId": "",
+     "DocumentsComplete": "",
+     "CompletedAt": "",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1775726563464",
+     "BackgroundCheck": "FALSE",
+     "CompleteTraining": "FALSE",
+     "QuestionnaireComplete": "FALSE",
+     "TutorialsComplete": "FALSE",
+     "updated_by": "",
+     "updated_at": "",
+     "FullName": "",
+     "PacketAcknowledged": "",
+     "HubCandidateId": "",
+     "DocumentsComplete": "",
+     "CompletedAt": "",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1776728949658",
+     "BackgroundCheck": "FALSE",
+     "CompleteTraining": "FALSE",
+     "QuestionnaireComplete": "FALSE",
+     "TutorialsComplete": "",
+     "updated_by": "",
+     "updated_at": "",
+     "FullName": "",
+     "PacketAcknowledged": "",
+     "HubCandidateId": "",
+     "DocumentsComplete": "",
+     "CompletedAt": "",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1778442011949",
+     "BackgroundCheck": "FALSE",
+     "CompleteTraining": "FALSE",
+     "QuestionnaireComplete": "FALSE",
+     "TutorialsComplete": "",
+     "updated_by": "",
+     "updated_at": "",
+     "FullName": "",
+     "PacketAcknowledged": "",
+     "HubCandidateId": "",
+     "DocumentsComplete": "",
+     "CompletedAt": "",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1784809181923",
+     "BackgroundCheck": "TRUE",
+     "CompleteTraining": "TRUE",
+     "QuestionnaireComplete": "TRUE",
+     "TutorialsComplete": "TRUE",
+     "updated_by": "(set)",
+     "updated_at": "2026-08-02T10:48:51.731Z",
+     "FullName": "Person 030",
+     "PacketAcknowledged": "TRUE",
+     "HubCandidateId": "",
+     "DocumentsComplete": "TRUE",
+     "CompletedAt": "2026-08-02T10:48:56.435Z",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1785185461545",
+     "BackgroundCheck": "TRUE",
+     "CompleteTraining": "TRUE",
+     "QuestionnaireComplete": "TRUE",
+     "TutorialsComplete": "TRUE",
+     "updated_by": "",
+     "updated_at": "",
+     "FullName": "",
+     "PacketAcknowledged": "",
+     "HubCandidateId": "",
+     "DocumentsComplete": "",
+     "CompletedAt": "",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1785668613429",
+     "BackgroundCheck": "TRUE",
+     "CompleteTraining": "TRUE",
+     "QuestionnaireComplete": "TRUE",
+     "TutorialsComplete": "TRUE",
+     "updated_by": "(set)",
+     "updated_at": "2026-08-02T11:04:40.648Z",
+     "FullName": "Person 003",
+     "PacketAcknowledged": "TRUE",
+     "HubCandidateId": "",
+     "DocumentsComplete": "TRUE",
+     "CompletedAt": "2026-08-02T11:04:47.219Z",
+     "GradCandidateId": ""
+    },
+    {
+     "CandidateId": "OB-1785842389630",
+     "BackgroundCheck": "TRUE",
+     "CompleteTraining": "TRUE",
+     "QuestionnaireComplete": "TRUE",
+     "TutorialsComplete": "TRUE",
+     "updated_by": "(set)",
+     "updated_at": "2026-08-04T22:27:40.305Z",
+     "FullName": "Person 012",
+     "PacketAcknowledged": "TRUE",
+     "HubCandidateId": "",
+     "DocumentsComplete": "TRUE",
+     "CompletedAt": "2026-08-04T11:59:47.314Z",
+     "GradCandidateId": "CAN_CFEA7CE713095581517B"
+    },
+    {
+     "CandidateId": "OB-1786382187444",
+     "BackgroundCheck": "TRUE",
+     "CompleteTraining": "TRUE",
+     "QuestionnaireComplete": "TRUE",
+     "TutorialsComplete": "TRUE",
+     "updated_by": "(set)",
+     "updated_at": "2026-08-10T17:41:01.240Z",
+     "FullName": "Person 015",
+     "PacketAcknowledged": "TRUE",
+     "HubCandidateId": "",
+     "DocumentsComplete": "TRUE",
+     "CompletedAt": "2026-08-10T18:16:04.845Z",
+     "GradCandidateId": "CAN_CFEA7CE713095581517B"
+    },
+    {
+     "CandidateId": "OB-1786435912882",
+     "BackgroundCheck": "",
+     "CompleteTraining": "",
+     "QuestionnaireComplete": "",
+     "TutorialsComplete": "",
+     "updated_by": "(set)",
+     "updated_at": "2026-08-11T08:12:44.820Z",
+     "FullName": "Person 015",
+     "PacketAcknowledged": "TRUE",
+     "HubCandidateId": "CAN_CFEA7CE713095581517B",
+     "DocumentsComplete": "",
+     "CompletedAt": "",
+     "GradCandidateId": ""
+    }
+   ]
+  },
+  "candidate_documents": {
+   "rows": [
+    {
+     "candidate_id": "CAN_86A1B71848306F8AA771",
+     "file_id": "",
+     "uploaded_at": "2026-08-25T09:51:06.955Z"
+    },
+    {
+     "candidate_id": "CAN_00A9B95F4D47496659DE",
+     "file_id": "",
+     "uploaded_at": "2026-08-25T09:51:08.069Z"
+    },
+    {
+     "candidate_id": "CAN_802AC1489FA56CAC7F46",
+     "file_id": "",
+     "uploaded_at": "2026-08-27T20:44:09.499Z"
+    },
+    {
+     "candidate_id": "CAN_CF9F652DADE2A4A8C727",
+     "file_id": "",
+     "uploaded_at": "2026-08-27T20:44:11.906Z"
+    },
+    {
+     "candidate_id": "CAN_2453270D207F15BBF4E8",
+     "file_id": "",
+     "uploaded_at": "2026-08-27T21:32:08.530Z"
+    },
+    {
+     "candidate_id": "CAN_DCCAFD2ED0285B14E2B2",
+     "file_id": "",
+     "uploaded_at": "2026-08-27T23:43:41.397Z"
+    },
+    {
+     "candidate_id": "CAN_7B73F8D88623C667F110",
+     "file_id": "",
+     "uploaded_at": "2026-08-27T23:43:43.720Z"
+    }
+   ]
+  }
+ }
+}

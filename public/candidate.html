@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>ASA LifeCare</title>
+<!--
+  THE SHAREABLE CANDIDATE FORM (operator, 2026-09-06: "pegar o link atual do
+  nosso form e dar pra outra pessoa usar; quando fizerem o uso vamos receber").
+
+  One candidate, one personal HMAC link, no session — the token is the
+  identity. The page draws the whole record the Kanban's form view draws and
+  ends with the SAME choices: Accept/Decline per open decision, Reject, the
+  gated move. Every press rides the platform's own actions, so this page and
+  the board can never disagree about what a press does.
+
+  WHY IT IS NOT PART OF THE APPLICATION: the person opening this has no
+  account and will not make one to answer one question — the same law as
+  interview.html and form.html.
+
+  A wrong key, a stale link and a candidate who left the board all get the
+  SAME quiet answer. NO BROWSER DIALOGS — every message is drawn in the page.
+-->
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#111418; --ink2:#4b5563; --ink3:#7c8698;
+    --line:#e4e7ec; --accent:#1f6feb; --accent-ink:#fff; --bad:#b42318; --good:#067647;
+    --amber:#b54708; --radius:14px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0e1116; --card:#161b22; --ink:#e6edf3; --ink2:#adbac7; --ink3:#768390;
+           --line:#22272e; --accent:#4184e4; --bad:#e5534b; --good:#57ab5a; --amber:#d4a72c; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased;padding:24px 16px 64px}
+  .wrap{max-width:680px;margin:0 auto}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+        padding:22px 20px;margin-bottom:14px;overflow:hidden}
+  .accent{height:10px;background:var(--accent);border-radius:var(--radius) var(--radius) 0 0;
+          margin:-22px -20px 16px}
+  h1{font-size:20px;margin:0 0 6px;font-weight:700;letter-spacing:-.01em}
+  h2{font-size:15px;margin:0 0 12px;font-weight:700}
+  .brand{font-size:12px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+  .muted{color:var(--ink3);font-size:13px}
+  .chip{display:inline-block;border:1px solid var(--line);border-radius:999px;
+        padding:2px 10px;font-size:12px;font-weight:700;color:var(--ink2)}
+  .q{margin-bottom:14px}
+  .q .lbl{font-weight:600;font-size:13.5px;margin-bottom:5px}
+  .q .ans{border:1px solid var(--line);border-radius:10px;background:var(--bg);
+          padding:9px 12px;font-size:14px;word-break:break-word}
+  .q .ans a{color:var(--accent);text-decoration:none;font-weight:600}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stat{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:9px 12px}
+  .stat .k{font-size:11px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+  .stat .v{font-size:15px;font-weight:700;margin-top:2px}
+  .tl{border-left:2px dashed var(--line);padding-left:14px;margin-left:4px}
+  .tl .e{margin-bottom:12px}
+  .tl .e .t{font-size:12px;color:var(--ink3)}
+  .ck{border:1px solid var(--line);border-radius:10px;background:var(--bg);margin-bottom:10px}
+  .ck .row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid var(--line)}
+  .ck .row:first-child{border-top:0}
+  .ck .st{width:22px;height:22px;border-radius:999px;display:grid;place-items:center;
+          font-size:12px;flex:none}
+  .st.done{background:rgba(6,118,71,.12);color:var(--good)}
+  .st.auto{background:rgba(31,111,235,.12);color:var(--accent)}
+  .st.pending{background:rgba(181,71,8,.12);color:var(--amber)}
+  .st.missing{background:rgba(180,35,24,.10);color:var(--bad)}
+  .ck .nm{flex:1;min-width:0;font-size:13.5px;font-weight:600}
+  .ck .ow{font-size:11.5px;color:var(--ink3)}
+  .stagechip{display:inline-block;border-radius:999px;background:rgba(31,111,235,.10);
+             color:var(--accent);padding:2px 10px;font-size:11.5px;font-weight:700;margin-bottom:8px}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  button{font:inherit;font-weight:700;border-radius:10px;padding:11px 16px;cursor:pointer;
+         border:1px solid var(--line);background:var(--card);color:var(--ink);flex:1;min-width:120px}
+  button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  button.danger{color:var(--bad)}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .note{border-radius:10px;padding:10px 12px;font-size:13.5px;margin-top:12px;display:none}
+  .note.good{display:block;background:rgba(6,118,71,.10);color:var(--good)}
+  .note.bad{display:block;background:rgba(180,35,24,.08);color:var(--bad)}
+  .msg{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+       padding:26px 20px;text-align:center;color:var(--ink2)}
+  .foot{text-align:center;color:var(--ink3);font-size:12px;margin-top:18px}
+  .copy{text-align:center;color:var(--ink2);font-size:11px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">ASA LifeCare &middot; Hiring</div>
+  <div id="body"><div class="msg">Loading&hellip;</div></div>
+  <div class="foot" id="foot">ASA LifeCare — candidate review form</div>
+  <footer class="copy">© 2026 Asa LifeCare. All rights reserved.</footer>
+</div>
+<script>
+(function () {
+  var GAS = '/gas';
+  var qs = new URLSearchParams(location.search);
+  var TOKEN = qs.get('t') || '';
+  var STAGE_LABEL = { 'new': 'New', 'phone-screen': 'Phone Screen', 'interview': 'Interview',
+                      'onboarding': 'Onboarding', 'hired': 'Hired', 'ready': 'Ready to start' };
+  var STAGE_ORDER = ['new', 'phone-screen', 'interview', 'onboarding', 'hired', 'ready'];
+  var ST_ICON = { done: '✓', auto: '✦', pending: '⏳', missing: '✕' };
+  var ctx = null;
+  var busy = false;
+
+  var el = function (id) { return document.getElementById(id); };
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function post(action, payload) {
+    return fetch(GAS, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: 'body=' + encodeURIComponent(JSON.stringify({ action: action, payload: payload }))
+    }).then(function (r) { return r.json(); });
+  }
+  function show(html) { el('body').innerHTML = html; }
+  function fail(message) {
+    show('<div class="msg">' + esc(message) + '</div>');
+  }
+
+  function qRow(label, value, href) {
+    var v = value == null || String(value) === '' ? '&mdash;'
+      : href ? '<a href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' + esc(value) + '</a>'
+      : esc(value);
+    return '<div class="q"><div class="lbl">' + esc(label) + '</div><div class="ans">' + v + '</div></div>';
+  }
+
+  function render() {
+    var c = ctx.candidate, gate = ctx.gate || {};
+    var stageLabel = STAGE_LABEL[c.stage] || c.stage;
+    var h = '';
+
+    h += '<div class="card"><div class="accent"></div>' +
+         '<h1>Candidate form</h1>' +
+         '<p class="muted">Everything the pipeline knows about this candidate. ' +
+         'The decisions wait at the end.</p>' +
+         '<div style="margin-top:12px;display:flex;align-items:center;gap:10px;justify-content:space-between">' +
+         '<div><div style="font-size:16px;font-weight:700">' + esc(c.name) + '</div>' +
+         '<div class="muted">' + esc(c.role) + '</div></div>' +
+         '<span class="chip">' + esc(stageLabel) + '</span></div></div>';
+
+    h += '<div class="card"><h2>Snapshot</h2><div class="grid">' +
+         '<div class="stat"><div class="k">Rating</div><div class="v">' + (c.score == null ? '&mdash;' : esc(c.score) + ' / 5') + '</div></div>' +
+         '<div class="stat"><div class="k">Days in stage</div><div class="v">' + (c.daysInStage == null ? '&mdash;' : esc(c.daysInStage)) + '</div></div>' +
+         '<div class="stat"><div class="k">Source</div><div class="v">' + (c.source ? esc(c.source) : '&mdash;') + '</div></div>' +
+         '<div class="stat"><div class="k">Applied</div><div class="v">' + (c.appliedAt ? esc(c.appliedAt) : '&mdash;') + '</div></div>' +
+         '</div></div>';
+
+    h += '<div class="card"><h2>Details</h2>' +
+         qRow('Email', c.email, c.email ? 'mailto:' + c.email : '') +
+         qRow('Phone', c.phone, c.phone ? 'tel:' + c.phone : '') +
+         qRow('Location', [c.city, c.state].filter(Boolean).join(', ')) +
+         qRow('Resume', c.resumeLink ? (c.resumeFileLabel || 'Open resume') : '', c.resumeLink) +
+         (c.owner ? qRow('Recruiter', c.owner) : '') +
+         (c.summary ? qRow('Summary', c.summary) : '') +
+         '</div>';
+
+    var tl = c.summaryTimeline || [];
+    if (tl.length) {
+      h += '<div class="card"><h2>History &amp; evidence</h2><div class="tl">';
+      for (var i = 0; i < tl.length; i++) {
+        h += '<div class="e"><div>' + esc(tl[i].text) + '</div><div class="t">' + esc(tl[i].time) + '</div></div>';
+      }
+      h += '</div></div>';
+    }
+
+    var items = c.checklist || [];
+    if (items.length) {
+      h += '<div class="card"><h2>Document checklist</h2>';
+      for (var s = 0; s < STAGE_ORDER.length; s++) {
+        var sid = STAGE_ORDER[s];
+        var rows = items.filter(function (it) { return it.stage === sid; });
+        if (!rows.length) continue;
+        h += '<div class="stagechip">' + esc(STAGE_LABEL[sid] || sid) + '</div><div class="ck">';
+        for (var r = 0; r < rows.length; r++) {
+          var it = rows[r];
+          h += '<div class="row"><span class="st ' + esc(it.status) + '">' + (ST_ICON[it.status] || '&middot;') + '</span>' +
+               '<span class="nm">' + esc(it.label) + '</span>' +
+               '<span class="ow">' + esc(it.status) + (it.owner ? ' &middot; ' + esc(it.owner) : '') + '</span></div>';
+        }
+        h += '</div>';
+      }
+      h += '</div>';
+    }
+
+    // THE END — the same choices the board offers, nothing new.
+    var owed = items.filter(function (it) {
+      return it.stage === c.stage && /decision$/.test(it.id) &&
+             (it.status === 'pending' || it.status === 'missing');
+    });
+    h += '<div class="card"><h2>Decision</h2>' +
+         '<p class="muted" style="margin-top:-6px">The call that moves this person on &mdash; or off the board.</p>';
+    if (!owed.length) h += '<p class="muted">Nothing waits on a decision at this stage.</p>';
+    for (var d = 0; d < owed.length; d++) {
+      h += '<div class="q"><div class="lbl">' + esc(owed[d].label) + '</div>' +
+           '<div class="btns">' +
+           '<button class="danger" data-decide="Decline" data-cp="' + esc(owed[d].id) + '">&#10005; Decline</button>' +
+           '<button class="primary" data-decide="Advance" data-cp="' + esc(owed[d].id) + '">&#10003; Accept</button>' +
+           '</div></div>';
+    }
+    var moveLabel = gate.to ? 'Move to ' + (STAGE_LABEL[gate.to] || gate.to) : 'Final stage';
+    h += '<div class="btns" style="border-top:1px solid var(--line);padding-top:12px">' +
+         '<button data-move="1" ' + (gate.ok && gate.to ? '' : 'disabled ') +
+         (gate.ok ? 'class="primary" ' : '') + '>' + esc(moveLabel) + '</button></div>';
+    if (!gate.ok && gate.missing && gate.missing.length) {
+      h += '<p class="muted" style="margin-top:8px">Stage gate &mdash; still missing: ' + esc(gate.missing.join(', ')) + '</p>';
+    }
+    h += '<div class="note" id="note"></div></div>';
+
+    show(h);
+
+    var btns = el('body').querySelectorAll('button[data-decide],button[data-move]');
+    for (var b = 0; b < btns.length; b++) {
+      btns[b].addEventListener('click', onPress);
+    }
+  }
+
+  function note(kind, text) {
+    var n = el('note');
+    if (!n) return;
+    n.className = 'note ' + kind;
+    n.textContent = text;
+  }
+
+  function onPress(e) {
+    if (busy) return;
+    busy = true;
+    var b = e.currentTarget;
+    var payload;
+    if (b.getAttribute('data-move')) {
+      payload = { t: TOKEN, kind: 'move', to_stage: (ctx.gate && ctx.gate.to) || '' };
+    } else {
+      payload = { t: TOKEN, kind: 'decision',
+                  checkpoint: b.getAttribute('data-cp'),
+                  value: b.getAttribute('data-decide') };
+    }
+    b.disabled = true;
+    post('candFormSubmit', payload).then(function (res) {
+      busy = false;
+      if (res && res.status === 200) {
+        var d = res.data || {};
+        if (d.declined) {
+          show('<div class="msg"><strong>Recorded.</strong><br>The candidate was declined and leaves the board. Thank you.</div>');
+          return;
+        }
+        note('good', 'Recorded — thank you. Refreshing the record…');
+        load();
+        return;
+      }
+      b.disabled = false;
+      note('bad', (res && res.message) || 'That press did not land — try again.');
+    }).catch(function () {
+      busy = false;
+      b.disabled = false;
+      note('bad', 'The platform could not be reached — try again in a moment.');
+    });
+  }
+
+  function load() {
+    post('candFormContext', { t: TOKEN }).then(function (res) {
+      if (!res || res.status !== 200 || !res.data || !res.data.candidate) {
+        fail((res && res.message) || 'This link is not valid or no longer active.');
+        return;
+      }
+      ctx = res.data;
+      render();
+    }).catch(function () {
+      fail('The platform could not be reached — try again in a moment.');
+    });
+  }
+
+  if (!TOKEN) { fail('This link is not valid or no longer active.'); return; }
+  load();
+})();
+</script>
+</body>
+</html>

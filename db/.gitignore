@@ -1,0 +1,4 @@
+# asa-hub-db: the real environment holds the database password and the mirror DSN.
+# Only .env.example, which carries names and no values, is committed.
+.env
+.sa-*.json

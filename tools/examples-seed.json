@@ -1,0 +1,92 @@
+{
+  "_note": "The worked examples as they shipped inside apps-script/Examples.gs, now the seed tools/mint_examples_house.py writes into 'ASA Data — Examples'. The sheet is the source of truth from the moment it exists; this file is only what the catalogue is BORN with. run-selftest.mjs runs every row here through the reader in Examples.gs, so a row this file cannot get past the loader fails the verdict here rather than in the editor.",
+  "book_title": "ASA Data — Examples",
+  "tabs": [
+    {
+      "tab": "example_shop_items",
+      "note": "Smart Shopper's watchlist. category must be one of SHOP_CATEGORIES and status one of SHOP_STATUSES (Shopper.gs) — anything else is refused by name.",
+      "header": ["id", "name", "category", "target_price", "notes", "status"],
+      "rows": [
+        ["EX_SHOP_VACUUM", "Dyson V15 Detect cordless vacuum", "Household", 550,
+         "For the Bradford house — the upright there is on its last legs.", "watching"],
+        ["EX_SHOP_POWERBANK", "Anker 737 power bank (24k mAh)", "Electronics", 100,
+         "Two for the transport bags, so a dead phone never strands a shift.", "watching"],
+        ["EX_SHOP_AIRFRYER", "Ninja Foodi 6-in-1 air fryer", "Kitchen", 130,
+         "Meal prep for the wellbeing plans without heating the whole kitchen.", "watching"]
+      ]
+    },
+    {
+      "tab": "example_shop_prices",
+      "note": "One estimate sits BELOW its target, so `worthChecking` can be seen doing the one thing the screen exists to do. item_id must name a row of example_shop_items.",
+      "header": ["id", "item_id", "estimate", "title"],
+      "rows": [
+        ["EX_PRICE_VACUUM_1", "EX_SHOP_VACUUM", 529, "V15 Detect Absolute"],
+        ["EX_PRICE_VACUUM_2", "EX_SHOP_VACUUM", 612, "V15 Detect Submarine"],
+        ["EX_PRICE_POWERBANK_1", "EX_SHOP_POWERBANK", 119, "Anker 737 (140W)"],
+        ["EX_PRICE_AIRFRYER_1", "EX_SHOP_AIRFRYER", 149, "Foodi 6-in-1 8qt"],
+        ["EX_PRICE_AIRFRYER_2", "EX_SHOP_AIRFRYER", 127, "Foodi 6-in-1 5qt"]
+      ]
+    },
+    {
+      "tab": "example_skills",
+      "note": "The organisation's competency list. area is free text — the Learning screen groups by whatever is typed here.",
+      "header": ["id", "name", "area", "description", "active"],
+      "rows": [
+        ["EX_SKILL_MEDS", "Medication administration — the five rights", "Direct Care",
+         "Right person, drug, dose, route, time — stated before every pass.", "true"],
+        ["EX_SKILL_DEESC", "Person-centred de-escalation", "Behaviour Support",
+         "Reading the early signs and lowering the temperature without restraint.", "true"],
+        ["EX_SKILL_INCIDENT", "Incident reporting within 24 hours", "Compliance",
+         "What counts as reportable, and the clock that starts when it happens.", "true"],
+        ["EX_SKILL_TRANSFER", "Safe transfer and lifting", "Direct Care",
+         "Two-person transfers, gait belt, and when not to attempt one alone.", "true"],
+        ["EX_SKILL_SEIZURE", "Seizure response protocol", "Direct Care",
+         "Positioning, timing, when it becomes an emergency call.", "true"]
+      ]
+    },
+    {
+      "tab": "example_attempts",
+      "note": "One competency per rung of the ladder, because the ladder is the part that needs showing: generalised (mastery, then held after two weeks away), mastered (four unassisted inside a week), stable (three in a row but one prompted, so the unaided run never reaches four), practising (two in a row), exposed (attempted, never yet correct — the rung that proves the screen tells 'not attempted' apart from 'attempted and not there yet'). skill_id must name a row of example_skills.",
+      "header": ["id", "skill_id", "at", "correct", "helped", "note"],
+      "rows": [
+        ["EX_ATT_MEDS_1", "EX_SKILL_MEDS", "2026-07-21T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_MEDS_2", "EX_SKILL_MEDS", "2026-07-22T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_MEDS_3", "EX_SKILL_MEDS", "2026-07-23T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_MEDS_4", "EX_SKILL_MEDS", "2026-07-24T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_MEDS_5", "EX_SKILL_MEDS", "2026-08-06T14:00:00.000Z", "true", "false", "example — held it after two weeks away"],
+        ["EX_ATT_DEESC_1", "EX_SKILL_DEESC", "2026-08-04T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_DEESC_2", "EX_SKILL_DEESC", "2026-08-05T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_DEESC_3", "EX_SKILL_DEESC", "2026-08-06T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_DEESC_4", "EX_SKILL_DEESC", "2026-08-07T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_INC_1", "EX_SKILL_INCIDENT", "2026-08-05T14:00:00.000Z", "true", "true", "example — prompted once"],
+        ["EX_ATT_INC_2", "EX_SKILL_INCIDENT", "2026-08-06T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_INC_3", "EX_SKILL_INCIDENT", "2026-08-07T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_TRF_1", "EX_SKILL_TRANSFER", "2026-08-08T14:00:00.000Z", "true", "true", "example — prompted"],
+        ["EX_ATT_TRF_2", "EX_SKILL_TRANSFER", "2026-08-09T14:00:00.000Z", "true", "false", "example — unassisted"],
+        ["EX_ATT_SEIZ_1", "EX_SKILL_SEIZURE", "2026-08-08T14:00:00.000Z", "false", "true", "example — missed the timing rule"],
+        ["EX_ATT_SEIZ_2", "EX_SKILL_SEIZURE", "2026-08-10T14:00:00.000Z", "false", "false", "example — missed it again"]
+      ]
+    },
+    {
+      "tab": "example_trips",
+      "note": "status must be one of TRIP_STATUSES (Travel.gs). Variance is COMPUTED from budget against actual, so only the completed trip carries both — zero against zero is not 'on budget', it is 'nobody has said'. decided_at filled is what makes the trip carry a decider. READ THIS BEFORE EDITING: travelTrips_ (Travel.gs) drops every EX_ id before the Business Travel screen sees it — a standing instruction to keep the examples off that screen. The rows are written, removed by id and visible in raw sheet mode, but editing this tab does NOT change what Business Travel shows until the filter is lifted. apps-script/Examples.gs names it in EX_HIDDEN_RESOURCES and the verdict holds the two in step.",
+      "header": ["id", "destination", "country", "purpose", "status", "start_date", "end_date",
+                 "traveller", "reason", "outcome", "budget", "actual_cost", "decided_at"],
+      "rows": [
+        ["EX_TRIP_COLUMBUS", "Columbus, OH", "USA", "DODD provider conference", "completed",
+         "2026-06-10", "2026-06-12", "Arthur Torres",
+         "Annual provider update — rule changes for the coming year.",
+         "Brought back the new incident-reporting guidance; it is now in Policies.",
+         1200, 1043, "2026-05-28T15:00:00.000Z"],
+        ["EX_TRIP_CLEVELAND", "Cleveland, OH", "USA", "Nurse delegation training", "approved",
+         "2026-09-08", "2026-09-09", "Ty Bond",
+         "Two-day delegation refresher required for the Med 2 renewals.",
+         "", 800, 0, "2026-08-04T12:00:00.000Z"],
+        ["EX_TRIP_AKRON", "Akron, OH", "USA", "Client family meeting", "proposed",
+         "2026-09-22", "2026-09-22", "Arthur Torres",
+         "Guardian asked for an in-person review of the ISP.",
+         "", 180, 0, ""]
+      ]
+    }
+  ]
+}

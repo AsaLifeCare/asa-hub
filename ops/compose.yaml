@@ -1,0 +1,46 @@
+# asa-hub-status: the asa-hub containers' state for the relay; backend network only, no published port.
+name: asa-hub-ops
+
+services:
+  asa-hub-status:
+    image: python:3.12-slim
+    container_name: asa-hub-status
+    restart: unless-stopped
+    init: true
+    read_only: true
+    # nobody, plus the socket's group (stat -c %g /var/run/docker.sock)
+    user: "65534:65534"
+    group_add:
+      - "${DOCKER_GID:-988}"
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    cpus: 0.25
+    mem_limit: 96m
+    working_dir: /srv/status
+    command: ["python", "-u", "/srv/status/status.py"]
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      HUB_STATUS_PORT: "8090"
+      HUB_STATUS_TOKEN: ${HUB_STATUS_TOKEN:?HUB_STATUS_TOKEN missing - set it in ops/.env}
+    volumes:
+      # a single-file mount keeps its inode: after editing status.py, up -d --force-recreate
+      - ./status.py:/srv/status/status.py:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks: [backend]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+networks:
+  backend:
+    name: backend_network
+    external: true

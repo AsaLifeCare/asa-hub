@@ -1,0 +1,3 @@
+# The payloads are a mirror on a short clock — see README.md, law 1.
+# The folder and its README travel with the project; the JSON rebuilds itself.
+*.json

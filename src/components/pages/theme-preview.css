@@ -1,0 +1,45 @@
+/* Settings → Appearance mini-previews. Pins the light token set inside a
+   preview box even while the app itself is in dark mode (dark previews use the
+   existing [data-theme="dark"] cascade).
+
+   THIS IS A HAND-KEPT MIRROR OF theme.css :root, and it had already rotted
+   once: the palette moved to the house kit and this file kept
+   painting the retired lagoon cyan, so Settings offered a preview of a theme
+   the product no longer had. If you change a light token there, change it
+   here in the same edit — that is the whole price of pinning light inside a
+   dark shell. */
+[data-preview-theme='light'] {
+  --bg: #f7f7f9;
+  --surface: #ffffff;
+  --surface-2: #fafafc;
+  --surface-3: #f1f2f6;
+  --border: #ececf1;
+  --border-strong: #e2e3ea;
+  --text-1: #1c1e26;
+  --text-2: #5f6472;
+  --text-3: #8a8f9e;
+  --primary: #5b4fe9;
+  --primary-hover: #4c40d6;
+  --primary-strong: #3f34b8;
+  --primary-soft: #eef0fe;
+  --on-primary: #ffffff;
+  /* the same green as --success, so two greens a shade apart cannot read as a
+     distinction somebody is meant to notice */
+  --status-green: #22a06b;
+  --status-green-soft: #e7f6ef;
+  --sidebar: #131c30;
+  --sidebar-text: #96a0b8;
+  --tint-mint: #e7f6ef;
+  --tint-peach: #fdf3e3;
+  --tint-lavender: #eef0fe;
+  --tint-pink: #fdeef2;
+  --tint-blue: #e6f1fb;
+  --tint-amber: #fdf3e3;
+  --tint-mint-fg: #22a06b;
+  --tint-peach-fg: #b3761c;
+  --tint-lavender-fg: #5b4fe9;
+  --tint-pink-fg: #d4537e;
+  --tint-blue-fg: #378add;
+  --tint-amber-fg: #b3761c;
+  color-scheme: light;
+}

@@ -1,0 +1,189 @@
+# asa-hub-app: the Hub's apps answered from asa-hub-db (Python beside Apps Script, app by app).
+# Only the relay calls it, on backend_network, with X-Hub-Token; no port is published.
+name: asa-hub-app
+
+services:
+  asa-hub-app:
+    image: python:3.12-slim
+    container_name: asa-hub-app
+    restart: unless-stopped
+    working_dir: /app
+    env_file: .env
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      # Smart Comms' provider key: the relay's own OpenPhone key file, read-only; a send still waits on the arm,
+      # test mode and messages_paused
+      HUB_SMART_COMMS_KEY_FILE: /run/secrets/quo-api.key
+      # asatech's own Drive token, the relay's (tools/asatech_drive_consent.py writes it by replacing the file, so a
+      # new consent needs this container recreated, not restarted, to see it)
+      HUB_APP_GOOGLE_OWNER_FILE: /run/secrets/asatech-drive.json
+      # Locations' documents copied out of Drive into the project (location_docs.py), opened from disk
+      HUB_DOCUMENTS_DIR: /srv/documents
+      HUB_DOCUMENTS_HOST_DIR: /opt/docker/asa-hub/documents
+      # the pictures uploaded on a page (app/photo_doors.py), and the name the server's own disk gives their folder
+      HUB_IMAGES_DIR: /srv/images
+      HUB_IMAGES_HOST_DIR: /opt/docker/asa-hub/images
+      # the front door (front_door.py): the slice list the gate judges by, the relay's who-reads-what mark and the
+      # master's known sign-in places beside its packs; HUB_SERVICE_SECRET in .env, the relay's own, keys those places
+      HUB_SNAPSHOT_MANIFEST: /srv/manifests/snapshot-manifest.json
+      HUB_APP_PACK_DIR: /srv/app-packs
+      # the Decoder lab's Try is read there (tesseract), asked with HUB_APP_TOKEN (app/service_doors.py)
+      HUB_WORKER_URL: http://asa-hub-worker:8091
+      # HUB_RELAY_TABLES_IN_HUB_DB comes from .env: "1" once the relay writes its own tables in asa-hub-db too, never
+      # before (the copy there would be read while the relay still writes the old platform's)
+      # the Quo webhook's inbox, inside the snapshot folder as the relay kept it (app/quo_inbox.py)
+      HUB_QUO_INBOX_DIR: /srv/snapshot/quo-inbox
+      # the one withholding rule of every copy (server/redaction.py), which the essential sheets' sweep passes every
+      # row it reads from Google through (app/essential_sheets.py)
+      HUB_RULES_DIR: /rules
+      # /analyze and the AI lane test's leg (app/analyze.py): the relay's pool, its key LLM_API_KEY from .env (the
+      # relay's own value), then local-cortex
+      HUB_ANALYZE_URL: http://litellm:4000/v1/chat/completions
+      HUB_ANALYZE_MODEL: ai-all
+      # the cortex, the house-calendar workbook, the bundle lane and the cadence beats take the relay's own values
+      # from .env: ASA_MASTER_KEY, HUB_CORTEX_URL, GOOGLE_SERVICE_ACCOUNT_JSON, GOOGLE_IMPERSONATE_USER,
+      # HUB_BUNDLE_LANE, HUB_PLACE_BADGE_GATE, HUB_CADENCE_DSN, and LLM_API_KEY: the analyze pool above, which the
+      # hotline filing (app/hotline_fast.py, after its Groq keys) and the call reading ask too
+    command: ["sh", "-c", "pip install --no-cache-dir --root-user-action=ignore -q -r requirements.txt && exec uvicorn main:app --host 0.0.0.0 --port 8080 --workers 1 --no-access-log"]
+    volumes:
+      - ./:/app:ro
+      - /opt/docker/secrets/seal/quo-api.key:/run/secrets/quo-api.key:ro
+      - ../server/.asatech-drive.json:/run/secrets/asatech-drive.json:ro
+      - ../server/redaction.py:/rules/redaction.py:ro
+      - ../documents:/srv/documents
+      # a house photo from Locations and a person's photo (app/house_images.py, app/person_photos.py): each a new file,
+      # never written over, never deleted; a picture is taken only where the folder's .gitkeep is
+      - ../images:/srv/images
+      # a directory, never the one file: the SPA build rewrites the manifest beside its siblings
+      - ../public:/srv/manifests:ro
+      - hub_app_packs:/srv/app-packs
+      # the slices nginx serves behind the gate, written here alone now (app/live_slices.py), and the relay's clock
+      # state beside them (the punch board, people, the Quo inbox)
+      - /opt/docker/asa-hub/web/snapshot:/srv/snapshot
+      # the place bundles (app/live_bundle.py)
+      - ../bundles:/srv/bundles
+      # the mail server's accounts, writable as the relay's: the mail doors' lookups and /mail/provision's new account
+      # (app/service_mail.py)
+      - /opt/docker/mailu/config:/srv/mailcfg
+      # the seal folder whole, read-only, as the relay mounts it (a re-issued file keeps no stale inode here): the Quo
+      # webhook's keys (app/clocks.py), PsiAnywhere's two accounts (app/psi_anywhere.py: the time clock signs in from
+      # here alone, and holds while the one it signs in with is missing) and the call-reading seal's public certificate
+      # (app/comm_seal.py)
+      - /opt/docker/secrets/seal:/srv/secrets:ro
+      # the served SPA, read-only: the strip's `web` frame names the bundle its index.html loads (app/hub_strip.py)
+      - /opt/docker/asa-hub/web/html:/srv/web:ro
+      # web push's keys (app/other_lanes.py, the notices' pushes in app/web_push.py) and the containers sidecar's token
+      - /opt/docker/secrets/seal/webpush-vapid.json:/run/secrets/webpush-vapid.json:ro
+      - ../server/.hub-status-token:/run/secrets/hub-status-token:ro
+    # 768m was killed by the kernel three times in one day as the copies it holds grew; 2g stood near its top
+    mem_limit: 4g
+    healthcheck:
+      test: ["CMD", "python", "-c", "import json,urllib.request;assert json.load(urllib.request.urlopen('http://127.0.0.1:8080/healthz',timeout=4))['ok']"]
+      interval: 30s
+      timeout: 6s
+      retries: 3
+      start_period: 60s
+    networks:
+      - backend
+      # nginx (asa-hub-web) reaches the front door here; its other doors still ask X-Hub-Token
+      - proxy
+
+  # Postgres → Google: the paced backup of what app.edits and app.book_ops owe the sheets, and the daily check of the
+  # record books that brings in what someone still edits there (sheet_sync.py, sheet_check.py); its own memory.
+  # Switched off by the operator on 2026-10-28: there is no spreadsheet any more, so nothing is backed up to Google and
+  # no record book is checked against it. The service stays here under the "retired" profile, so a plain `up -d`
+  # never starts it again; container-guardian no longer revives it.
+  asa-hub-sheet-sync:
+    profiles: ["retired"]
+    image: python:3.12-slim
+    container_name: asa-hub-sheet-sync
+    restart: "no"
+    working_dir: /app
+    env_file: .env
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      HUB_RULES_DIR: /rules
+    command: ["sh", "-c", "pip install --no-cache-dir --root-user-action=ignore -q -r requirements.txt && exec python -u sheet_sync.py"]
+    volumes:
+      - ./:/app:ro
+      # the one withholding rule of every copy (server/redaction.py); the sync compares nothing without it
+      - ../server/redaction.py:/rules/redaction.py:ro
+    # a check holds one read of a book at a time (HUB_CHECK_CELLS_PER_READ cells); a backup round over the big ASA Data
+    # books peaks near 700 MiB and the kernel killed it at 1g
+    mem_limit: 3g
+    healthcheck:
+      test: ["CMD", "python", "-c", "import json,os,time;h=json.load(open('/tmp/sheet-sync.json'));assert time.time()-h['at']<2*float(os.getenv('HUB_TWO_WAY_EVERY_S') or 600)+120"]
+      interval: 60s
+      timeout: 6s
+      retries: 3
+      start_period: 300s
+    networks:
+      - backend
+
+  # the six keepers (server/hub_worker.py: hub_sheet_sync, form_digest, mar_papers, call_prefs, resume_texts,
+  # cert_reads) and the Decoder lab's Try. Since 2026-10-27 nothing here is the old platform's:
+  # - the image is the Hub's own tag, asa-hub/worker:4.0 (tesseract, PyMuPDF, OpenCV, python-docx, psycopg2), the
+  #   relay's layers kept under the Hub's name, so removing the old platform's image takes nothing from the worker;
+  # - its env is worker.env beside this file (never committed): asa-hub-db's two roles, the copies' tag key, the
+  #   Google service account and the model door's key — no DSN of the old platform's database;
+  # - the sheet keeper's mirror is off (HUB_SHEET_SYNC_MIRROR): it reads the calendars' grids and the live copy into
+  #   asa-hub-db three times a day, at the essential sweep's times (2026-10-28), never between; the books people post
+  #   to are swept by asa-hub-app (app/essential_sheets.py) at the same times.
+  #   docker compose -p asa-hub-app -f compose.yaml --profile worker up -d asa-hub-worker
+  # No port is published: asa-hub-app (the Try, the vitals, the wake) reaches :8091 on backend_network.
+  asa-hub-worker:
+    image: asa-hub/worker:4.0
+    container_name: asa-hub-worker
+    profiles: ["worker"]
+    restart: unless-stopped
+    init: true
+    working_dir: /srv/app
+    env_file: worker.env
+    environment:
+      HUB_WORKER_KEEPERS: "1"
+      HUB_SHEET_SYNC_MIRROR: "off"
+      # the keeper reads as the service account itself, as it always ran (empty: no delegation)
+      GOOGLE_IMPERSONATE_USER: ""
+      HUB_SNAPSHOT_OUT: /srv/snapshot
+      MALLOC_TRIM_THRESHOLD_: "100000"
+      HUB_ANALYZE_URL: http://litellm:4000/v1/chat/completions
+      HUB_ANALYZE_MODEL: ai-all
+    command: ["uvicorn", "hub_worker:app", "--host", "0.0.0.0", "--port", "8091", "--no-access-log"]
+    volumes:
+      # the keepers' code, the machine token (.hub-app-token) and asatech's Drive token beside it, as the relay mounts it
+      - ../server:/srv/app:ro
+      # the master JSON (/srv/snapshot/master) and the lane gates the digest reads, the relay's own folder
+      - /opt/docker/asa-hub/web/snapshot:/srv/snapshot
+    # measured in the relay: the sheet keeper peaked at 1.4 GiB and form_digest at 0.6 GiB; the Try's OCR on top
+    mem_limit: 4g
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8091/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m
+        max-file: "3"
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true
+    name: backend_network
+  proxy:
+    external: true
+    name: proxy_network
+
+volumes:
+  # the relay's packs folder (cloud-run-projects/compose.yaml hub-app-packs)
+  hub_app_packs:
+    external: true
+    name: hub_app_packs

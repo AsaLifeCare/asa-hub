@@ -1,0 +1,71 @@
+# The Hub's front: asa-hub-web (nginx: the SPA, the slices behind auth, every route to asa-hub-app) and asa-hub-chat
+# (the SignalR hub). Both were services of the old platform's compose (cloud-run-projects/compose.yaml) until
+# 2026-10-27; the old platform is being shut down, so they and everything they serve live here now:
+#   web/nginx/default.conf    the routes (a directory mount, so a checkout replacing the file is seen on reload)
+#   web/html/                 the SPA build, rsynced here on every deploy (not in git)
+#   web/snapshot/             the slices asa-hub-app writes (/srv/snapshot there; not in git)
+#   web/wellbeing-images/     the wellbeing illustrations (not in git)
+#   web/.env                  HUB_CHAT_KEY, the chat hub's key shared with asa-hub-app (not in git)
+#
+#   docker compose -p asa-hub-web -f /opt/docker/asa-hub/web/compose.yaml up -d
+#
+# After any recreate of asa-hub-web: nginx -t, then prove /, /gas and a slice from the domain.
+name: asa-hub-web
+
+services:
+  asa-hub-web:
+    image: nginx:alpine
+    container_name: asa-hub-web
+    restart: unless-stopped
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+      # wellbeing JPEGs, outside the SPA tree: a frontend deploy never wipes them
+      - ./wellbeing-images:/srv/wellbeing-images:ro
+      # index.html is never cached by the browser (hashed assets are immutable), or a release keeps booting the old build
+      - ./nginx:/etc/nginx/conf.d:ro
+      # the slices, served behind auth_request, never as open files
+      - ./snapshot:/srv/snapshot:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m
+        max-file: "3"
+    networks:
+      - proxy
+
+  asa-hub-chat:
+    build:
+      context: ../signalr-hub
+    image: asa/hub-chat:local
+    container_name: asa-hub-chat
+    restart: unless-stopped
+    read_only: true
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m
+    cpus: 1.0
+    mem_limit: 512m
+    environment:
+      HUB_RELAY_URL: http://asa-hub-app:8080
+      HUB_CHAT_KEY: ${HUB_CHAT_KEY:?HUB_CHAT_KEY missing (web/.env)}
+    logging:
+      driver: json-file
+      options:
+        max-size: 20m
+        max-file: "3"
+    networks:
+      - proxy
+    healthcheck:
+      # busybox wget: the aspnet alpine image has neither curl nor python
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+networks:
+  proxy:
+    name: proxy_network
+    external: true

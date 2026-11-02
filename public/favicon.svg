@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="asa.">
+  <!-- navy detail-hero tile; hex allowed inside this static svg asset -->
+  <rect width="64" height="64" rx="14" fill="#101828"/>
+  <!-- wordmark: white extrabold lowercase "asa" + cyan square dot; textLength pins the lockup so it stays centered in any renderer -->
+  <text x="7.75" y="41" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="900" fill="#ffffff" textLength="40" lengthAdjust="spacingAndGlyphs">asa</text>
+  <rect x="50.25" y="35" width="6" height="6" fill="#4cc4e2"/>
+</svg>

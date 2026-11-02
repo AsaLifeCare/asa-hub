@@ -1,0 +1,48 @@
+node_modules
+dist
+.DS_Store
+__pycache__/
+.venv/
+server/books_pdfs/
+
+# THE PROPERTIES FILE IS THE PROJECT'S, NEVER THE REPOSITORY'S.
+# It holds the platform's secrets; a value committed once is in the history
+# forever, outliving every rotation. push_apps_script.py preserves any file
+# that exists in the project and not on disk, so this is safe.
+apps-script/Props.gs
+
+# the host watchdog's live transport — rewritten every minute
+public/host-status.json
+server/engine/Digest.gs
+server/.hub-app-token
+server/.hub-status-token
+server/.asatech-drive.json
+
+# house photos uploaded from Locations: the relay writes them here, never the repository
+images/*
+!images/.gitkeep
+
+# Locations' documents copied out of Drive by asa-hub-app (app/location_docs.py): the server's, never the repository
+documents/*
+!documents/.gitkeep
+
+# THE SEALING KEY. The private half never leaves the keyholder, so it must never
+# become committable — an untracked file inside the tree is one `git add -A`
+# away from the history, and a key in a history is a key that has to be rotated.
+tools/key.txt
+tools/*.key
+tools/*.pem
+
+# the Hub's front (web/compose.yaml): the SPA build rsynced at each deploy, the slices asa-hub-app writes, the
+# wellbeing illustrations and the chat hub's key live beside their compose, never in the repository
+web/html/
+web/snapshot/
+web/wellbeing-images/
+web/.env
+
+# asa-hub-worker's own env (app/compose.yaml env_file): secrets, never in the repository
+app/worker.env
+
+# the tools' own credentials and the service account they read (server/.tools.env, server/.service-account.json)
+server/.tools.env
+server/.service-account.json

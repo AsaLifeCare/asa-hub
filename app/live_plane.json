@@ -1,0 +1,2848 @@
+{
+ "_": "written by tools/emit-live-plane.py from server/snapshot_service.py \u2014 never edited by hand",
+ "slice_doors": {
+  "audits": [
+   "audits",
+   "auditsList"
+  ],
+  "billingClaims": [
+   "billing",
+   "billingClaimsList"
+  ],
+  "books": [
+   "books",
+   "booksList"
+  ],
+  "callOffs": [
+   "call-offs",
+   "callOffsList"
+  ],
+  "candidates": [
+   "opsdash",
+   "opsdashCandidates"
+  ],
+  "clients": [
+   "opsdash",
+   "opsdashClients"
+  ],
+  "commCalls": [
+   "comm-calls",
+   "commCallsList"
+  ],
+  "commWorkItems": [
+   "comm-calls",
+   "commWorkItemsList"
+  ],
+  "contactLists": [
+   "policy-acks",
+   "contactListsList"
+  ],
+  "directors": [
+   "directors",
+   "directorsList"
+  ],
+  "diseases": [
+   "render-sheet",
+   "diseasesList"
+  ],
+  "drAppointments": [
+   "dr-appointments",
+   "drAppointmentsList"
+  ],
+  "equipment": [
+   "equipment",
+   "equipmentList"
+  ],
+  "events": [
+   "shiftboard",
+   "scheduleEventsList"
+  ],
+  "expenseReports": [
+   "expenses",
+   "expenseReportsList"
+  ],
+  "fleetVehicles": [
+   "transportation",
+   "fleetVehiclesList"
+  ],
+  "helpfulContacts": [
+   "suggestions",
+   "helpfulContactsList"
+  ],
+  "hiringCadences": [
+   "settings-tools",
+   "hiringCadencesRows"
+  ],
+  "houses": [
+   "houses",
+   "housesSlice"
+  ],
+  "hydrationProfiles": [
+   "hydration",
+   "hydrationProfilesList"
+  ],
+  "inventoryItems": [
+   "inventory",
+   "inventoryItemsList"
+  ],
+  "isps": [
+   "isp",
+   "ispsList"
+  ],
+  "mealIdeals": [
+   "ideal-meals",
+   "mealIdealsList"
+  ],
+  "mealPlans": [
+   "meals",
+   "mealPlansList"
+  ],
+  "medCatalog": [
+   "medications",
+   "medCatalogList"
+  ],
+  "medDelFlows": [
+   "med-delegation",
+   "medDelFlowsSlice"
+  ],
+  "medDelFlowsRaw": [
+   "med-delegation",
+   "medDelFlowsSlice"
+  ],
+  "mileageLogs": [
+   "transportation",
+   "mileageLogsList"
+  ],
+  "onboarding": [
+   "hiring",
+   "onboardingList"
+  ],
+  "people": [
+   "opsdash",
+   "opsdashPeople"
+  ],
+  "photos": [
+   "imagebank",
+   "imageBankList"
+  ],
+  "policies": [
+   "policy-acks",
+   "policiesList"
+  ],
+  "policyAcks": [
+   "policy-acks",
+   "policyAcksList"
+  ],
+  "potentialClients": [
+   "potential-clients",
+   "potentialClientsList"
+  ],
+  "projects": [
+   "render-sheet",
+   "projectsList"
+  ],
+  "questionnaireResponses": [
+   "questionnaires",
+   "questionnaireResponsesList"
+  ],
+  "questionnaires": [
+   "questionnaires",
+   "questionnairesList"
+  ],
+  "recruitment": [
+   "hiring",
+   "recruitmentList"
+  ],
+  "routes": [
+   "transportation",
+   "routesList"
+  ],
+  "sleepProfiles": [
+   "sleep",
+   "sleepProfilesList"
+  ],
+  "staffIssues": [
+   "staffissues",
+   "staffIssuesList"
+  ],
+  "staffRequests": [
+   "support-requests",
+   "staffRequestsList"
+  ],
+  "supportQueue": [
+   "hotline",
+   "supportQueueList"
+  ],
+  "talentPool": [
+   "hiring",
+   "talentPoolList"
+  ],
+  "techDocs": [
+   "technology",
+   "techDocsList"
+  ],
+  "techEngineering": [
+   "technology",
+   "techEngineeringList"
+  ],
+  "techProjects": [
+   "technology",
+   "techProjectsList"
+  ],
+  "uiIncidents": [
+   "ui-incidents",
+   "uiIncidentsList"
+  ],
+  "visits": [
+   "visits",
+   "visitsList"
+  ],
+  "widgets": [
+   "widgets",
+   "widgetsList"
+  ],
+  "workOrders": [
+   "opsdash",
+   "opsdashWorkOrders"
+  ],
+  "workoutPlans": [
+   "workout",
+   "workoutPlansList"
+  ]
+ },
+ "relay_built": [],
+ "app_built": {
+  "alertsTriage": "alert_slices",
+  "behaviorBoard": "behavior_slices",
+  "calendarConflicts": "calendar_builder_slices",
+  "calendarGrid": "calendar_builder_slices",
+  "calendarHours": "calendar_builder_slices",
+  "calendarHouses": "calendar_builder_slices",
+  "calendarRequests": "calendar_builder_slices",
+  "calendarShifts": "calendar_builder_slices",
+  "calendarStaff": "calendar_builder_slices",
+  "commAttendance": "attendance_slices",
+  "commPunchBoard": "punch_board_slices",
+  "commRoutes": "comm_cortex",
+  "commWhen": "comm_when_slices",
+  "commWhenMoments": "comm_when_slices",
+  "cortexContacts": "contacts_slices",
+  "financeSummary": "finance_slices",
+  "finances": "finance_slices",
+  "invoices": "invoice_slices",
+  "psiPunches": "psi_punches_slices",
+  "recruitBook": "recruit_book",
+  "resumeCoverage": "resume_slices",
+  "shiftCards": "shift_slices",
+  "shiftMatrix": "shift_slices",
+  "shiftTimeline": "shift_slices",
+  "shifts": "shift_slices",
+  "workforceForecast": "alert_slices"
+ },
+ "app_finished": {
+  "events": "shift_slices",
+  "staffIssues": "hr_digest"
+ },
+ "late": {
+  "hiring": {
+   "resources": [
+    "hiringAnalysis"
+   ],
+   "sources": [
+    "candidates",
+    "recruitment",
+    "talentPool"
+   ]
+  },
+  "medcorr": {
+   "resources": [
+    "medCorrelation"
+   ],
+   "sources": [
+    "marErrors",
+    "missingMedications"
+   ]
+  },
+  "coverage": {
+   "resources": [
+    "coverageSuggestions",
+    "rosterProfile"
+   ],
+   "sources": [
+    "behaviorBoard",
+    "calendarGrid",
+    "calendarRequests",
+    "calendarStaff",
+    "callOffs",
+    "commAttendance",
+    "commRoutes",
+    "employmentFacts"
+   ]
+  }
+ },
+ "app_late": {
+  "hiring": "hiring_slices",
+  "medcorr": "medcorr_slices",
+  "coverage": "coverage_slices"
+ },
+ "medcorr_sources": [
+  "marErrors",
+  "missingMedications"
+ ],
+ "apps": {
+  "academy": {
+   "pack": "academy",
+   "keys": []
+  },
+  "account-profile": {
+   "pack": "account-profile",
+   "keys": []
+  },
+  "administration": {
+   "pack": "administration",
+   "keys": []
+  },
+  "alert-receive": {
+   "pack": "alert-receive",
+   "keys": []
+  },
+  "alerts-config": {
+   "pack": "alerts-config",
+   "keys": []
+  },
+  "app-control": {
+   "pack": "app-control",
+   "keys": []
+  },
+  "app-release": {
+   "pack": "app-release",
+   "keys": []
+  },
+  "audit-library": {
+   "pack": "audit-library",
+   "keys": []
+  },
+  "audits": {
+   "pack": "audits",
+   "keys": []
+  },
+  "auth": {
+   "pack": "auth",
+   "keys": []
+  },
+  "billing": {
+   "pack": "billing",
+   "keys": []
+  },
+  "books": {
+   "pack": "books",
+   "keys": []
+  },
+  "broadcast": {
+   "pack": "broadcast",
+   "keys": []
+  },
+  "calendar": {
+   "pack": "calendar",
+   "keys": []
+  },
+  "call-offs": {
+   "pack": "call-offs",
+   "keys": []
+  },
+  "candidates": {
+   "pack": "staff-candidates",
+   "key": "candidate",
+   "keys": [
+    "candidate"
+   ],
+   "any_key": true
+  },
+  "cert-docs": {
+   "keys": []
+  },
+  "client-candidates": {
+   "pack": "client-candidates",
+   "key": "candidate",
+   "keys": [
+    "candidate",
+    "candidate_id"
+   ],
+   "any_key": true
+  },
+  "client-care": {
+   "pack": "client-care",
+   "keys": []
+  },
+  "clients": {
+   "pack": "client-profiles",
+   "key": "client",
+   "any_key": true
+  },
+  "comm-call-off": {
+   "pack": "comm-call-off",
+   "keys": []
+  },
+  "comm-call-off-form": {
+   "pack": "comm-call-off-form",
+   "keys": []
+  },
+  "comm-calls": {
+   "pack": "comm-calls",
+   "keys": []
+  },
+  "comm-mock": {
+   "pack": "comm-mock",
+   "keys": []
+  },
+  "comm-record": {
+   "pack": "comm-record",
+   "keys": []
+  },
+  "comm-recruit": {
+   "pack": "comm-recruit",
+   "keys": []
+  },
+  "comm-repair": {
+   "pack": "comm-repair",
+   "keys": []
+  },
+  "comm-replies": {
+   "pack": "comm-replies",
+   "keys": []
+  },
+  "comm-routes": {
+   "pack": "comm-routes",
+   "keys": []
+  },
+  "comm-when": {
+   "pack": "comm-when",
+   "keys": []
+  },
+  "comm-window-ask": {
+   "pack": "comm-window-ask",
+   "keys": []
+  },
+  "comms-send": {
+   "pack": "comms-send",
+   "keys": []
+  },
+  "compliance": {
+   "pack": "compliance",
+   "keys": []
+  },
+  "compliance-engine": {
+   "pack": "compliance-engine",
+   "keys": []
+  },
+  "contact-guard": {
+   "pack": "contact-guard",
+   "keys": []
+  },
+  "contacts-sync": {
+   "pack": "contacts-sync",
+   "keys": []
+  },
+  "cortex": {
+   "pack": "cortex",
+   "keys": []
+  },
+  "digestlab": {
+   "pack": "digestlab",
+   "keys": []
+  },
+  "docs": {
+   "pack": "docs",
+   "keys": []
+  },
+  "dr-appointments": {
+   "pack": "dr-appointments",
+   "keys": []
+  },
+  "email-designs": {
+   "pack": "email-designs",
+   "keys": []
+  },
+  "emergency-contacts": {
+   "pack": "emergency-contacts",
+   "keys": []
+  },
+  "emp360": {
+   "pack": "emp360",
+   "keys": []
+  },
+  "employee-loans": {
+   "pack": "employee-loans",
+   "keys": []
+  },
+  "equipment": {
+   "pack": "equipment",
+   "keys": []
+  },
+  "expenses": {
+   "pack": "expenses",
+   "keys": []
+  },
+  "family": {
+   "pack": "family-profiles",
+   "key": "family",
+   "any_key": true
+  },
+  "family-portal": {
+   "pack": "family-portal",
+   "keys": []
+  },
+  "files": {
+   "pack": "files",
+   "keys": []
+  },
+  "finance": {
+   "pack": "finance",
+   "keys": []
+  },
+  "forms": {
+   "pack": "forms",
+   "keys": []
+  },
+  "guardian": {
+   "pack": "guardian",
+   "keys": []
+  },
+  "hiring": {
+   "pack": "hiring",
+   "keys": []
+  },
+  "hotline": {
+   "pack": "hotline",
+   "keys": []
+  },
+  "house-repair": {
+   "pack": "house-repair",
+   "keys": []
+  },
+  "house-supplies": {
+   "keys": []
+  },
+  "houses": {
+   "pack": "houses",
+   "keys": []
+  },
+  "hydration": {
+   "pack": "hydration",
+   "keys": []
+  },
+  "ideal-meals": {
+   "pack": "ideal-meals",
+   "keys": []
+  },
+  "imagebank": {
+   "pack": "imagebank",
+   "keys": []
+  },
+  "interviews": {
+   "pack": "interviews",
+   "keys": []
+  },
+  "inventory": {
+   "pack": "inventory",
+   "keys": []
+  },
+  "isp": {
+   "pack": "isp",
+   "keys": []
+  },
+  "ist": {
+   "pack": "ist",
+   "keys": []
+  },
+  "leadership": {
+   "pack": "leadership",
+   "keys": []
+  },
+  "learning": {
+   "pack": "learning",
+   "keys": []
+  },
+  "line-directory": {
+   "pack": "line-directory",
+   "keys": []
+  },
+  "locations": {},
+  "logs": {
+   "pack": "logs",
+   "keys": []
+  },
+  "mail": {
+   "pack": "mail",
+   "keys": []
+  },
+  "mar": {
+   "pack": "mar",
+   "keys": []
+  },
+  "marketing": {
+   "pack": "marketing",
+   "keys": []
+  },
+  "meals": {
+   "pack": "meals",
+   "keys": []
+  },
+  "med-delegation": {
+   "pack": "med-delegation",
+   "keys": []
+  },
+  "med-deliveries": {
+   "pack": "med-deliveries",
+   "keys": []
+  },
+  "medications": {
+   "pack": "medications",
+   "keys": []
+  },
+  "members": {
+   "pack": "members",
+   "keys": []
+  },
+  "my-calendar": {
+   "keys": []
+  },
+  "my-family": {
+   "keys": []
+  },
+  "my-inbox": {
+   "keys": []
+  },
+  "my-profile": {
+   "keys": [
+    "key"
+   ]
+  },
+  "my-work": {
+   "keys": []
+  },
+  "my-world": {
+   "pack": "my-world",
+   "keys": []
+  },
+  "myasa": {
+   "pack": "myasa",
+   "keys": []
+  },
+  "onboarding": {
+   "pack": "onboarding",
+   "keys": []
+  },
+  "open-shift-covered": {
+   "pack": "open-shift-covered",
+   "keys": []
+  },
+  "opsdash": {
+   "pack": "opsdash",
+   "keys": []
+  },
+  "opt-outs": {
+   "pack": "opt-outs",
+   "keys": []
+  },
+  "overview": {
+   "pack": "overview",
+   "keys": []
+  },
+  "palette": {
+   "pack": "palette",
+   "keys": []
+  },
+  "people-merge": {
+   "pack": "people-merge",
+   "keys": []
+  },
+  "people-roster": {
+   "pack": "people-roster",
+   "keys": []
+  },
+  "policy-acks": {
+   "pack": "policy-acks",
+   "keys": []
+  },
+  "potential-clients": {
+   "pack": "potential-clients",
+   "keys": []
+  },
+  "prefs": {
+   "pack": "prefs",
+   "keys": []
+  },
+  "production-actions": {
+   "pack": "production-actions",
+   "keys": []
+  },
+  "questionnaires": {
+   "pack": "questionnaires",
+   "keys": []
+  },
+  "quo": {
+   "pack": "quo",
+   "keys": []
+  },
+  "release-users": {
+   "pack": "release-users",
+   "keys": []
+  },
+  "reminders": {
+   "pack": "reminders",
+   "keys": []
+  },
+  "render-sheet": {
+   "pack": "render-sheet",
+   "keys": []
+  },
+  "scheduling": {
+   "pack": "scheduling",
+   "keys": [
+    "house"
+   ]
+  },
+  "sheet-tabs": {
+   "pack": "sheet-tabs",
+   "keys": []
+  },
+  "shiftboard": {
+   "pack": "shiftboard",
+   "keys": []
+  },
+  "shopper": {
+   "pack": "shopper",
+   "keys": []
+  },
+  "sleep": {
+   "pack": "sleep",
+   "keys": []
+  },
+  "smart-comms": {
+   "pack": "smartcomms",
+   "keys": []
+  },
+  "ssa": {
+   "pack": "ssa-profiles",
+   "key": "ssa",
+   "any_key": true
+  },
+  "staff": {
+   "pack": "staff-team",
+   "key": "staff",
+   "keys": [
+    "key",
+    "staff"
+   ],
+   "any_key": true
+  },
+  "staff-alerts": {
+   "pack": "staff-alerts",
+   "keys": []
+  },
+  "staff-docs": {
+   "pack": "staff-docs",
+   "keys": []
+  },
+  "staffissues": {
+   "pack": "staffissues",
+   "keys": []
+  },
+  "studio": {
+   "pack": "studio",
+   "keys": []
+  },
+  "suggestions": {
+   "pack": "suggestions",
+   "keys": []
+  },
+  "support-desk": {
+   "pack": "support-desk",
+   "keys": []
+  },
+  "support-punch": {
+   "pack": "support-punch",
+   "keys": []
+  },
+  "support-requests": {
+   "pack": "support-requests",
+   "keys": []
+  },
+  "taskboard": {
+   "pack": "taskboard",
+   "keys": []
+  },
+  "taskboard-sheet": {
+   "pack": "taskboard-sheet",
+   "keys": []
+  },
+  "teamboard": {
+   "pack": "teamboard",
+   "keys": []
+  },
+  "technology": {
+   "pack": "technology",
+   "keys": []
+  },
+  "tenant-ensure": {
+   "pack": "tenant-ensure",
+   "keys": []
+  },
+  "time-recon": {
+   "pack": "time-recon",
+   "keys": []
+  },
+  "timeoff": {
+   "pack": "timeoff",
+   "keys": []
+  },
+  "transportation": {
+   "pack": "vehicle-calendar",
+   "keys": []
+  },
+  "travel": {
+   "pack": "travel",
+   "keys": []
+  },
+  "ui-incidents": {
+   "pack": "ui-incidents",
+   "keys": []
+  },
+  "user-profiles": {
+   "pack": "user-profiles",
+   "keys": []
+  },
+  "users-directory": {
+   "pack": "users-directory",
+   "keys": []
+  },
+  "users-phone-fill": {
+   "pack": "users-phone-fill",
+   "keys": []
+  },
+  "users-writes": {
+   "pack": "users-writes",
+   "keys": []
+  },
+  "visits": {
+   "pack": "visits",
+   "keys": []
+  },
+  "widgets": {
+   "pack": "widgets",
+   "keys": []
+  },
+  "workout": {
+   "pack": "workout",
+   "keys": []
+  }
+ },
+ "packs": {
+  "client-candidates": {
+   "key_re": "[A-Za-z0-9_\\-]{3,80}",
+   "fold": "strip"
+  },
+  "client-profiles": {
+   "key_re": "[A-Za-z0-9_.\\-]{1,80}",
+   "fold": "strip"
+  },
+  "family-index": {
+   "key_re": "all",
+   "fold": "lower"
+  },
+  "family-profiles": {
+   "key_re": "fam_[a-z0-9]{3,120}",
+   "fold": "strip"
+  },
+  "locations": {
+   "key_re": "[A-Z]{2,4}\\d{3,6}",
+   "fold": "upper"
+  },
+  "ssa-profiles": {
+   "key_re": "ssa_[a-z0-9]{1,80}",
+   "fold": "strip"
+  },
+  "staff-candidates": {
+   "key_re": "CAN_[A-Za-z0-9]{6,80}",
+   "fold": "strip"
+  },
+  "staff-profiles": {
+   "key_re": "[A-Za-z0-9_.\\-]{1,80}",
+   "fold": "strip"
+  },
+  "staff-team": {
+   "key_re": "[a-z0-9]{3,80}",
+   "fold": "lower"
+  }
+ },
+ "house_re": "[A-Z]{2,4}\\d{3,6}",
+ "app_control_writes": [
+  "appAccessSetBulk",
+  "appBadgeAccessSet",
+  "appControlDelegatesSet",
+  "appTenantAccessSet",
+  "configBadgeAccessSet"
+ ],
+ "viewer_cache": {
+  "reads": {
+   "candidateProfileActions": "app:staff-candidates",
+   "candidateProfileActivity": "app:staff-candidates",
+   "candidateProfileDocuments": "app:staff-candidates",
+   "candidateProfileInterviews": "app:staff-candidates",
+   "candidateProfileOverview": "app:staff-candidates",
+   "candidateProfileRoster": "app:staff-candidates",
+   "candidateProfileTranscripts": "app:staff-candidates",
+   "clientCandidateActions": "app:client-candidates",
+   "clientCandidateActivity": "app:client-candidates",
+   "clientCandidateDocuments": "app:client-candidates",
+   "clientCandidateIntake": "app:client-candidates",
+   "clientCandidateOverview": "app:client-candidates",
+   "clientCandidateRoster": "app:client-candidates",
+   "clientCandidateTranscripts": "app:client-candidates",
+   "clientProfileActivity": "app:client-profiles",
+   "clientProfileCare": "app:client-profiles",
+   "clientProfileDetails": "app:client-profiles",
+   "clientProfileIncidents": "app:client-profiles",
+   "clientProfileMeds": "app:client-profiles",
+   "clientProfileRoster": "app:client-profiles",
+   "employeeLoanList": "staff-profiles",
+   "employeeLoanMine": "staff-profiles",
+   "familyProfileActivity": "app:family-profiles",
+   "familyProfileDocuments": "app:family-profiles",
+   "familyProfileNotes": "app:family-profiles",
+   "familyProfileOverview": "app:family-profiles",
+   "familyProfileRoster": "app:family-profiles",
+   "lane:my-calendar": "my-calendar",
+   "lane:my-inbox": "my-inbox",
+   "lane:my-profile": "my-profile",
+   "lane:my-work": "my-work",
+   "locationDocuments": "app:locations",
+   "locationIncidents": "app:locations",
+   "locationNotes": "app:locations",
+   "locationOverview": "app:locations",
+   "locationRepairs": "app:locations",
+   "locationScope": "app:locations",
+   "locationStaff": "app:locations",
+   "locationSupplies": "app:locations",
+   "schedulingBoard": "scheduling",
+   "schedulingBuilderRead": "scheduling",
+   "schedulingStaffShifts": "scheduling",
+   "schedulingTimeOffList": "scheduling",
+   "ssaProfileActivity": "app:ssa-profiles",
+   "ssaProfileDocuments": "app:ssa-profiles",
+   "ssaProfileNotes": "app:ssa-profiles",
+   "ssaProfileOverview": "app:ssa-profiles",
+   "ssaProfileRoster": "app:ssa-profiles",
+   "staffProfileActions": "app:staff-profiles",
+   "staffProfileActivity": "app:staff-profiles",
+   "staffProfileCompliance": "app:staff-profiles",
+   "staffProfileDocuments": "app:staff-profiles",
+   "staffProfileEmployment": "app:staff-profiles",
+   "staffProfileHr": "app:staff-profiles",
+   "staffProfileNotes": "app:staff-profiles",
+   "staffProfileOverview": "app:staff-profiles",
+   "staffProfilePerformance": "app:staff-profiles",
+   "staffProfilePreferences": "staff-profiles",
+   "staffProfileRoster": "app:staff-profiles",
+   "staffProfileShifts": "app:staff-profiles",
+   "staffProfileTranscripts": "app:staff-profiles",
+   "supportDeskList": "support-desk",
+   "vehicleCalendarBoard": "vehicle-calendar",
+   "vehicleCalendarClientTrips": "vehicle-calendar",
+   "vehicleCalendarStaffTrips": "vehicle-calendar"
+  },
+  "lanes": [
+   "lane:my-calendar",
+   "lane:my-inbox",
+   "lane:my-profile",
+   "lane:my-work"
+  ],
+  "file_ring": "gs:",
+  "opt_out": [
+   "get",
+   "hubBoot",
+   "list"
+  ],
+  "opt_out_re": "(DocFile|DocRead|File|Bytes|Transcripts?|Texts|Resume|Pack|Config|ConfigGet|Secrets?|Tokens?|Credentials?|Passwords?)$|^(auth|chat)",
+  "no_receipt": [
+   "academyVideoFile",
+   "adminDocFile",
+   "beAnotherStart",
+   "candidatePack",
+   "candidateProfileActions",
+   "candidateProfileActivity",
+   "candidateProfileDocFile",
+   "candidateProfileDocReview",
+   "candidateProfileDocuments",
+   "candidateProfileEdit",
+   "candidateProfileEditRead",
+   "candidateProfileInterviews",
+   "candidateProfileNoteEdit",
+   "candidateProfileOverview",
+   "candidateProfileResume",
+   "candidateProfileRoster",
+   "candidateProfileTexts",
+   "candidateProfileTranscript",
+   "candidateProfileTranscripts",
+   "certDocFile",
+   "certDocRead",
+   "certUploadRecord",
+   "certUploadsList",
+   "clientCandidateActions",
+   "clientCandidateActivity",
+   "clientCandidateDocEdit",
+   "clientCandidateDocFile",
+   "clientCandidateDocuments",
+   "clientCandidateEdit",
+   "clientCandidateEditRead",
+   "clientCandidateIntake",
+   "clientCandidateNoteEdit",
+   "clientCandidateOverview",
+   "clientCandidatePack",
+   "clientCandidateRoster",
+   "clientCandidateTexts",
+   "clientCandidateTranscript",
+   "clientCandidateTranscripts",
+   "clientPack",
+   "clientProfileActivity",
+   "clientProfileCare",
+   "clientProfileDetails",
+   "clientProfileDocFile",
+   "clientProfileIncidents",
+   "clientProfileMeds",
+   "clientProfileRoster",
+   "clientSourceAppointments",
+   "clientSourceBilling",
+   "clientSourceFinanceFile",
+   "clientSourceFunds",
+   "clientSourceMar",
+   "clientSourceMarDocFile",
+   "clientSourceRefills",
+   "clientSourceTransport",
+   "commBoard",
+   "commProposalsList",
+   "commReplies",
+   "editionsGet",
+   "editionsMine",
+   "emergencyContactsRead",
+   "emergencyContactsSave",
+   "employeeLoanList",
+   "employeeLoanMine",
+   "familyClientChoices",
+   "familyCreate",
+   "familyIndexPack",
+   "familyPack",
+   "familyProfileActivity",
+   "familyProfileCallEdit",
+   "familyProfileDocAdd",
+   "familyProfileDocFile",
+   "familyProfileDocuments",
+   "familyProfileNoteEdit",
+   "familyProfileNotes",
+   "familyProfileOverview",
+   "familyProfileRoster",
+   "finDocFile",
+   "formFilesList",
+   "formSubmissions",
+   "formsList",
+   "inventorySupplyFile",
+   "learnState",
+   "lineDirectory",
+   "locationDocFile",
+   "locationDocsWhere",
+   "locationIncidentStaff",
+   "locationMedicationHistory",
+   "locationMedications",
+   "locationPack",
+   "myCalendarVacationRoute",
+   "myProfileEmailFree",
+   "myWorkHidesGet",
+   "myWorkHidesMine",
+   "myWorkTimeOffMessage",
+   "obDocFile",
+   "openShiftCoveredBoard",
+   "optOutList",
+   "policyDocFile",
+   "reconAiSuggest",
+   "reconConfigGet",
+   "reconErrors",
+   "reconRuns",
+   "reconShiftsForDate",
+   "schedulingBoard",
+   "schedulingBuilderRead",
+   "schedulingStaffShifts",
+   "schedulingTimeOffList",
+   "smartCommsGet",
+   "smartCommsHistory",
+   "smartCommsPreview",
+   "ssaPack",
+   "ssaProfileActivity",
+   "ssaProfileActivityEdit",
+   "ssaProfileClients",
+   "ssaProfileDocEdit",
+   "ssaProfileDocFile",
+   "ssaProfileDocuments",
+   "ssaProfileEdit",
+   "ssaProfileEditRead",
+   "ssaProfileNotes",
+   "ssaProfileOverview",
+   "ssaProfileRoster",
+   "staffBroadcastBoard",
+   "staffBroadcastPreview",
+   "staffClientPack",
+   "staffProfileActions",
+   "staffProfileActivity",
+   "staffProfileAddress",
+   "staffProfileCompliance",
+   "staffProfileDocConclude",
+   "staffProfileDocFile",
+   "staffProfileDocuments",
+   "staffProfileEditRead",
+   "staffProfileEmployment",
+   "staffProfileHr",
+   "staffProfileIstAdd",
+   "staffProfileNoteEdit",
+   "staffProfileNotes",
+   "staffProfileOverview",
+   "staffProfilePerformance",
+   "staffProfilePreferences",
+   "staffProfileRoster",
+   "staffProfileShifts",
+   "staffProfileTexts",
+   "staffProfileTranscript",
+   "staffProfileTranscripts",
+   "supportDeskList",
+   "supportDeskSeat",
+   "taskFile",
+   "techDocFile",
+   "vehicleCalendarBoard",
+   "vehicleCalendarClientTrips",
+   "vehicleCalendarStaffTrips"
+  ],
+  "byte_reads": [
+   "academyVideoFile",
+   "adminDocFile",
+   "candidateProfileDocFile",
+   "candidateProfileTranscript",
+   "certDocFile",
+   "certDocRead",
+   "clientCandidateDocFile",
+   "clientCandidateTranscript",
+   "clientProfileDocFile",
+   "clientSourceFinanceFile",
+   "clientSourceMarDocFile",
+   "familyProfileDocFile",
+   "finDocFile",
+   "inventorySupplyFile",
+   "locationDocFile",
+   "obDocFile",
+   "policyDocFile",
+   "ssaProfileDocFile",
+   "staffProfileDocFile",
+   "staffProfileTranscript",
+   "taskFile",
+   "techDocFile"
+  ]
+ },
+ "edition_only": {
+  "clients.family": "clients"
+ },
+ "write_prepare": {
+  "behaviorEvaluate": [
+   "behaviorEvaluatePrepare",
+   ""
+  ],
+  "behaviorSignalsIngest": [
+   "behaviorSignalsPrepare",
+   "rows"
+  ],
+  "booksFetch": [
+   "booksFetchPrepare",
+   ""
+  ],
+  "booksFileUpload": [
+   "booksFileUploadPrepare",
+   "base64"
+  ],
+  "booksHarvest": [
+   "booksHarvestPrepare",
+   ""
+  ],
+  "booksMine": [
+   "booksMinePrepare",
+   ""
+  ],
+  "cjisApply": [
+   "cjisApplyPrepare",
+   ""
+  ],
+  "cjisFolderSweepNow": [
+   "cjisFolderSweepNowPrepare",
+   ""
+  ],
+  "cjisUpload": [
+   "cjisUploadPrepare",
+   "base64"
+  ],
+  "clearanceReadDates": [
+   "clearanceReadPrepare",
+   ""
+  ],
+  "clientCandidateFile": [
+   "clientCandidateFilePrepare",
+   "file"
+  ],
+  "commsSync": [
+   "commsSyncPrepare",
+   ""
+  ],
+  "docUpload": [
+   "docUploadPrepare",
+   "base64"
+  ],
+  "docsImportFolder": [
+   "docsImportFolderPrepare",
+   ""
+  ],
+  "flowSweepNow": [
+   "flowSweepNowPrepare",
+   ""
+  ],
+  "formFileStore": [
+   "formFileStorePrepare",
+   "base64"
+  ],
+  "hiringCjisRequestSend": [
+   "hiringCjisRequestPrepare",
+   ""
+  ],
+  "hiringFlowMint": [
+   "hiringFlowMintPrepare",
+   ""
+  ],
+  "hiringInterestScan": [
+   "hiringInterestScanPrepare",
+   ""
+  ],
+  "hiringOutreachReplyCheck": [
+   "hiringOutreachReplyPrepare",
+   ""
+  ],
+  "hiringScheduleCreate": [
+   "hiringScheduleCreatePrepare",
+   "auto"
+  ],
+  "hiringShortlistSend": [
+   "hiringShortlistPrepare",
+   ""
+  ],
+  "hiringSimPretendReply": [
+   "hiringSimPretendReplyPrepare",
+   ""
+  ],
+  "hiringSimReset": [
+   "hiringSimResetPrepare",
+   ""
+  ],
+  "hiringSimRetryNow": [
+   "hiringSimRetryDue",
+   ""
+  ],
+  "hubIntake": [
+   "hubIntakePrepare",
+   "resume_text"
+  ],
+  "interviewAskSweepNow": [
+   "interviewAskPrepare",
+   ""
+  ],
+  "locationDocLink": [
+   "locationDocLinkPrepare",
+   ""
+  ],
+  "locationDocRemove": [
+   "locationDocRemovePrepare",
+   ""
+  ],
+  "locationDocUpload": [
+   "locationDocUploadPrepare",
+   "file"
+  ],
+  "mailLogCollect": [
+   "mailLogCollectPrepare",
+   ""
+  ],
+  "manualResumeAsk": [
+   "manualResumeAskPrepare",
+   ""
+  ],
+  "obDocRemove": [
+   "obDocTrash",
+   "trash"
+  ],
+  "obDocUpload": [
+   "obDocPrepare",
+   "base64"
+  ],
+  "obPacketUpload": [
+   "obPacketPrepare",
+   "base64"
+  ],
+  "packetAttach": [
+   "packetAttachPrepare",
+   "base64"
+  ],
+  "platformMemberSweep": [
+   "platformMemberSweepPrepare",
+   ""
+  ],
+  "reconImportLatest": [
+   "reconImportPrepare",
+   ""
+  ],
+  "reconRun": [
+   "reconRunPrepare",
+   ""
+  ],
+  "reconUploadReport": [
+   "reconUploadPrepare",
+   "contentBase64"
+  ],
+  "recruitmentDoc": [
+   "recruitmentDocPrepare",
+   ""
+  ],
+  "recruitmentSync": [
+   "recruitmentSyncPrepare",
+   ""
+  ],
+  "resumeAttach": [
+   "resumeAttachPrepare",
+   ""
+  ],
+  "resumeInboxImport": [
+   "resumeInboxImportPrepare",
+   ""
+  ],
+  "resumeIntakeCommit": [
+   "resumeIntakeCommitPrepare",
+   ""
+  ],
+  "resumeParse": [
+   "resumeParsePrepare",
+   "base64"
+  ],
+  "resumeScorecardRun": [
+   "resumeScorecardRunPrepare",
+   ""
+  ],
+  "resumeStore": [
+   "resumeStorePrepare",
+   "base64"
+  ],
+  "resumeUpload": [
+   "resumeUploadPrepare",
+   "base64"
+  ],
+  "runtimeSweepNow": [
+   "runtimeSweepNowPrepare",
+   ""
+  ],
+  "scraperRun": [
+   "scraperRunPrepare",
+   ""
+  ],
+  "scraperScore": [
+   "scraperScorePrepare",
+   ""
+  ],
+  "screenAnalyze": [
+   "screenAnalyzePrepare",
+   ""
+  ],
+  "screenForceError": [
+   "screenForceErrorPrepare",
+   ""
+  ],
+  "shopEstimate": [
+   "shopEstimatePrepare",
+   ""
+  ],
+  "staffAttendanceSweep": [
+   "staffAttendanceDue",
+   ""
+  ],
+  "tableDocUpload": [
+   "tableDocUploadPrepare",
+   "base64"
+  ],
+  "talentAuthorizationSweep": [
+   "talentAuthorizationDue",
+   ""
+  ],
+  "talentPipelineMigrate": [
+   "talentPipelineMigratePrepare",
+   ""
+  ],
+  "talentPipelineSync": [
+   "talentPipelineDue",
+   ""
+  ],
+  "tenantEnsure": [
+   "tenantEnsurePrepare",
+   ""
+  ]
+ },
+ "app_packs": {
+  "specs": {
+   "client-candidates": {
+    "fold": "strip",
+    "key_re": "[A-Za-z0-9_\\-]{3,80}",
+    "writes": [
+     "clientCandidateDocEdit",
+     "clientCandidateEdit",
+     "clientCandidateFile",
+     "clientCandidateNoteEdit",
+     "clientCandidatePhoto",
+     "clientCandidateWrite"
+    ],
+    "elsewhere": [
+     "leadOpened"
+    ],
+    "sweeps": [
+     "scraperNotify",
+     "scraperRun",
+     "scraperScore"
+    ],
+    "resources": [
+     "potentialClients"
+    ],
+    "verbs": "by_key",
+    "query_key": false,
+    "warm_order": 0
+   },
+   "client-profiles": {
+    "fold": "strip",
+    "key_re": "[A-Za-z0-9_.\\-]{1,80}",
+    "writes": [
+     "clientProfileApptAdd",
+     "clientProfileApptSave",
+     "clientProfileDoctorAdd",
+     "clientProfileIncidentStatus",
+     "clientProfileIspSections",
+     "clientProfileOverride",
+     "clientProfilePhoto",
+     "clientProfileRename",
+     "clientProfileSave",
+     "clientProfileSecretSet",
+     "clientProfileStatus",
+     "emarMedUpdate"
+    ],
+    "elsewhere": [
+     "emarMedAdd",
+     "emarMedDelete",
+     "familyProfileSave",
+     "finSeedBalance",
+     "finSubmitTransaction",
+     "locationClientsAdd",
+     "locationNoteAdd",
+     "locationNoteEdit",
+     "locationNoteState",
+     "ssaProfileClients",
+     "ssaProfileEdit",
+     "vehicleCalendarTripSave"
+    ],
+    "sweeps": [
+     "guardiansToRoster",
+     "ispContactsSweep"
+    ],
+    "resources": [
+     "clientFiles",
+     "clientNotes",
+     "clients",
+     "drAppointments",
+     "drVisits",
+     "financeBalances",
+     "financeTransactions",
+     "isps",
+     "marEntries",
+     "marErrors",
+     "medications",
+     "uiIncidents"
+    ],
+    "verbs": "by_key",
+    "query_key": false,
+    "warm_order": 0
+   },
+   "family-index": {
+    "fold": "lower",
+    "key_re": "all",
+    "writes": [
+     "familyCreate",
+     "familyProfileDocAdd",
+     "familyProfileNoteAdd",
+     "familyProfileNoteEdit",
+     "familyProfileSave"
+    ],
+    "elsewhere": [
+     "clientProfileIspSections",
+     "clientProfileRename",
+     "clientProfileSave",
+     "clientProfileStatus"
+    ],
+    "sweeps": [
+     "guardiansToRoster",
+     "ispContactsSweep"
+    ],
+    "resources": [
+     "clients",
+     "isps",
+     "people",
+     "photos"
+    ],
+    "verbs": "by_key",
+    "query_key": false,
+    "warm_order": -1,
+    "view": true
+   },
+   "family-profiles": {
+    "fold": "strip",
+    "key_re": "fam_[a-z0-9]{3,120}",
+    "writes": [
+     "familyCreate",
+     "familyProfileCallEdit",
+     "familyProfileCallSchedule",
+     "familyProfileDocAdd",
+     "familyProfileIncidentTie",
+     "familyProfileNoteAdd",
+     "familyProfileNoteEdit",
+     "familyProfilePhoto",
+     "familyProfileSave"
+    ],
+    "elsewhere": [
+     "clientProfileIspSections",
+     "clientProfileRename",
+     "clientProfileSave",
+     "clientProfileStatus"
+    ],
+    "sweeps": [
+     "guardiansToRoster",
+     "ispContactsSweep"
+    ],
+    "resources": [
+     "clientFiles",
+     "clients",
+     "isps",
+     "people",
+     "tasks",
+     "uiIncidents"
+    ],
+    "verbs": "by_key",
+    "query_key": false,
+    "warm_order": 2
+   },
+   "locations": {
+    "fold": "upper",
+    "key_re": "[A-Z]{2,4}\\d{3,6}",
+    "writes": [
+     "locationAssetAdd",
+     "locationAssetEdit",
+     "locationClientsAdd",
+     "locationDocLink",
+     "locationDocRemove",
+     "locationDocUpload",
+     "locationHouseSave",
+     "locationIncidentEdit",
+     "locationIncidentFile",
+     "locationIstFile",
+     "locationIstTrain",
+     "locationNoteAdd",
+     "locationNoteEdit",
+     "locationNoteState",
+     "locationRepairEdit",
+     "locationRepairFile",
+     "locationStaffRemove",
+     "locationSupplyEdit",
+     "locationSupplyEntry"
+    ],
+    "elsewhere": [
+     "clientProfileRename",
+     "clientProfileSave",
+     "clientProfileStatus"
+    ],
+    "sweeps": [
+     "istRebuild",
+     "staffProfileIstAdd",
+     "staffProfileIstEdit"
+    ],
+    "resources": [
+     "houseInventory",
+     "istRecords",
+     "uiIncidents",
+     "workOrders"
+    ],
+    "verbs": "sweep",
+    "query_key": true,
+    "warm_order": 1
+   },
+   "ssa-profiles": {
+    "fold": "strip",
+    "key_re": "ssa_[a-z0-9]{1,80}",
+    "writes": [
+     "ssaProfileActivityEdit",
+     "ssaProfileClients",
+     "ssaProfileDocEdit",
+     "ssaProfileEdit",
+     "ssaProfileNoteAdd",
+     "ssaProfilePhoto"
+    ],
+    "elsewhere": [
+     "clientProfileRename",
+     "clientProfileSave",
+     "clientProfileStatus",
+     "familyProfileSave",
+     "locationClientsAdd"
+    ],
+    "sweeps": [
+     "ispContactsSweep"
+    ],
+    "resources": [
+     "clients"
+    ],
+    "verbs": "by_key",
+    "query_key": false,
+    "warm_order": 0
+   },
+   "staff-candidates": {
+    "fold": "strip",
+    "key_re": "CAN_[A-Za-z0-9]{6,80}",
+    "writes": [
+     "candidateProfileDocReview",
+     "candidateProfileDoor",
+     "candidateProfileEdit",
+     "candidateProfileNoteAdd",
+     "candidateProfileNoteEdit",
+     "candidateProfilePhoto",
+     "hiringScheduleCreate",
+     "moveStage",
+     "onboardingManualComplete",
+     "packetWaive",
+     "screenManualComplete",
+     "setDecision"
+    ],
+    "elsewhere": [
+     "candidateEdit",
+     "cjisUpload",
+     "docReview",
+     "docUpload",
+     "hiredStart",
+     "hiringAcceptedNotify",
+     "hiringCjisRequestSend",
+     "hiringDecisionAskSend",
+     "hiringDiscard",
+     "hiringOnboardingFinishAsk",
+     "hiringOutreachSms",
+     "hiringPhoneCollectAsk",
+     "hiringPhoneConfirmSend",
+     "hiringScreenCallSend",
+     "interviewDaysAskSend",
+     "interviewInviteSend",
+     "interviewSave",
+     "interviewSetWindow",
+     "interviewSlotsAsk",
+     "manualContactSend",
+     "manualResumeAsk",
+     "onboardingExtend",
+     "onboardingSetWindow",
+     "optOutSet",
+     "packetBind",
+     "packetUnwaive",
+     "packetUpload",
+     "resumeAttach",
+     "resumeScorecardRun",
+     "resumeUpload",
+     "screenAnalyze",
+     "screenPullTranscript",
+     "screenSave",
+     "screenSetDateAccepted",
+     "screenUseLast",
+     "tableDocUpload"
+    ],
+    "sweeps": [
+     "cjisApply",
+     "cjisFolderSweepNow",
+     "cjisSweep",
+     "commsSync",
+     "commsSyncSweep",
+     "hiredGraduateRun",
+     "packetRequestRun",
+     "recruitmentSync",
+     "screenCollectSweep",
+     "syncFromLegacy",
+     "talentArchive"
+    ],
+    "resources": [],
+    "verbs": "by_key",
+    "query_key": false,
+    "warm_order": 0
+   },
+   "staff-profiles": {
+    "fold": "strip",
+    "key_re": "[A-Za-z0-9_.\\-]{1,80}",
+    "writes": [
+     "staffProfileDrivingEdit",
+     "staffProfileEdit",
+     "staffProfileIstAdd",
+     "staffProfileIstEdit",
+     "staffProfileMaisEdit",
+     "staffProfilePhoto",
+     "staffProfileRename"
+    ],
+    "elsewhere": [],
+    "sweeps": [
+     "istRebuild",
+     "locationIstFile"
+    ],
+    "resources": [
+     "istRecords",
+     "people",
+     "photos"
+    ],
+    "verbs": "sweep",
+    "query_key": false,
+    "warm_order": 0,
+    "own_only": true
+   },
+   "staff-team": {
+    "fold": "lower",
+    "key_re": "[a-z0-9]{3,80}",
+    "writes": [
+     "staffProfileAssignTraining",
+     "staffProfileDocConclude",
+     "staffProfileDrivingEdit",
+     "staffProfileEdit",
+     "staffProfileHrIssueAdd",
+     "staffProfileIstAdd",
+     "staffProfileIstEdit",
+     "staffProfileMaisEdit",
+     "staffProfileNoteAdd",
+     "staffProfileNoteEdit",
+     "staffProfileNoteState",
+     "staffProfilePhoto",
+     "staffProfilePreferencesSave",
+     "staffProfileRename"
+    ],
+    "elsewhere": [
+     "certDocUpload",
+     "staffProfileAddressEdit"
+    ],
+    "sweeps": [
+     "istRebuild",
+     "locationIstFile"
+    ],
+    "resources": [],
+    "verbs": "by_key",
+    "query_key": false,
+    "warm_order": 3,
+    "warm_every_s": 7200
+   }
+  },
+  "verbs": [
+   "create",
+   "delete",
+   "remove",
+   "update"
+  ],
+  "door_resources": {
+   "callOffsDelete": "callOffs",
+   "clientFilesCreate": "clientFiles",
+   "clientFilesDelete": "clientFiles",
+   "clientFilesUpdate": "clientFiles",
+   "clientNotesCreate": "clientNotes",
+   "clientNotesDelete": "clientNotes",
+   "clientNotesUpdate": "clientNotes",
+   "commCallsRowsCreate": "commCalls",
+   "commCallsRowsDelete": "commCalls",
+   "commCallsRowsUpdate": "commCalls",
+   "commWhenCreate": "commWhen",
+   "commWhenDelete": "commWhen",
+   "commWhenUpdate": "commWhen",
+   "commWorkItemsRowsCreate": "commWorkItems",
+   "commWorkItemsRowsDelete": "commWorkItems",
+   "commWorkItemsRowsUpdate": "commWorkItems",
+   "credentialsCreate": "credentials",
+   "credentialsDelete": "credentials",
+   "credentialsUpdate": "credentials",
+   "diseasesCreate": "diseases",
+   "diseasesDelete": "diseases",
+   "diseasesUpdate": "diseases",
+   "docsDelete": "documents",
+   "dtBrittCreate": "dtBritt",
+   "dtBrittDelete": "dtBritt",
+   "dtBrittUpdate": "dtBritt",
+   "dtCassyCreate": "dtCassy",
+   "dtCassyDelete": "dtCassy",
+   "dtCassyUpdate": "dtCassy",
+   "dtMonthlyDocReviewCreate": "dtMonthlyDocReview",
+   "dtMonthlyDocReviewDelete": "dtMonthlyDocReview",
+   "dtMonthlyDocReviewUpdate": "dtMonthlyDocReview",
+   "dtNatCreate": "dtNat",
+   "dtNatDelete": "dtNat",
+   "dtNatUpdate": "dtNat",
+   "dtNotesCreate": "dtNotes",
+   "dtNotesDelete": "dtNotes",
+   "dtNotesUpdate": "dtNotes",
+   "dtReginaCreate": "dtRegina",
+   "dtReginaDelete": "dtRegina",
+   "dtReginaUpdate": "dtRegina",
+   "dtTammyCreate": "dtTammy",
+   "dtTammyDelete": "dtTammy",
+   "dtTammyUpdate": "dtTammy",
+   "dtTiearaCreate": "dtTieara",
+   "dtTiearaDelete": "dtTieara",
+   "dtTiearaUpdate": "dtTieara",
+   "financeBalancesCreate": "financeBalances",
+   "financeBalancesDelete": "financeBalances",
+   "financeBalancesUpdate": "financeBalances",
+   "financeConfigCreate": "financeConfig",
+   "financeConfigDelete": "financeConfig",
+   "financeConfigUpdate": "financeConfig",
+   "fleetVehiclesCreate": "fleetVehicles",
+   "fleetVehiclesDelete": "fleetVehicles",
+   "fleetVehiclesUpdate": "fleetVehicles",
+   "formAnswersCreate": "formAnswers",
+   "formAnswersDelete": "formAnswers",
+   "formAnswersUpdate": "formAnswers",
+   "formFilesRowsCreate": "formFiles",
+   "formFilesRowsDelete": "formFiles",
+   "formFilesRowsUpdate": "formFiles",
+   "formSubmissionsCreate": "formSubmissions",
+   "formSubmissionsDelete": "formSubmissions",
+   "formSubmissionsUpdate": "formSubmissions",
+   "formsRowsCreate": "forms",
+   "formsRowsDelete": "forms",
+   "formsRowsUpdate": "forms",
+   "helpfulContactsCreate": "helpfulContacts",
+   "helpfulContactsDelete": "helpfulContacts",
+   "houseInventoryCreate": "houseInventory",
+   "houseInventoryDelete": "houseInventory",
+   "houseInventoryUpdate": "houseInventory",
+   "hrTrackerCreate": "hrTracker",
+   "hrTrackerDelete": "hrTracker",
+   "hrTrackerUpdate": "hrTracker",
+   "incidentsCreate": "incidents",
+   "incidentsDelete": "incidents",
+   "incidentsUpdate": "incidents",
+   "inventoryItemsCreate": "inventoryItems",
+   "inventoryItemsDelete": "inventoryItems",
+   "inventoryItemsUpdate": "inventoryItems",
+   "leadsCreate": "leads",
+   "leadsDelete": "leads",
+   "leadsUpdate": "leads",
+   "learnAttemptsCreate": "learnAttempts",
+   "learnAttemptsDelete": "learnAttempts",
+   "learnAttemptsUpdate": "learnAttempts",
+   "learnSkillsCreate": "learnSkills",
+   "learnSkillsDelete": "learnSkills",
+   "learnSkillsUpdate": "learnSkills",
+   "locationIncidentEdit": "uiIncidents",
+   "locationIncidentFile": "uiIncidents",
+   "locationRepairEdit": "workOrders",
+   "locationRepairFile": "workOrders",
+   "marErrorsCreate": "marErrors",
+   "marErrorsDelete": "marErrors",
+   "marErrorsUpdate": "marErrors",
+   "mealLogCreate": "mealLog",
+   "mealLogDelete": "mealLog",
+   "mealLogUpdate": "mealLog",
+   "mealPlansCreate": "mealPlans",
+   "mealPlansDelete": "mealPlans",
+   "mealPlansUpdate": "mealPlans",
+   "mealProfileCreate": "mealProfile",
+   "mealProfileDelete": "mealProfile",
+   "mealProfileUpdate": "mealProfile",
+   "mileageLogsCreate": "mileageLogs",
+   "mileageLogsDelete": "mileageLogs",
+   "mileageLogsUpdate": "mileageLogs",
+   "missingMedicationsCreate": "missingMedications",
+   "missingMedicationsDelete": "missingMedications",
+   "missingMedicationsUpdate": "missingMedications",
+   "mmAbnormalDeliveriesCreate": "mmAbnormalDeliveries",
+   "mmAbnormalDeliveriesDelete": "mmAbnormalDeliveries",
+   "mmAbnormalDeliveriesUpdate": "mmAbnormalDeliveries",
+   "mmDrContactsCreate": "mmDrContacts",
+   "mmDrContactsDelete": "mmDrContacts",
+   "mmDrContactsUpdate": "mmDrContacts",
+   "mmDrsMedsCreate": "mmDrsMeds",
+   "mmDrsMedsDelete": "mmDrsMeds",
+   "mmDrsMedsUpdate": "mmDrsMeds",
+   "mmFormResponses1Create": "mmFormResponses1",
+   "mmFormResponses1Delete": "mmFormResponses1",
+   "mmFormResponses1Update": "mmFormResponses1",
+   "mmFormResponses4Create": "mmFormResponses4",
+   "mmFormResponses4Delete": "mmFormResponses4",
+   "mmFormResponses4Update": "mmFormResponses4",
+   "mmLowRefillsCreate": "mmLowRefills",
+   "mmLowRefillsDelete": "mmLowRefills",
+   "mmLowRefillsUpdate": "mmLowRefills",
+   "mmMedicationControlCreate": "mmMedicationControl",
+   "mmMedicationControlDelete": "mmMedicationControl",
+   "mmMedicationControlUpdate": "mmMedicationControl",
+   "peopleUpdate": "people",
+   "projectsCreate": "projects",
+   "projectsDelete": "projects",
+   "projectsUpdate": "projects",
+   "psiPunchesRowsCreate": "psiPunches",
+   "psiPunchesRowsDelete": "psiPunches",
+   "psiPunchesRowsUpdate": "psiPunches",
+   "quoMessagesCreate": "quoMessages",
+   "quoMessagesDelete": "quoMessages",
+   "quoMessagesUpdate": "quoMessages",
+   "quoSummariesCreate": "quoSummaries",
+   "quoSummariesDelete": "quoSummaries",
+   "quoSummariesUpdate": "quoSummaries",
+   "quoTranscriptsCreate": "quoTranscripts",
+   "quoTranscriptsDelete": "quoTranscripts",
+   "quoTranscriptsUpdate": "quoTranscripts",
+   "rbArchiveOfOnboardingChecklistCreate": "rbArchiveOfOnboardingChecklist",
+   "rbArchiveOfOnboardingChecklistDelete": "rbArchiveOfOnboardingChecklist",
+   "rbArchiveOfOnboardingChecklistUpdate": "rbArchiveOfOnboardingChecklist",
+   "rbDashboardCreate": "rbDashboard",
+   "rbDashboardDelete": "rbDashboard",
+   "rbDashboardUpdate": "rbDashboard",
+   "rbDocumentsUploadedCreate": "rbDocumentsUploaded",
+   "rbDocumentsUploadedDelete": "rbDocumentsUploaded",
+   "rbDocumentsUploadedUpdate": "rbDocumentsUploaded",
+   "rbPhoneInterviewScriptCreate": "rbPhoneInterviewScript",
+   "rbPhoneInterviewScriptDelete": "rbPhoneInterviewScript",
+   "rbPhoneInterviewScriptUpdate": "rbPhoneInterviewScript",
+   "rbPhoneScreenAnalysisCreate": "rbPhoneScreenAnalysis",
+   "rbPhoneScreenAnalysisDelete": "rbPhoneScreenAnalysis",
+   "rbPhoneScreenAnalysisUpdate": "rbPhoneScreenAnalysis",
+   "rbResumeAnalysisCreate": "rbResumeAnalysis",
+   "rbResumeAnalysisDelete": "rbResumeAnalysis",
+   "rbResumeAnalysisUpdate": "rbResumeAnalysis",
+   "rbTextMessagesCreate": "rbTextMessages",
+   "rbTextMessagesDelete": "rbTextMessages",
+   "rbTextMessagesUpdate": "rbTextMessages",
+   "reconErrorsCreate": "recon_errors",
+   "reconErrorsDelete": "recon_errors",
+   "reconErrorsUpdate": "recon_errors",
+   "reconRunsCreate": "recon_runs",
+   "reconRunsDelete": "recon_runs",
+   "reconRunsUpdate": "recon_runs",
+   "recruitOnboardingCreate": "recruitOnboarding",
+   "recruitOnboardingDelete": "recruitOnboarding",
+   "recruitOnboardingUpdate": "recruitOnboarding",
+   "recruitPipelineCreate": "recruitPipeline",
+   "recruitPipelineDelete": "recruitPipeline",
+   "recruitPipelineUpdate": "recruitPipeline",
+   "repairInventoryCreate": "repairInventory",
+   "repairInventoryDelete": "repairInventory",
+   "repairInventoryUpdate": "repairInventory",
+   "repairRequestsCreate": "repairRequests",
+   "repairRequestsDelete": "repairRequests",
+   "repairRequestsUpdate": "repairRequests",
+   "routesCreate": "routes",
+   "routesDelete": "routes",
+   "routesUpdate": "routes",
+   "screeningNotesCreate": "screeningNotes",
+   "screeningNotesDelete": "screeningNotes",
+   "screeningNotesUpdate": "screeningNotes",
+   "shiftCardsCreate": "shiftCards",
+   "shiftCardsDelete": "shiftCards",
+   "shiftCardsUpdate": "shiftCards",
+   "shiftMatrixCreate": "shiftMatrix",
+   "shiftMatrixDelete": "shiftMatrix",
+   "shiftMatrixUpdate": "shiftMatrix",
+   "shiftTimelineCreate": "shiftTimeline",
+   "shiftTimelineDelete": "shiftTimeline",
+   "shiftTimelineUpdate": "shiftTimeline",
+   "shiftsCreate": "shifts",
+   "shiftsDelete": "shifts",
+   "shiftsUpdate": "shifts",
+   "shopperItemsCreate": "shopperItems",
+   "shopperItemsDelete": "shopperItems",
+   "shopperItemsUpdate": "shopperItems",
+   "shopperPricesCreate": "shopperPrices",
+   "shopperPricesDelete": "shopperPrices",
+   "shopperPricesUpdate": "shopperPrices",
+   "smartCommsActivityCreate": "smartCommsActivity",
+   "smartCommsActivityDelete": "smartCommsActivity",
+   "smartCommsActivityUpdate": "smartCommsActivity",
+   "smartCommsDeskCreate": "smartCommsDesk",
+   "smartCommsDeskDelete": "smartCommsDesk",
+   "smartCommsDeskUpdate": "smartCommsDesk",
+   "teamProjectsCreate": "teamProjects",
+   "teamProjectsDelete": "teamProjects",
+   "teamProjectsUpdate": "teamProjects",
+   "timePunchesCreate": "time_punches",
+   "timePunchesDelete": "time_punches",
+   "timePunchesUpdate": "time_punches",
+   "travelTripsCreate": "travelTrips",
+   "travelTripsDelete": "travelTrips",
+   "travelTripsUpdate": "travelTrips",
+   "truelinkRunsCreate": "truelinkRuns",
+   "truelinkRunsDelete": "truelinkRuns",
+   "truelinkRunsUpdate": "truelinkRuns",
+   "uiIncidentsDelete": "uiIncidents",
+   "uiIncidentsUpdate": "uiIncidents",
+   "vbCategoryKnowledgeCreate": "vbCategoryKnowledge",
+   "vbCategoryKnowledgeDelete": "vbCategoryKnowledge",
+   "vbCategoryKnowledgeUpdate": "vbCategoryKnowledge",
+   "vbCategoryMapCreate": "vbCategoryMap",
+   "vbCategoryMapDelete": "vbCategoryMap",
+   "vbCategoryMapUpdate": "vbCategoryMap",
+   "vbClientNamesCreate": "vbClientNames",
+   "vbClientNamesDelete": "vbClientNames",
+   "vbClientNamesUpdate": "vbClientNames",
+   "vbFollowUpsIncidentsCreate": "vbFollowUpsIncidents",
+   "vbFollowUpsIncidentsDelete": "vbFollowUpsIncidents",
+   "vbFollowUpsIncidentsUpdate": "vbFollowUpsIncidents",
+   "vbFollowUpsMainCreate": "vbFollowUpsMain",
+   "vbFollowUpsMainDelete": "vbFollowUpsMain",
+   "vbFollowUpsMainUpdate": "vbFollowUpsMain",
+   "vbGeneralRulesCreate": "vbGeneralRules",
+   "vbGeneralRulesDelete": "vbGeneralRules",
+   "vbGeneralRulesUpdate": "vbGeneralRules",
+   "vbHomesCreate": "vbHomes",
+   "vbHomesDelete": "vbHomes",
+   "vbHomesUpdate": "vbHomes",
+   "vbPoliciesCreate": "vbPolicies",
+   "vbPoliciesDelete": "vbPolicies",
+   "vbPoliciesUpdate": "vbPolicies",
+   "vbScheduleCreate": "vbSchedule",
+   "vbScheduleDelete": "vbSchedule",
+   "vbScheduleUpdate": "vbSchedule",
+   "vbStaffNamesCreate": "vbStaffNames",
+   "vbStaffNamesDelete": "vbStaffNames",
+   "vbStaffNamesUpdate": "vbStaffNames",
+   "vbSubProcessCreate": "vbSubProcess",
+   "vbSubProcessDelete": "vbSubProcess",
+   "vbSubProcessUpdate": "vbSubProcess",
+   "workOrdersCreate": "workOrders",
+   "workOrdersDelete": "workOrders",
+   "workOrdersUpdate": "workOrders"
+  },
+  "events": {
+   "client-candidates": "app:client-candidates",
+   "client-profiles": "app:client-profiles",
+   "family-index": "app:family-profiles",
+   "family-profiles": "app:family-profiles",
+   "locations": "app:locations",
+   "ssa-profiles": "app:ssa-profiles",
+   "staff-candidates": "app:staff-candidates",
+   "staff-profiles": "app:staff-profiles",
+   "staff-team": "app:staff-profiles"
+  },
+  "doors": {
+   "staff-profiles": "staff-team"
+  },
+  "gates": {
+   "family-index": "family-profiles"
+  },
+  "prefixes": {
+   "client-candidates": [
+    "clientCandidate"
+   ],
+   "client-profiles": [
+    "clientProfile",
+    "clientCreate",
+    "emarMed"
+   ],
+   "family-profiles": [
+    "familyProfile"
+   ],
+   "locations": [
+    "location"
+   ],
+   "ssa-profiles": [
+    "ssaProfile"
+   ],
+   "staff-candidates": [
+    "candidateProfile"
+   ],
+   "staff-profiles": [
+    "staffProfile"
+   ]
+  },
+  "python_behind": {
+   "certDocRead": [
+    "cert-docs"
+   ],
+   "certDocUpload": [
+    "cert-docs"
+   ],
+   "certUploadConfirm": [
+    "cert-docs"
+   ],
+   "complianceReviewResolve": [
+    "cert-docs"
+   ],
+   "emp360EditField": [
+    "my-profile",
+    "cert-docs"
+   ],
+   "myCalendarVacationFile": [
+    "my-calendar"
+   ],
+   "releaseUser": [
+    "release-users"
+   ],
+   "schedulingAnswer": [
+    "my-calendar"
+   ],
+   "schedulingWithdraw": [
+    "my-calendar"
+   ],
+   "staffDocsApplyDates": [
+    "cert-docs"
+   ],
+   "staffProfileAddressEdit": [
+    "my-profile"
+   ],
+   "staffProfileEdit": [
+    "my-profile",
+    "cert-docs"
+   ],
+   "staffProfileRename": [
+    "my-profile",
+    "cert-docs"
+   ],
+   "supportDeskDecide": [
+    "my-calendar"
+   ]
+  },
+  "people_writes": [
+   "appAccessSetBulk",
+   "appBadgeAccessSet",
+   "appControlDelegatesSet",
+   "appTenantAccessSet",
+   "clientCreate",
+   "clientProfileRename",
+   "clientProfileSave",
+   "clientProfileStatus",
+   "clientUserCreate",
+   "configBadgeAccessSet",
+   "hiringAlertsSet",
+   "locationClientsAdd",
+   "profileUpdate",
+   "userCreate",
+   "userDelete",
+   "userUpdate",
+   "usersArm"
+  ],
+  "people_resources": [
+   "clients",
+   "isps",
+   "users"
+  ],
+  "hidden_parts": {
+   "client-profiles": {
+    "client_billing": [
+     "billing"
+    ],
+    "client_care_home": [
+     "care_home"
+    ],
+    "client_medication": [
+     "meds",
+     "mar",
+     "mar_own",
+     "refills"
+    ]
+   },
+   "locations": {
+    "location_supplies": [
+     "supplies"
+    ]
+   },
+   "ssa-profiles": {
+    "ssa_documents": [
+     "documents"
+    ]
+   }
+  },
+  "own_apps": [
+   "locations",
+   "client-profiles",
+   "ssa-profiles",
+   "staff-profiles"
+  ],
+  "own_client_parts": {
+   "activity": "activity_own",
+   "appointments": "appointments",
+   "care_daily": "care_daily",
+   "care_goals": "care_goals",
+   "care_health": "care_health",
+   "care_home": "care_home",
+   "care_plans": "care_plans",
+   "care_team": "care_team",
+   "details": "details",
+   "funds": "funds",
+   "incidents": "incidents",
+   "mar": "mar_own",
+   "meds": "meds",
+   "roster": "roster_own",
+   "transport": "transport_own"
+  },
+  "own_view_parts": {
+   "locations": [
+    "scope",
+    "overview",
+    "staff",
+    "incidents",
+    "documents"
+   ],
+   "ssa-profiles": [
+    "roster",
+    "overview",
+    "documents"
+   ]
+  },
+  "own_house_parts": [
+   "supplies",
+   "repairs"
+  ]
+ },
+ "finish": {
+  "access_actions": [
+   "appAccessSetBulk",
+   "appBadgeAccessSet",
+   "appTenantAccessSet"
+  ],
+  "generic_verbs": [
+   "create",
+   "delete",
+   "get",
+   "list",
+   "update"
+  ],
+  "rings": {
+   "app:client-candidates": [
+    "clientCandidateRoster",
+    "clientCandidateOverview",
+    "clientCandidateActions",
+    "clientCandidateIntake",
+    "clientCandidateDocuments",
+    "clientCandidateActivity",
+    "clientCandidateTranscripts"
+   ],
+   "app:client-profiles": [
+    "clientProfileRoster",
+    "clientProfileDetails",
+    "clientProfileCare",
+    "clientProfileMeds",
+    "clientProfileActivity",
+    "clientProfileIncidents"
+   ],
+   "app:family-profiles": [
+    "familyProfileRoster",
+    "familyProfileOverview",
+    "familyProfileDocuments",
+    "familyProfileActivity",
+    "familyProfileNotes"
+   ],
+   "app:locations": [
+    "locationScope",
+    "locationOverview",
+    "locationStaff",
+    "locationSupplies",
+    "locationNotes",
+    "locationRepairs",
+    "locationIncidents",
+    "locationDocuments"
+   ],
+   "app:ssa-profiles": [
+    "ssaProfileRoster",
+    "ssaProfileOverview",
+    "ssaProfileDocuments",
+    "ssaProfileActivity",
+    "ssaProfileNotes"
+   ],
+   "app:staff-candidates": [
+    "candidateProfileRoster",
+    "candidateProfileOverview",
+    "candidateProfileActions",
+    "candidateProfileInterviews",
+    "candidateProfileDocuments",
+    "candidateProfileActivity",
+    "candidateProfileTranscripts"
+   ],
+   "app:staff-profiles": [
+    "staffProfileRoster",
+    "staffProfileOverview",
+    "staffProfileShifts",
+    "staffProfileEmployment",
+    "staffProfileDocuments",
+    "staffProfileCompliance",
+    "staffProfileHr",
+    "staffProfileActions",
+    "staffProfileActivity",
+    "staffProfileNotes",
+    "staffProfileTranscripts",
+    "staffProfilePerformance"
+   ],
+   "housecal": [
+    "lane:my-work",
+    "lane:my-calendar",
+    "lane:my-inbox"
+   ],
+   "my-calendar": [
+    "lane:my-calendar"
+   ],
+   "my-inbox": [
+    "lane:my-inbox"
+   ],
+   "my-profile": [
+    "lane:my-profile"
+   ],
+   "my-work": [
+    "lane:my-work"
+   ],
+   "scheduling": [
+    "schedulingBoard",
+    "schedulingStaffShifts",
+    "schedulingTimeOffList",
+    "schedulingBuilderRead",
+    "supportDeskList",
+    "lane:my-work",
+    "lane:my-calendar",
+    "lane:my-inbox"
+   ],
+   "staff-profiles": [
+    "staffProfilePreferences",
+    "employeeLoanList",
+    "employeeLoanMine",
+    "lane:my-work",
+    "schedulingBuilderRead"
+   ],
+   "support-desk": [
+    "supportDeskList",
+    "lane:my-work",
+    "lane:my-calendar",
+    "lane:my-inbox"
+   ],
+   "vehicle-calendar": [
+    "vehicleCalendarBoard",
+    "vehicleCalendarClientTrips",
+    "vehicleCalendarStaffTrips",
+    "supportDeskList",
+    "lane:my-work",
+    "lane:my-inbox",
+    "clientSourceTransport"
+   ]
+  },
+  "lane_writes": {
+   "my-calendar": [
+    "myCalendarVacationFile",
+    "schedulingAnswer"
+   ],
+   "my-inbox": [
+    "schedulingAnswer",
+    "supportDeskDecide",
+    "supportInboxAnswer",
+    "vehicleCalendarAnswer"
+   ],
+   "my-profile": [
+    "certDocUpload",
+    "certUploadConfirm",
+    "certUploadRecord",
+    "staffProfileAddressEdit"
+   ],
+   "my-work": [
+    "certDocUpload",
+    "employeeLoanAnswer",
+    "employeeLoanRequest",
+    "myWorkIstApprove",
+    "myWorkIstBook",
+    "schedulingAnswer",
+    "supportDeskAdp",
+    "supportDeskDecide",
+    "supportInboxAnswer",
+    "vehicleCalendarAnswer"
+   ]
+  },
+  "scheduling": {
+   "event": "scheduling",
+   "reads": [
+    "schedulingBoard",
+    "schedulingBuilderRead",
+    "schedulingStaffShifts",
+    "schedulingTimeOffList"
+   ]
+  },
+  "vehicle_calendar": {
+   "event": "vehicle-calendar",
+   "writes": [
+    "supportDeskDecide",
+    "vehicleCalendarAnswer",
+    "vehicleCalendarImport",
+    "vehicleCalendarRequest",
+    "vehicleCalendarSeed",
+    "vehicleCalendarSettingsSet",
+    "vehicleCalendarTripSave",
+    "vehicleCalendarVehicleSave",
+    "vehicleCalendarWithdraw"
+   ]
+  },
+  "staff_profiles": {
+   "event": "staff-profiles",
+   "writes": [
+    "employeeLoanAnswer",
+    "employeeLoanPayment",
+    "employeeLoanRequest",
+    "staffProfilePreferencesSave"
+   ]
+  },
+  "smart_comms": {
+   "event": "smartcomms",
+   "writes": [
+    "commContributionVerdict",
+    "commProposalsDecide",
+    "commProposalsIngest",
+    "commRecordSweep",
+    "commsInboundSweep",
+    "inboundMarkSeen",
+    "openShiftCovered",
+    "optOutSet",
+    "smartCommsActivityUpdate",
+    "smartCommsDeskUpdate",
+    "smartCommsRun",
+    "smartCommsSet",
+    "staffBroadcastCarry",
+    "staffBroadcastContinue",
+    "staffBroadcastSend",
+    "staffBroadcastWithdraw"
+   ]
+  },
+  "forms": {
+   "app": "forms",
+   "writes": [
+    "formAnswersCreate",
+    "formAnswersDelete",
+    "formAnswersUpdate",
+    "formArchive",
+    "formFileStore",
+    "formFilesRowsCreate",
+    "formFilesRowsDelete",
+    "formFilesRowsUpdate",
+    "formImportGoogle",
+    "formPublicFileSession",
+    "formPublicFileStore",
+    "formPublicSubmit",
+    "formRename",
+    "formRotateToken",
+    "formSave",
+    "formSubmissionHandle",
+    "formSubmissionsCreate",
+    "formSubmissionsDelete",
+    "formSubmissionsUpdate",
+    "formsRowsCreate",
+    "formsRowsDelete",
+    "formsRowsUpdate"
+   ]
+  },
+  "support_desk": {
+   "event": "support-desk",
+   "writes": [
+    "myCalendarVacationFile",
+    "supportDeskAdp",
+    "supportDeskDecide",
+    "supportDeskSettingsSet",
+    "supportInboxAnswer"
+   ],
+   "sched_writes": [
+    "myCalendarVacationFile",
+    "supportDeskDecide"
+   ]
+  },
+  "docs": {
+   "app": "docs",
+   "resource": "documents"
+  },
+  "learning": {
+   "app": "learning",
+   "writes": [
+    "learnAttempt",
+    "learnSkillSave"
+   ],
+   "resources": [
+    "financeConfig",
+    "learnAttempts",
+    "learnSkills"
+   ]
+  },
+  "recon": {
+   "app": "time-recon",
+   "writes": [
+    "reconAutoRecord",
+    "reconConfigSet",
+    "reconErrorRemind",
+    "reconErrorResolve",
+    "reconImportLatest",
+    "reconRun",
+    "reconRunClose",
+    "reconUpload",
+    "reconUploadReport"
+   ]
+  },
+  "slice_resources": {
+   "call_offs": "callOffs",
+   "questionnaires": "questionnaireResponses",
+   "support_requests": "staffRequests",
+   "staff_issues": "staffIssues"
+  },
+  "sheet_resource_doors": {
+   "auditsCreate": "audits",
+   "auditsDelete": "audits",
+   "auditsUpdate": "audits",
+   "billingClaimsCreate": "billingClaims",
+   "billingClaimsDelete": "billingClaims",
+   "billingClaimsUpdate": "billingClaims",
+   "booksCreate": "books",
+   "booksDelete": "books",
+   "booksFetch": "books",
+   "booksFileUpload": "books",
+   "booksHarvest": "books",
+   "booksMine": "books",
+   "booksSeed": "books",
+   "booksUpdate": "books",
+   "careDocsCreate": "careDocs",
+   "careDocsDelete": "careDocs",
+   "careDocsUpdate": "careDocs",
+   "clientFilesCreate": "clientFiles",
+   "clientFilesDelete": "clientFiles",
+   "clientFilesUpdate": "clientFiles",
+   "clientNotesCreate": "clientNotes",
+   "clientNotesDelete": "clientNotes",
+   "clientNotesUpdate": "clientNotes",
+   "commCallsRowsCreate": "commCalls",
+   "commCallsRowsDelete": "commCalls",
+   "commCallsRowsUpdate": "commCalls",
+   "commWhenCreate": "commWhen",
+   "commWhenDelete": "commWhen",
+   "commWhenUpdate": "commWhen",
+   "commWorkItemsRowsCreate": "commWorkItems",
+   "commWorkItemsRowsDelete": "commWorkItems",
+   "commWorkItemsRowsUpdate": "commWorkItems",
+   "credentialsCreate": "credentials",
+   "credentialsDelete": "credentials",
+   "credentialsUpdate": "credentials",
+   "diseasesCreate": "diseases",
+   "diseasesDelete": "diseases",
+   "diseasesUpdate": "diseases",
+   "dtBrittCreate": "dtBritt",
+   "dtBrittDelete": "dtBritt",
+   "dtBrittUpdate": "dtBritt",
+   "dtCassyCreate": "dtCassy",
+   "dtCassyDelete": "dtCassy",
+   "dtCassyUpdate": "dtCassy",
+   "dtMonthlyDocReviewCreate": "dtMonthlyDocReview",
+   "dtMonthlyDocReviewDelete": "dtMonthlyDocReview",
+   "dtMonthlyDocReviewUpdate": "dtMonthlyDocReview",
+   "dtNatCreate": "dtNat",
+   "dtNatDelete": "dtNat",
+   "dtNatUpdate": "dtNat",
+   "dtNotesCreate": "dtNotes",
+   "dtNotesDelete": "dtNotes",
+   "dtNotesUpdate": "dtNotes",
+   "dtReginaCreate": "dtRegina",
+   "dtReginaDelete": "dtRegina",
+   "dtReginaUpdate": "dtRegina",
+   "dtTammyCreate": "dtTammy",
+   "dtTammyDelete": "dtTammy",
+   "dtTammyUpdate": "dtTammy",
+   "dtTiearaCreate": "dtTieara",
+   "dtTiearaDelete": "dtTieara",
+   "dtTiearaUpdate": "dtTieara",
+   "equipmentCreate": "equipment",
+   "equipmentDelete": "equipment",
+   "equipmentUpdate": "equipment",
+   "expenseReportsCreate": "expenseReports",
+   "expenseReportsDelete": "expenseReports",
+   "expenseReportsUpdate": "expenseReports",
+   "financeBalancesCreate": "financeBalances",
+   "financeBalancesDelete": "financeBalances",
+   "financeBalancesUpdate": "financeBalances",
+   "financeConfigCreate": "financeConfig",
+   "financeConfigDelete": "financeConfig",
+   "financeConfigUpdate": "financeConfig",
+   "fleetVehiclesCreate": "fleetVehicles",
+   "fleetVehiclesDelete": "fleetVehicles",
+   "fleetVehiclesUpdate": "fleetVehicles",
+   "formAnswersCreate": "formAnswers",
+   "formAnswersDelete": "formAnswers",
+   "formAnswersUpdate": "formAnswers",
+   "formFilesRowsCreate": "formFiles",
+   "formFilesRowsDelete": "formFiles",
+   "formFilesRowsUpdate": "formFiles",
+   "formSubmissionsCreate": "formSubmissions",
+   "formSubmissionsDelete": "formSubmissions",
+   "formSubmissionsUpdate": "formSubmissions",
+   "formsRowsCreate": "forms",
+   "formsRowsDelete": "forms",
+   "formsRowsUpdate": "forms",
+   "helpfulContactsCreate": "helpfulContacts",
+   "helpfulContactsDelete": "helpfulContacts",
+   "houseInventoryCreate": "houseInventory",
+   "houseInventoryDelete": "houseInventory",
+   "houseInventoryUpdate": "houseInventory",
+   "hrTrackerCreate": "hrTracker",
+   "hrTrackerDelete": "hrTracker",
+   "hrTrackerUpdate": "hrTracker",
+   "imageBankCreate": "photos",
+   "imageBankDelete": "photos",
+   "imageBankUpdate": "photos",
+   "incidentsCreate": "incidents",
+   "incidentsDelete": "incidents",
+   "incidentsUpdate": "incidents",
+   "inventoryItemsCreate": "inventoryItems",
+   "inventoryItemsDelete": "inventoryItems",
+   "inventoryItemsUpdate": "inventoryItems",
+   "ispsCreate": "isps",
+   "ispsDelete": "isps",
+   "ispsUpdate": "isps",
+   "leadOpened": "potentialClients",
+   "leadsCreate": "leads",
+   "leadsDelete": "leads",
+   "leadsUpdate": "leads",
+   "learnAttemptsCreate": "learnAttempts",
+   "learnAttemptsDelete": "learnAttempts",
+   "learnAttemptsUpdate": "learnAttempts",
+   "learnSkillsCreate": "learnSkills",
+   "learnSkillsDelete": "learnSkills",
+   "learnSkillsUpdate": "learnSkills",
+   "marEntriesCreate": "marEntries",
+   "marEntriesDelete": "marEntries",
+   "marEntriesUpdate": "marEntries",
+   "marErrorsCreate": "marErrors",
+   "marErrorsDelete": "marErrors",
+   "marErrorsUpdate": "marErrors",
+   "mealLogCreate": "mealLog",
+   "mealLogDelete": "mealLog",
+   "mealLogUpdate": "mealLog",
+   "mealPlansCreate": "mealPlans",
+   "mealPlansDelete": "mealPlans",
+   "mealPlansUpdate": "mealPlans",
+   "mealProfileCreate": "mealProfile",
+   "mealProfileDelete": "mealProfile",
+   "mealProfileUpdate": "mealProfile",
+   "medCatalogCreate": "medCatalog",
+   "medCatalogDelete": "medCatalog",
+   "medCatalogUpdate": "medCatalog",
+   "medDelAdvance": "medDelFlowsRaw",
+   "medDelCancel": "medDelFlowsRaw",
+   "medDelDailySweep": "medDelFlowsRaw",
+   "medDelFlowsCreate": "medDelFlows",
+   "medDelFlowsDelete": "medDelFlows",
+   "medDelFlowsUpdate": "medDelFlows",
+   "medDelSeed": "medDelFlowsRaw",
+   "medDelStart": "medDelFlowsRaw",
+   "medDeliveriesCreate": "medDeliveries",
+   "medDeliveriesDelete": "medDeliveries",
+   "medDeliveriesUpdate": "medDeliveries",
+   "mileageLogsCreate": "mileageLogs",
+   "mileageLogsDelete": "mileageLogs",
+   "mileageLogsUpdate": "mileageLogs",
+   "missingMedicationsCreate": "missingMedications",
+   "missingMedicationsDelete": "missingMedications",
+   "missingMedicationsUpdate": "missingMedications",
+   "mmAbnormalDeliveriesCreate": "mmAbnormalDeliveries",
+   "mmAbnormalDeliveriesDelete": "mmAbnormalDeliveries",
+   "mmAbnormalDeliveriesUpdate": "mmAbnormalDeliveries",
+   "mmDrContactsCreate": "mmDrContacts",
+   "mmDrContactsDelete": "mmDrContacts",
+   "mmDrContactsUpdate": "mmDrContacts",
+   "mmDrsMedsCreate": "mmDrsMeds",
+   "mmDrsMedsDelete": "mmDrsMeds",
+   "mmDrsMedsUpdate": "mmDrsMeds",
+   "mmFormResponses1Create": "mmFormResponses1",
+   "mmFormResponses1Delete": "mmFormResponses1",
+   "mmFormResponses1Update": "mmFormResponses1",
+   "mmFormResponses4Create": "mmFormResponses4",
+   "mmFormResponses4Delete": "mmFormResponses4",
+   "mmFormResponses4Update": "mmFormResponses4",
+   "mmLowRefillsCreate": "mmLowRefills",
+   "mmLowRefillsDelete": "mmLowRefills",
+   "mmLowRefillsUpdate": "mmLowRefills",
+   "mmMedicationControlCreate": "mmMedicationControl",
+   "mmMedicationControlDelete": "mmMedicationControl",
+   "mmMedicationControlUpdate": "mmMedicationControl",
+   "peopleUpdate": "people",
+   "policyAcksCreate": "policyAcks",
+   "policyAcksDelete": "policyAcks",
+   "policyAcksUpdate": "policyAcks",
+   "potentialClientsCreate": "potentialClients",
+   "potentialClientsDelete": "potentialClients",
+   "potentialClientsUpdate": "potentialClients",
+   "projectsCreate": "projects",
+   "projectsDelete": "projects",
+   "projectsUpdate": "projects",
+   "psiPunchesRowsCreate": "psiPunches",
+   "psiPunchesRowsDelete": "psiPunches",
+   "psiPunchesRowsUpdate": "psiPunches",
+   "quoMessagesCreate": "quoMessages",
+   "quoMessagesDelete": "quoMessages",
+   "quoMessagesUpdate": "quoMessages",
+   "quoSummariesCreate": "quoSummaries",
+   "quoSummariesDelete": "quoSummaries",
+   "quoSummariesUpdate": "quoSummaries",
+   "quoTranscriptsCreate": "quoTranscripts",
+   "quoTranscriptsDelete": "quoTranscripts",
+   "quoTranscriptsUpdate": "quoTranscripts",
+   "rbArchiveOfOnboardingChecklistCreate": "rbArchiveOfOnboardingChecklist",
+   "rbArchiveOfOnboardingChecklistDelete": "rbArchiveOfOnboardingChecklist",
+   "rbArchiveOfOnboardingChecklistUpdate": "rbArchiveOfOnboardingChecklist",
+   "rbDashboardCreate": "rbDashboard",
+   "rbDashboardDelete": "rbDashboard",
+   "rbDashboardUpdate": "rbDashboard",
+   "rbDocumentsUploadedCreate": "rbDocumentsUploaded",
+   "rbDocumentsUploadedDelete": "rbDocumentsUploaded",
+   "rbDocumentsUploadedUpdate": "rbDocumentsUploaded",
+   "rbPhoneInterviewScriptCreate": "rbPhoneInterviewScript",
+   "rbPhoneInterviewScriptDelete": "rbPhoneInterviewScript",
+   "rbPhoneInterviewScriptUpdate": "rbPhoneInterviewScript",
+   "rbPhoneScreenAnalysisCreate": "rbPhoneScreenAnalysis",
+   "rbPhoneScreenAnalysisDelete": "rbPhoneScreenAnalysis",
+   "rbPhoneScreenAnalysisUpdate": "rbPhoneScreenAnalysis",
+   "rbResumeAnalysisCreate": "rbResumeAnalysis",
+   "rbResumeAnalysisDelete": "rbResumeAnalysis",
+   "rbResumeAnalysisUpdate": "rbResumeAnalysis",
+   "rbTextMessagesCreate": "rbTextMessages",
+   "rbTextMessagesDelete": "rbTextMessages",
+   "rbTextMessagesUpdate": "rbTextMessages",
+   "reconErrorsCreate": "recon_errors",
+   "reconErrorsDelete": "recon_errors",
+   "reconErrorsUpdate": "recon_errors",
+   "reconRunsCreate": "recon_runs",
+   "reconRunsDelete": "recon_runs",
+   "reconRunsUpdate": "recon_runs",
+   "recruitOnboardingCreate": "recruitOnboarding",
+   "recruitOnboardingDelete": "recruitOnboarding",
+   "recruitOnboardingUpdate": "recruitOnboarding",
+   "recruitPipelineCreate": "recruitPipeline",
+   "recruitPipelineDelete": "recruitPipeline",
+   "recruitPipelineUpdate": "recruitPipeline",
+   "remindersCreate": "reminders",
+   "remindersDelete": "reminders",
+   "remindersUpdate": "reminders",
+   "repairInventoryCreate": "repairInventory",
+   "repairInventoryDelete": "repairInventory",
+   "repairInventoryUpdate": "repairInventory",
+   "repairRequestsCreate": "repairRequests",
+   "repairRequestsDelete": "repairRequests",
+   "repairRequestsUpdate": "repairRequests",
+   "routesCreate": "routes",
+   "routesDelete": "routes",
+   "routesUpdate": "routes",
+   "scheduleEventsCreate": "events",
+   "scheduleEventsDelete": "events",
+   "scheduleEventsUpdate": "events",
+   "screeningNotesCreate": "screeningNotes",
+   "screeningNotesDelete": "screeningNotes",
+   "screeningNotesUpdate": "screeningNotes",
+   "sheetTasksCreate": "sheetTasks",
+   "sheetTasksDelete": "sheetTasks",
+   "sheetTasksUpdate": "sheetTasks",
+   "shiftCardsCreate": "shiftCards",
+   "shiftCardsDelete": "shiftCards",
+   "shiftCardsUpdate": "shiftCards",
+   "shiftMatrixCreate": "shiftMatrix",
+   "shiftMatrixDelete": "shiftMatrix",
+   "shiftMatrixUpdate": "shiftMatrix",
+   "shiftTimelineCreate": "shiftTimeline",
+   "shiftTimelineDelete": "shiftTimeline",
+   "shiftTimelineUpdate": "shiftTimeline",
+   "shiftsCreate": "shifts",
+   "shiftsDelete": "shifts",
+   "shiftsUpdate": "shifts",
+   "shopperItemsCreate": "shopperItems",
+   "shopperItemsDelete": "shopperItems",
+   "shopperItemsUpdate": "shopperItems",
+   "shopperPricesCreate": "shopperPrices",
+   "shopperPricesDelete": "shopperPrices",
+   "shopperPricesUpdate": "shopperPrices",
+   "smartCommsActivityCreate": "smartCommsActivity",
+   "smartCommsActivityDelete": "smartCommsActivity",
+   "smartCommsActivityUpdate": "smartCommsActivity",
+   "smartCommsDeskCreate": "smartCommsDesk",
+   "smartCommsDeskDelete": "smartCommsDesk",
+   "smartCommsDeskUpdate": "smartCommsDesk",
+   "teamProjectsCreate": "teamProjects",
+   "teamProjectsDelete": "teamProjects",
+   "teamProjectsUpdate": "teamProjects",
+   "teamTasksCreate": "teamTasks",
+   "teamTasksDelete": "teamTasks",
+   "teamTasksUpdate": "teamTasks",
+   "timePunchesCreate": "time_punches",
+   "timePunchesDelete": "time_punches",
+   "timePunchesUpdate": "time_punches",
+   "travelTripsCreate": "travelTrips",
+   "travelTripsDelete": "travelTrips",
+   "travelTripsUpdate": "travelTrips",
+   "truelinkRunsCreate": "truelinkRuns",
+   "truelinkRunsDelete": "truelinkRuns",
+   "truelinkRunsUpdate": "truelinkRuns",
+   "uiIncidentsDelete": "uiIncidents",
+   "uiIncidentsUpdate": "uiIncidents",
+   "vbCategoryKnowledgeCreate": "vbCategoryKnowledge",
+   "vbCategoryKnowledgeDelete": "vbCategoryKnowledge",
+   "vbCategoryKnowledgeUpdate": "vbCategoryKnowledge",
+   "vbCategoryMapCreate": "vbCategoryMap",
+   "vbCategoryMapDelete": "vbCategoryMap",
+   "vbCategoryMapUpdate": "vbCategoryMap",
+   "vbClientNamesCreate": "vbClientNames",
+   "vbClientNamesDelete": "vbClientNames",
+   "vbClientNamesUpdate": "vbClientNames",
+   "vbFollowUpsIncidentsCreate": "vbFollowUpsIncidents",
+   "vbFollowUpsIncidentsDelete": "vbFollowUpsIncidents",
+   "vbFollowUpsIncidentsUpdate": "vbFollowUpsIncidents",
+   "vbFollowUpsMainCreate": "vbFollowUpsMain",
+   "vbFollowUpsMainDelete": "vbFollowUpsMain",
+   "vbFollowUpsMainUpdate": "vbFollowUpsMain",
+   "vbGeneralRulesCreate": "vbGeneralRules",
+   "vbGeneralRulesDelete": "vbGeneralRules",
+   "vbGeneralRulesUpdate": "vbGeneralRules",
+   "vbHomesCreate": "vbHomes",
+   "vbHomesDelete": "vbHomes",
+   "vbHomesUpdate": "vbHomes",
+   "vbPoliciesCreate": "vbPolicies",
+   "vbPoliciesDelete": "vbPolicies",
+   "vbPoliciesUpdate": "vbPolicies",
+   "vbScheduleCreate": "vbSchedule",
+   "vbScheduleDelete": "vbSchedule",
+   "vbScheduleUpdate": "vbSchedule",
+   "vbStaffNamesCreate": "vbStaffNames",
+   "vbStaffNamesDelete": "vbStaffNames",
+   "vbStaffNamesUpdate": "vbStaffNames",
+   "vbSubProcessCreate": "vbSubProcess",
+   "vbSubProcessDelete": "vbSubProcess",
+   "vbSubProcessUpdate": "vbSubProcess",
+   "videosCreate": "videos",
+   "videosDelete": "videos",
+   "videosUpdate": "videos",
+   "visitsCreate": "visits",
+   "visitsDelete": "visits",
+   "visitsUpdate": "visits",
+   "widgetsCreate": "widgets",
+   "widgetsDelete": "widgets",
+   "widgetsUpdate": "widgets",
+   "workOrdersCreate": "workOrders",
+   "workOrdersDelete": "workOrders",
+   "workOrdersUpdate": "workOrders"
+  },
+  "generic_rings": [
+   "formSubmissions",
+   "forms",
+   "learnSkills",
+   "marErrors",
+   "missingMedications",
+   "psiPunches",
+   "smartCommsActivity",
+   "smartCommsDesk",
+   "travelTrips"
+  ]
+ }
+}

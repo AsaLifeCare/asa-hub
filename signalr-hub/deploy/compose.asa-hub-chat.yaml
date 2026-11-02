@@ -1,0 +1,3 @@
+# asa-hub-chat's service lives in web/compose.yaml (project asa-hub-web) since 2026-10-27: read_only, init,
+# no-new-privileges, a /tmp tmpfs, json-file 20m x3, 1 cpu and 512m, on the proxy network only, HUB_CHAT_KEY from
+# web/.env. This file is kept only so links to it still land; the compose there is the one that runs.

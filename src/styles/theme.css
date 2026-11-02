@@ -1,0 +1,176 @@
+/* asa. — design tokens. Light (:root) and dark ([data-theme="dark"]) side by side.
+   Every component consumes these vars via Tailwind mappings — no hex in components. */
+
+/* THE HOUSE DESIGN SYSTEM, adopted here rather than per screen.
+   The kit — "MyLife Design Kit v2" — is explicit about three things this file
+   used to contradict: PURPLE IS THE ONLY BRAND COLOUR, status is always a soft
+   pill in its own hue, and there are NO TEAL BANDS. The primary below was
+   lagoon cyan and `--success` was the SAME cyan, so a thing that had gone well
+   and a thing that was merely branded looked identical, and every accent in
+   the product sat in a hue the kit does not contain.
+   Section 06 of the kit is the instruction being followed: change the tokens
+   in one place and every module inherits at once. */
+:root {
+  /* surfaces & canvas */
+  --bg: #f7f7f9;
+  --surface: #ffffff;
+  --surface-2: #fafafc;
+  --surface-3: #f1f2f6;
+  --border: #ececf1;
+  --border-strong: #e2e3ea;
+
+  /* text */
+  --text-1: #1c1e26;
+  --text-2: #5f6472;
+  --text-3: #8a8f9e;
+
+  /* primary — brand purple. The kit spends it on the logo, the primary
+     button, links and the focus ring, and nowhere else. */
+  --primary: #5b4fe9;
+  --primary-hover: #4c40d6;
+  --primary-strong: #3f34b8;
+  --primary-soft: #eef0fe;
+  --on-primary: #ffffff;
+
+  /* sidebar (always dark) */
+  --sidebar: #131c30;
+  --sidebar-text: #96a0b8;
+  /* detail panel hero (navy in both themes) */
+  --detail-hero: #131c30;
+
+  /* statuses — each its own hue, because green/amber/red is the only way a
+     pill says what it means at a glance. Semantic colour is NOT the accent. */
+  --success: #22a06b;
+  --warning: #b3761c;
+  --danger: #a32d2d;
+  --info: #3e8fe0;
+
+  /* semantic green for explicit status use (equipment borrowed, etc.) — it is
+     the SAME green as --success now, because two greens a shade apart read as
+     a mistake rather than as a distinction */
+  --status-green: #22a06b;
+  --status-green-soft: #e7f6ef;
+
+  /* pastel tints — the kit's lavender is the icon-tile and avatar ground, so
+     it is the brand's own soft, not a fifth unrelated pastel */
+  --tint-mint: #e7f6ef;
+  --tint-peach: #fdf3e3;
+  --tint-lavender: #eef0fe;
+  --tint-pink: #fdeef2;
+  --tint-blue: #e6f1fb;
+  --tint-amber: #fdf3e3;
+
+  /* tint foregrounds (icon/text on a tint) */
+  --tint-mint-fg: #22a06b;
+  --tint-peach-fg: #b3761c;
+  --tint-lavender-fg: #5b4fe9;
+  --tint-pink-fg: #d4537e;
+  --tint-blue-fg: #378add;
+  --tint-amber-fg: #b3761c;
+
+  /* extended tints (status/token-derived — modularity release) */
+  --tint-primary: var(--primary-soft);
+  --tint-danger: color-mix(in srgb, var(--danger) 12%, var(--surface));
+  --tint-warning: color-mix(in srgb, var(--warning) 15%, var(--surface));
+  --tint-info: color-mix(in srgb, var(--info) 12%, var(--surface));
+  --tint-violet: color-mix(in srgb, var(--tint-lavender-fg) 12%, var(--surface));
+  --tint-slate: color-mix(in srgb, var(--text-2) 10%, var(--surface));
+
+  --tint-primary-fg: var(--primary-strong);
+  --tint-danger-fg: color-mix(in srgb, var(--danger) 82%, var(--text-1));
+  --tint-warning-fg: color-mix(in srgb, var(--warning) 72%, var(--text-1));
+  --tint-info-fg: color-mix(in srgb, var(--info) 82%, var(--text-1));
+  --tint-violet-fg: var(--tint-lavender-fg);
+  --tint-slate-fg: var(--text-2);
+
+  /* shadows */
+  --shadow-1: 0 1px 2px rgba(18, 24, 26, 0.04), 0 4px 16px -4px rgba(18, 24, 26, 0.06);
+  --shadow-2: 0 2px 4px rgba(18, 24, 26, 0.05), 0 12px 32px -8px rgba(18, 24, 26, 0.12);
+  --shadow-3: 0 8px 16px rgba(18, 24, 26, 0.06), 0 24px 64px -16px rgba(18, 24, 26, 0.18);
+
+  color-scheme: light;
+}
+
+/* The kit ships its own dark values and they are used verbatim rather than
+   derived: a hand-picked dark palette and an algorithmically lightened one
+   diverge exactly where it matters, on the accent. */
+[data-theme="dark"] {
+  --bg: #101321;
+  --surface: #181c2e;
+  --surface-2: #141829;
+  --surface-3: #212639;
+  --border: #272c42;
+  --border-strong: #323852;
+
+  --text-1: #e8eaf2;
+  --text-2: #9aa0b4;
+  --text-3: #767d94;
+
+  --primary: #8b7ff7;
+  --primary-hover: #a094f9;
+  --primary-strong: #bdb6f7;
+  --primary-soft: rgba(139, 127, 247, 0.16);
+  --on-primary: #16123a;
+
+  --sidebar: #0b0e1a;
+  --sidebar-text: #96a0b8;
+  --detail-hero: #0b0e1a;
+
+  --success: #4ade80;
+  --warning: #e3b565;
+  --danger: #f08a8a;
+  --info: #6fa8f0;
+
+  /* the same green as --success, for the reason given in the light block */
+  --status-green: #4ade80;
+  --status-green-soft: rgba(74, 222, 128, 0.14);
+
+  /* tints → translucent overlays */
+  --tint-mint: rgba(74, 222, 128, 0.14);
+  --tint-peach: rgba(227, 181, 101, 0.14);
+  --tint-lavender: rgba(139, 127, 247, 0.18);
+  --tint-pink: rgba(240, 137, 181, 0.14);
+  --tint-blue: rgba(111, 168, 240, 0.14);
+  --tint-amber: rgba(227, 181, 101, 0.14);
+
+  --tint-mint-fg: #7de0a6;
+  --tint-peach-fg: #eec79a;
+  --tint-lavender-fg: #bdb6f7;
+  --tint-pink-fg: #f5a9cb;
+  --tint-blue-fg: #9cc3f5;
+  --tint-amber-fg: #eec79a;
+
+  /* extended tints (same token-derived formulas — adapt automatically) */
+  --tint-primary: var(--primary-soft);
+  --tint-danger: color-mix(in srgb, var(--danger) 12%, var(--surface));
+  --tint-warning: color-mix(in srgb, var(--warning) 15%, var(--surface));
+  --tint-info: color-mix(in srgb, var(--info) 12%, var(--surface));
+  --tint-violet: color-mix(in srgb, var(--tint-lavender-fg) 14%, var(--surface));
+  --tint-slate: color-mix(in srgb, var(--text-2) 12%, var(--surface));
+
+  --tint-primary-fg: var(--primary-strong);
+  --tint-danger-fg: color-mix(in srgb, var(--danger) 82%, var(--text-1));
+  --tint-warning-fg: color-mix(in srgb, var(--warning) 80%, var(--text-1));
+  --tint-info-fg: color-mix(in srgb, var(--info) 82%, var(--text-1));
+  --tint-violet-fg: var(--tint-lavender-fg);
+  --tint-slate-fg: var(--text-2);
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 16px -4px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 2px 4px rgba(0, 0, 0, 0.45), 0 12px 32px -8px rgba(0, 0, 0, 0.45);
+  --shadow-3: 0 8px 16px rgba(0, 0, 0, 0.55), 0 24px 64px -16px rgba(0, 0, 0, 0.55);
+
+  color-scheme: dark;
+}
+
+/* Theme crossfade — added to <html> for 250ms on every theme change (§9.5) */
+.theme-animating,
+.theme-animating *,
+.theme-animating *::before,
+.theme-animating *::after {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    fill 0.2s ease,
+    stroke 0.2s ease !important;
+}

@@ -1,0 +1,285 @@
+{
+  "locationIstTrain": {
+    "file": "app/ist_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "house": { "type": "string" }, "staff": { "type": "string" }, "client": { "type": "string" },
+                "trained_on": { "type": "string" }, "confirmed": { "type": "boolean" } },
+    "what": "Record an IST training from a house's Staff tab: the trainee (an active employee), one of the house's current clients, the training day and the trainer's confirmation — the pair's IST record marked trained, made when the house holds none: the master, or a holder of the locations.house edition."
+  },
+  "ssaProfileEdit": {
+    "file": "app/ssa_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "ssa": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Edit an SSA's details: the phone and e-mail on every current client record that names the SSA, the agency and office address on the SSA's own row (ssa_details): the master, or a holder of the ssa.profile edition. Kept in the Hub's database while SSA runs on Python."
+  },
+  "ssaProfileClients": {
+    "file": "app/ssa_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "ssa": { "type": "string" }, "add": { "type": "array" }, "remove": { "type": "array" } },
+    "what": "Tie active clients to an SSA from its edit panel, or untie them: the SSA's name, phone and e-mail written on (or blanked from) each client's record; a tie only the master holds is never untied. The master, or a holder of the ssa.profile edition."
+  },
+  "locationIncidentStaff": {
+    "file": "app/locations.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [],
+    "emits": [], "params": {},
+    "what": "Every active employee's name, for a New incident's Employees involved: the master, a viewer of every house, or a holder of an incident edition (Locations' or Clients')."
+  },
+  "ssaProfileDocEdit": {
+    "file": "app/ssa_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "ssa": { "type": "string" }, "id": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Edit an entry of an SSA's Documents list (its title or date) or remove it (listed no more, nothing deleted): the master, a director or a badge above one, or a holder of the ssa.documents edition. Kept in the Hub's database while SSA runs on Python."
+  },
+  "ssaProfileActivityEdit": {
+    "file": "app/ssa_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "ssa": { "type": "string" }, "id": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Edit an entry of an SSA's Activity (its title or text; an admin note's text is the note's own) or remove it (listed no more, nothing deleted): the master, a director or a badge above one, or a holder of the ssa.activity edition. Kept in the Hub's database while SSA runs on Python."
+  },
+  "ssaProfileEditRead": {
+    "file": "app/ssa.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [],
+    "emits": [], "params": { "ssa": { "type": "string" } },
+    "what": "The SSA edit panel's read: the overview with the fields the save is checked against, for a session that reads SSA uncut."
+  },
+  "staffProfileEditRead": {
+    "file": "app/staff.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [],
+    "emits": [], "params": { "staff": { "type": "string" }, "section": { "type": "string" } },
+    "what": "A Staff edit panel's read: the raw values a section's editions open to this session (profile or employment) and the record's locked facts."
+  },
+  "staffProfileNoteEdit": {
+    "file": "app/staff_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "id": { "type": "string" }, "staff": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Edit a staff note's category, priority or text: the master, or a holder of the staff.notesEdit edition. Kept in the Hub's database while Staff runs on Python."
+  },
+  "staffProfileDocConclude": {
+    "file": "app/staff_writes.py", "lane": "write", "store": "table", "idempotent": false, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "staff": { "type": "string" }, "date": { "type": "string" }, "area": { "type": "string" }, "why": { "type": "string" } },
+    "what": "Mark a missing daily note or punch in Staff › Performance › Documentation concluded, with why: the master, or a holder of the staff.documentation edition. Kept in the Hub's database."
+  },
+  "staffProfileIstAdd": {
+    "file": "app/staff_writes.py", "lane": "write", "store": "table", "idempotent": false, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "key": { "type": "string" }, "client": { "type": "string" }, "status": { "type": "string" }, "day": { "type": "string" } },
+    "what": "Record an IST for a client a staff member holds none for yet (Staff › Related Clients), at the client's house: trained on the day, or owed by it. The master, or a holder of the staff.ist edition. Kept in the Hub's database."
+  },
+  "familyProfileNoteEdit": {
+    "file": "app/family_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "family": { "type": "string" }, "id": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Change an admin note's text or remove it (its row kept, listed no more): the master, or a holder of the family.notes edition. Kept in the Hub's database while Families runs on Python."
+  },
+  "familyProfileCallEdit": {
+    "file": "app/family_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "family": { "type": "string" }, "id": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Change a call scheduled from Families (day, priority, state, details) or cancel it (Done, labelled Cancelled): the master, or a holder of the family.calls edition. No message is sent. Kept in the Hub's database while Families runs on Python."
+  },
+  "familyCreate": {
+    "file": "app/family_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "name": { "type": "string" }, "relationship": { "type": "string" }, "phone": { "type": "string" }, "email": { "type": "string" }, "address": { "type": "string" }, "preferred_contact": { "type": "string" }, "notes": { "type": "string" }, "clients": { "type": "array" } },
+    "what": "Register a new family member in Families (Actions › New Family): name, relationship, contact and the clients they are family of, kept in Families' own registry in the Hub's database. The master, a director or a badge above one, or a holder of the family.create edition."
+  },
+  "familyProfileDocAdd": {
+    "file": "app/family_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "family": { "type": "string" }, "title": { "type": "string" }, "doc_type": { "type": "string" }, "drive": { "type": "string" }, "base64": { "type": "string" }, "filename": { "type": "string" }, "mime": { "type": "string" } },
+    "what": "Add a paper to a family member's Documents: a PDF or picture filed in Drive as the platform's own account (Families/<name>), or a Drive file already there by its link. Kept in Families' own registry; it shows in Documents and Activity. The master, a director or a badge above one, or a holder of the family.documents edition."
+  },
+  "familyDocPlan": {
+    "file": "app/family.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [], "emits": [],
+    "params": { "family": { "type": "string" }, "mime": { "type": "string" }, "filename": { "type": "string" }, "title": { "type": "string" } },
+    "what": "The relay's own question before filing a family member's paper in Drive: whether it is filed, and where (Families/<name>). Never asked by a screen."
+  },
+  "myProfileEmailFree": {
+    "file": "app/my_profile.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [], "emits": [],
+    "params": { "email": { "type": "string" } },
+    "what": "Whether an e-mail may join the signed-in account from My Profile › My Info: free, or taken because another account holds it as its sign-in or an extra e-mail (sign-in takes an extra e-mail only with one holder). Says free or taken, never whose. Read from the accounts' copy in the Hub's database."
+  },
+  "familyClientChoices": {
+    "file": "app/family.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [], "emits": [],
+    "params": {},
+    "what": "The clients a new family member can be tied to in Actions › New Family (the Clients roster from the Hub's database, active first): only for whoever may register a family."
+  },
+  "emergencyContactsRead": {
+    "file": "app/emergency_contacts.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "guardian", "onboarding", "interviewer"],
+    "invalidates": [], "emits": [], "params": {},
+    "what": "The Emergency Contacts directory: every lane and contact in order, and whether this viewer may change them (the master, or a holder of the emergencyContacts.directory edition). Kept in the Hub's database; while the app is not on Python the relay says the page draws its compiled directory."
+  },
+  "emergencyContactsSave": {
+    "file": "app/emergency_contacts.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "op": { "type": "string" }, "id": { "type": "string" }, "changes": { "type": "array" },
+                "contact": { "type": "object" }, "group": { "type": "object" }, "expected": { "type": "object" },
+                "with_contacts": { "type": "boolean" } },
+    "what": "One change to the Emergency Contacts directory: add, edit or remove a contact or a lane, each field against the value the editor saw: the master, or a holder of the emergencyContacts.directory edition. Kept in the Hub's database, final; refused while the app is not on Python."
+  },
+  "candidateProfileEditRead": {
+    "file": "app/candidate_writes.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [],
+    "emits": [],
+    "params": { "candidate": { "type": "string" }, "section": { "type": "string" }, "doc": { "type": "string" },
+                "id": { "type": "string" } },
+    "what": "A Staff Candidates edit panel's read: the raw values Information, the phone screen's preferences, a filed document's review or a note opens on, each lock with its reason, for whom the section's edition opens (the master, or a holder who reads the app whole)."
+  },
+  "candidateProfileEdit": {
+    "file": "app/candidate_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "candidate": { "type": "string" }, "section": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Edit a candidate's Information or the phone screen's preferences, each field against the value the panel opened on: the master, or a holder of candidates.information / candidates.interviews. Kept in the Hub's database while Staff Candidates runs on Python."
+  },
+  "candidateProfileNoteEdit": {
+    "file": "app/candidate_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "candidate": { "type": "string" }, "id": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Change a note's text on a candidate's hiring journey or remove it: the master, or a holder of candidates.notes. Kept in the Hub's database while Staff Candidates runs on Python."
+  },
+  "candidateProfileDocReview": {
+    "file": "app/candidate_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "candidate": { "type": "string" }, "doc": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Review a filed onboarding document (Verified or Returned, its issued and expiry days, notes): the master, or a holder of candidates.documents. Kept in the Hub's database while Staff Candidates runs on Python."
+  },
+  "clientCandidateEditRead": {
+    "file": "app/client_candidate_writes.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [],
+    "emits": [],
+    "params": { "candidate": { "type": "string" }, "section": { "type": "string" }, "doc": { "type": "string" },
+                "id": { "type": "string" } },
+    "what": "A Client Candidates edit panel's read: the raw values Information, the intake's answers, a note or a filed paper's record opens on, each lock with its reason, for whom the section's edition opens (the master, or a holder who reads the app whole)."
+  },
+  "clientCandidateEdit": {
+    "file": "app/client_candidate_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "candidate": { "type": "string" }, "section": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Edit a referral's Information or the intake's answers (the next step and the contact preferences) on its Potential Clients row, each field against the value the panel opened on: the master, or a holder of clientCandidates.information / clientCandidates.intake. Kept in the Hub's database while Client Candidates runs on Python."
+  },
+  "clientCandidateNoteEdit": {
+    "file": "app/client_candidate_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "candidate": { "type": "string" }, "id": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "Change the words of one line of a referral's notes, or remove it, its words the witness: the master, or a holder of clientCandidates.notes. Kept in the Hub's database while Client Candidates runs on Python."
+  },
+  "clientCandidateDocEdit": {
+    "file": "app/client_candidate_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": { "candidate": { "type": "string" }, "doc": { "type": "string" }, "changes": { "type": "array" } },
+    "what": "A filed paper's record on a referral: confirm the signed consent or withdraw its confirmation, or take the paper's record off the referral (the file stays in its folder): the master, or a holder of clientCandidates.documents. Kept in the Hub's database while Client Candidates runs on Python."
+  },
+  "locationDocsWhere": {
+    "file": "app/locations.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff"], "invalidates": [], "emits": [], "params": {},
+    "what": "Settings › Server Paths: the folder Locations' documents are copied to on the server (each house's ISPs and guidebook, the company policies), the files and bytes it holds per house, and when it last copied. The master's alone."
+  },
+  "adminDocFile": {
+    "file": "app/admin_docs.py", "lane": "tool", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager"], "invalidates": [], "emits": [],
+    "params": { "file_id": { "type": "string" }, "as": { "type": "string" } },
+    "what": "Administration: one of the workspace's documents off the server's own copy — its PDF for the viewer (as \"view\"), or the document itself (as \"original\") — never through Drive."
+  },
+  "academyVideoFile": {
+    "file": "app/academy.py", "lane": "tool", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding"], "invalidates": [], "emits": [],
+    "params": { "id": { "type": "string" } },
+    "what": "Academy: one lesson's video off the server's own copy, for whoever may open the lesson — never through Drive."
+  },
+  "finDocFile": {
+    "file": "app/finance.py", "lane": "tool", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager"], "invalidates": [], "emits": [],
+    "params": { "id": { "type": "string" } },
+    "what": "Client Finances: one of the company's finance papers off the server's own copy — never through Drive."
+  },
+  "obDocFile": {
+    "file": "app/onboarding.py", "lane": "tool", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "onboarding"], "invalidates": [], "emits": [],
+    "params": { "file_id": { "type": "string" } },
+    "what": "Onboarding: a paper the new-hire portal filed, off the server's own copy — for the person whose record it is, the seat holding that record, a writer or the master — never through Drive."
+  },
+  "policyDocFile": {
+    "file": "app/policies.py", "lane": "tool", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "onboarding"], "invalidates": [], "emits": [],
+    "params": { "doc_id": { "type": "string" } },
+    "what": "Policies: one policy's original document off the server's own copy, for whoever reads the policies — never through Drive."
+  },
+  "techDocFile": {
+    "file": "app/technology.py", "lane": "tool", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager"], "invalidates": [], "emits": [],
+    "params": { "file_id": { "type": "string" }, "as": { "type": "string" } },
+    "what": "Technology: one of the Technology folder's documents off the server's own copy — its PDF for the viewer (as \"view\"), or the document itself (as \"original\") — never through Drive."
+  },
+  "taskFile": {
+    "file": "app/task_board.py", "lane": "tool", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager", "staff", "client", "interviewer"], "invalidates": [], "emits": [],
+    "params": { "url": { "type": "string" } },
+    "what": "Task Board: a card's attachment off the server's own copy (kept by taskFileStore), for the person who uploaded it alone — never through Drive."
+  },
+  "inventorySupplyFile": {
+    "file": "app/inventory.py", "lane": "tool", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "manager"], "invalidates": [], "emits": [],
+    "params": { "url": { "type": "string" } },
+    "what": "Inventory: a supply document entered by hand, its file off the server's own copy (kept by inventorySupplyAdd) — never through Drive."
+  },
+  "locationMedications": {
+    "file": "app/house_meds.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [],
+    "emits": [], "params": { "house": { "type": "string" } },
+    "what": "Locations › Supplies: one house's residents and what the pharmacy dispensed for them, read whole and read-only by whoever Locations opens the house to — never a client or guardian account. The pharmacy's reports kept in asa-hub-db (app.hub_med_*)."
+  },
+  "locationMedicationHistory": {
+    "file": "app/house_meds.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [],
+    "emits": [], "params": { "house": { "type": "string" }, "key": { "type": "string" } },
+    "what": "One prescription of a house's resident across the pharmacy's reports, behind the same door as locationMedications."
+  },
+  "houseSuppliesInventory": {
+    "file": "app/house_meds.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [],
+    "emits": [], "params": {},
+    "what": "House Supplies › Inventory: every house Locations opens to the reader, each with what Locations › Supplies shows it — the consumables ledger and the house's assets — never a client's or guardian's view."
+  },
+  "myWorkTimeOffMessage": {
+    "file": "app/my_work_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": {"ref": {"type": "string"}, "outcome": {"type": "string"}},
+    "what": "My Work › Time off approval › Send Message Approved / Not Approved: the request's person told the outcome and to ask their director for details, through Smart Comms (time_off_told_approved / time_off_told_not_approved), which words, holds or sends it. Nothing is decided in Time Off. The master's alone until App Control names a badge on my-work.timeOffMessages, and hidden from everyone but the master unless the time_off_messages switch in Settings › My Work shows it."
+  },
+  "myWorkIstBook": {
+    "file": "app/my_work_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": {"ist_id": {"required": true, "type": "string"}, "date": {"required": true, "type": "string"},
+               "answer": {"required": true, "type": "string"}, "note": {"type": "string"}},
+    "what": "My Work › Client training (IST) › Book training: an owed IST record the reader's My Work lists, booked in My Work's side panel — the client, the staff member, the training's date, confirmed or declined — kept in the Hub's database alone (app.ist_bookings; no sheet holds a booking) and sent to the directors and above, who approve it in My Work. One waiting booking per record. Hidden from everyone but the master unless the ist_booking switch in Settings › My Work shows it."
+  },
+  "myWorkIstApprove": {
+    "file": "app/my_work_writes.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff"], "invalidates": [], "emits": [],
+    "params": {"item_id": {"required": true, "type": "string"}, "word": {"required": true, "type": "string"},
+               "note": {"type": "string"}},
+    "what": "My Work › Client training approvals › Approve: a director or above approves a waiting IST booking in My Work's decision panel; an approved confirmation marks the IST record done on the training's date, and the booking's person reads the approval in My Work. A booking someone made of their own training waits on another director; answered before, it changes nothing. Hidden from everyone but the master unless the ist_booking switch in Settings › My Work shows it."
+  },
+  "myWorkHidesGet": {
+    "file": "app/editions.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin"], "invalidates": [], "emits": [], "params": {},
+    "what": "Settings › My Work — what everyone else sees: the switches Python alone keeps (the sidebar's + Add apps, My Work's Time off message buttons, Scheduling's training line in the key, SSA's Documents, every Time Off ask to house managers and up, every app's test mode warnings, Clients' Medication and Billing, My Inbox's new staff and update alerts, Locations' House Supplies, My Profile's My Docs, My Inbox Alerts' subtitle, the candidates' in-page breadcrumb, Transportation's sidebar submenu, Clients' Transportation trips, the clients' names on Staff › Calendar, the staff profile's map, the progress panel after Apply, Clients' Care & Support Home & equipment, My Work's Client training booking and its approvals), each hidden unless set to show. The master's alone."
+  },
+  "myWorkHidesSet": {
+    "file": "app/editions.py", "lane": "write", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin"], "invalidates": [], "emits": [],
+    "params": {"part": {"required": true, "type": "string"}, "hidden": {"required": true, "type": "boolean"}},
+    "what": "Settings › My Work: the master flips one of the switches Python keeps (add_apps, time_off_messages, sched_training_legend, ssa_documents, sched_time_off_all, test_mode_warnings, client_medication, client_billing, inbox_alerts, location_supplies, profile_docs, inbox_alerts_subtitle, candidates_crumb, transport_submenu, client_trips, staff_calendar_clients, staff_profile_map, apply_progress, client_care_home, ist_booking), kept in the Hub's database as the config's newest fact."
+  },
+  "myWorkHidesMine": {
+    "file": "app/editions.py", "lane": "read", "store": "table", "idempotent": true, "cost": "seconds",
+    "roles": ["admin", "director", "manager", "staff", "client", "onboarding", "interviewer"], "invalidates": [],
+    "emits": [], "params": {},
+    "what": "Which parts this session does not see (the sidebar's + Add apps, My Work's Time off message buttons, Scheduling's training line in the key, SSA's Documents, every Time Off ask to house managers and up, every app's test mode warnings, Clients' Medication and Billing, My Inbox's new staff and update alerts, Locations' House Supplies, My Profile's My Docs, My Inbox Alerts' subtitle, the candidates' in-page breadcrumb, Transportation's sidebar submenu, Clients' Transportation trips, the clients' names on Staff › Calendar, the staff profile's map, the progress panel after Apply, Clients' Care & Support Home & equipment, My Work's Client training booking and its approvals): never hidden from the master; hidden from everyone else unless the master's switch shows it, and when the config cannot be read."
+  }
+}

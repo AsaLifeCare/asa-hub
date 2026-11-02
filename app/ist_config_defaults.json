@@ -1,0 +1,317 @@
+{
+  "tab": "ist_config",
+  "tints": ["mint", "peach", "lavender", "pink", "blue", "amber", "green"],
+  "groups": [
+    {
+      "id": "roster",
+      "title": "Who counts as a person",
+      "blurb": "Some roster cells hold a coverage label where a name goes (OPEN, STAFF, TBD). Each label left in creates a training obligation for somebody who does not exist, and the first-shift gate asks for a training nobody can receive."
+    },
+    {
+      "id": "first_shift",
+      "title": "A first shift in a house",
+      "blurb": "What counts as trained for a house, how long a training lasts, who trains a first shift and whether an assignment takes the training on. A settings read that fails never makes anybody look trained: it asks for the approval instead."
+    },
+    {
+      "id": "certification",
+      "title": "The courses",
+      "blurb": "The certification catalogue, the window that counts as expiring, and how each course is joined to the estate's own sheets."
+    },
+    {
+      "id": "screen",
+      "title": "What the screens show",
+      "blurb": "The IST table's columns and the Compliance Matrix's courses — order, headings, colours, page size. IST Records and the standalone Compliance Matrix are not installed by default (their addresses open Workforce Compliance instead); install either from Apps → Available to see those settings at work. The course list, the headings and the certification colours reach the Workforce Compliance roster and the Certifications Dashboard either way."
+    },
+    {
+      "id": "wording",
+      "title": "The words on a row",
+      "blurb": "What the Certification cell says, and the mark put on a row whose house left the map."
+    },
+    {
+      "id": "notice",
+      "title": "The IST notice",
+      "blurb": "Whether an employee already told about a training they owe is told again. What the notice says, who receives it and whether it is sent at all is the ist_due row, edited under The IST notice."
+    }
+  ],
+  "keys": [
+    {
+      "key": "ist_non_person_names",
+      "group": "roster",
+      "type": "list",
+      "people_guard": "whole",
+      "value": "OPEN, NEW, FAMILY, LOCATION, NURSE, STAFF, TBD, AGENCY, VACANT, TBA, PRN",
+      "note": "Roster cells that are a COVERAGE LABEL and not a person, compared whole and ignoring case (comma-separated). Each label left in creates a training obligation for somebody who does not exist; the first-shift gate reads the same list, so a label is never sent for a training approval either. The name of somebody in the people list is refused when you save. Emptying this cell restores the shipped list — it does not mean \"every cell is a person\"."
+    },
+    {
+      "key": "ist_non_person_contains",
+      "group": "roster",
+      "type": "list",
+      "min_entry_length": 4,
+      "people_guard": "contains",
+      "value": "workshop",
+      "note": "The same thing, matched ANYWHERE in the cell rather than whole (comma-separated, case-insensitive) — \"WORKSHOP\", \"Workshop AM\" and \"workshop (B)\" are one rule. A word here removes every employee whose name contains it from the IST table and from the first-shift gate, so each word needs at least 4 letters, and a word found inside the name of somebody in the people list is refused when you save."
+    },
+    {
+      "key": "ist_roster_lookback_days",
+      "group": "roster",
+      "type": "int",
+      "min": 0,
+      "max": 3650,
+      "unit": "day",
+      "value": "0",
+      "note": "How far back the rebuild reads the roster when it pairs employees with clients, in days. 0 reads the whole history, which is what the table has always been built from. A number here stops shifts older than that from creating NEW obligations; rows already in the table are never removed. Whole number, 0 to 3650."
+    },
+    {
+      "key": "ist_pair_requires_overlap",
+      "group": "roster",
+      "type": "yesno",
+      "value": "yes",
+      "note": "Whether an employee owes an IST on a client only if they worked at that house ON OR AFTER the client's start date. yes: somebody who left before the client arrived never owes that training. no: everybody ever rostered at the house owes it for every client mapped there. A client with no start date on file counts as overlapping either way."
+    },
+    {
+      "key": "ist_trained_scope",
+      "group": "first_shift",
+      "type": "choice",
+      "allowed": ["house", "client"],
+      "value": "house",
+      "note": "What TRAINED FOR A HOUSE means at the first-shift gate. house: one completed IST at that house, for any of its clients, is enough. client: every client mapped to that house (Settings → IST, the house → client map) needs a completed IST first. If the map cannot be read under client, nobody is shown as trained and the approval is asked for."
+    },
+    {
+      "key": "ist_valid_days",
+      "group": "first_shift",
+      "type": "int",
+      "min": 0,
+      "max": 3650,
+      "unit": "day",
+      "value": "0",
+      "note": "How long a completed IST counts, in days from the day it was recorded (trainedAt); it still counts on the last of those days, by the Ohio date. 0: an IST never lapses. A completed row with no date stays current — a missing date never makes anybody untrained. A lapsed IST reads as owed on the gate, the wellbeing board, Workforce Compliance and IST Records, and the IST notice chases it. Whole number, 0 to 3650."
+    },
+    {
+      "key": "ist_trainer_must_be_free",
+      "group": "first_shift",
+      "type": "yesno",
+      "value": "yes",
+      "note": "Whether whoever trains a first shift must be FREE at that hour. yes: a house manager (or the approver) who is working somewhere else then cannot be the trainer, and the approval waits until one is free. no: the first house manager on file trains whatever they are working, and the row says they are working then."
+    },
+    {
+      "key": "ist_trainer_when_no_hm",
+      "group": "first_shift",
+      "type": "choice",
+      "allowed": ["approver", "refuse"],
+      "value": "approver",
+      "note": "Who trains when the house has no house manager on file (or the only one is the person being trained). approver: whoever approves the first shift trains it. refuse: nobody can approve it until a house manager is on file for that house."
+    },
+    {
+      "key": "ist_assigner_owns_training",
+      "group": "first_shift",
+      "type": "yesno",
+      "value": "yes",
+      "note": "Whether a house manager (or above) who PUTS a person without an IST on a shift — a typed cell, a published Calendar Builder draft, a claimed open shift — takes that training on as theirs. yes: the assignment records their training approval. no: the assignment waits, and the training approval is raised on Requests for the house manager to decide."
+    },
+    {
+      "key": "ist_gate_certification",
+      "group": "certification",
+      "type": "course",
+      "value": "dodd",
+      "note": "Which certification the Certification cell of a new IST row reports on, by its short KEY from the course list (ist_cert_labels) — the key, not the name: \"DODD\" typed here would find nothing and report every person as having no certificate on file, so a word the course list does not carry is refused when you save, and so is a change to the course list that would drop this course. It is a NOTE on the row and never a blocker: the obligation is written whether or not the certificate is on file, because an obligation that vanishes with a missing certificate is the one you most need to see. mais reads the DODD MAIS scrape; every other course reads its date column in the estate's Master sheet and the exceptions tracker."
+    },
+    {
+      "key": "ist_gate_certification_label",
+      "group": "certification",
+      "type": "text",
+      "falls_back_with": "ist_gate_certification",
+      "value": "DODD",
+      "note": "How that certification is NAMED in the note on the row (\"no DODD certification on file\"). Deliberately shorter than the course name in the course list — the note is read inside a table cell. When the course above is refused, this name goes back to its shipped value with it, so a note never names one course while reporting on another."
+    },
+    {
+      "key": "ist_cert_expiring_days",
+      "group": "certification",
+      "type": "int",
+      "min": 1,
+      "max": 365,
+      "unit": "day",
+      "value": "60",
+      "note": "How far ahead counts as EXPIRING, in days. 60 and not 30: a DODD or CPR renewal has to be booked, sat and issued, and a month is not enough notice to get somebody through that without a gap in which they cannot legally work a shift. Whole number, 1 to 365; the Settings screen refuses anything else, and a number typed straight into the sheet outside that range is ignored while 60 answers."
+    },
+    {
+      "key": "ist_requirements_window",
+      "group": "certification",
+      "type": "choice",
+      "allowed": ["own", "ist"],
+      "value": "own",
+      "note": "Which window the requirements engine uses for the TRAINING requirements (the courses above). own: each requirement row's own warn_days in the requirements tab. ist: the expiring window above, so the engine and the certification matrix call the same course expiring on the same day. Documents keep their own warn_days either way."
+    },
+    {
+      "key": "ist_cert_labels",
+      "group": "certification",
+      "type": "pairs",
+      "value": "dodd=DODD 8-Hour, cpr=CPR / First Aid, med1=Med Delivery 1, med2=Med Delivery 2, med3=Med Delivery 3, mais=MAIS Certification, money=Money Management, mandt=MANDT",
+      "note": "THE COURSE LIST — short key on the left, the name people read on the right, comma separated. These names travel on every certification record, and the key is how a course is joined to its date, so add rather than replace. Removing a course here takes it off the SCREENS; it does not stop it being tracked or counted in \"needs attention\" — nothing typed in this cell can make a person look compliant. A course ADDED here reads as \"no record either way\" for everybody until a source names it too (ist_cert_master_columns). Removing the course the IST row reports on (ist_gate_certification) is refused until that setting names another course."
+    },
+    {
+      "key": "ist_cert_master_columns",
+      "group": "certification",
+      "type": "pairs",
+      "key_pattern": "^[a-z0-9_]+$",
+      "course_values": true,
+      "value": "cpr_exp_date=cpr, dodd_8_hour_exp=dodd, med_1_exp_date=med1, med_2_exp_date=med2, med_3_exp_date=med3, money_mgt_date=money, mandt_exp_date=mandt",
+      "note": "Which column of the estate's Master sheet holds each course's date — the column heading lowercased, with each run of spaces and punctuation turned into one underscore (DODD 8-Hour Exp is dodd_8_hour_exp), on the left; the course key on the right. This is the join: a column renamed in the estate's sheet is fixed HERE, in a minute, without a new release. The same join tells the onboarding sweep, Staff Documents and Employee 360 which column to fill and show."
+    },
+    {
+      "key": "ist_cert_training_keys",
+      "group": "certification",
+      "type": "pairs",
+      "course_values": true,
+      "value": "cpr exp date=cpr, dodd 8-hour exp=dodd, dodd 8 hour exp=dodd, med 1 exp date=med1, med 2 exp date=med2, med 3 exp date=med3, money mgt date=money",
+      "note": "The same join for the estate's EXCEPTIONS tracker, whose labels are spelled out in words (\"DODD 8-Hour Exp\") and compared ignoring case. Several spellings may point at one course — the shipped cell lists DODD twice, with and without the hyphen. The right side is a course key."
+    },
+    {
+      "key": "ist_cert_source_tabs",
+      "group": "certification",
+      "type": "pairs",
+      "keys": ["trainings", "mais", "master"],
+      "value": "trainings=Trainings Status, mais=Med Del Certs (MAIS), master=Master",
+      "note": "Which tab of the estate's employee database each certification read opens: trainings (the exceptions tracker), mais (the DODD MAIS scrape) and master (one row per person, one column per course, holding the real dates). Master is also WRITTEN to — a renewed med-delivery expiry, an edited Employee 360 cell — so the tab named there is where those writes go. A save is refused unless the estate's book has every tab named, and the master tab carries the name column and at least one course date column. Only tab names go here: which spreadsheet is the estate's book is set by the platform, not in this tab."
+    },
+    {
+      "key": "ist_cert_source_fields",
+      "group": "certification",
+      "type": "pairs",
+      "keys": ["master.name", "trainings.name", "trainings.course", "trainings.status", "trainings.expires", "mais.name", "mais.status", "mais.expires", "mais.category"],
+      "value_pattern": "^[a-z0-9_]+([|+][a-z0-9_]+)*$",
+      "value": "master.name=employee|name, trainings.name=name, trainings.course=training, trainings.status=status, trainings.expires=expiration_date, mais.name=name, mais.status=status, mais.expires=expiration, mais.category=cert_type",
+      "note": "Which COLUMN of those tabs holds each fact, by the column heading lowercased with punctuation turned into underscores. Left: tab.fact (master.name, trainings.name, trainings.course, trainings.status, trainings.expires, mais.name, mais.status, mais.expires, mais.category). Right: the column; a | lists alternatives tried in order, a + joins columns with a space (search_first+search_last). A fact left out of this cell keeps its shipped column. A save is refused unless every column named exists in its tab. The certification screens and the rebuild of the IST table read the same cell."
+    },
+    {
+      "key": "ist_cert_tracker_statuses",
+      "group": "certification",
+      "type": "pairs",
+      "values": ["expiring", "expired"],
+      "value": "expired=expired, *=expiring",
+      "note": "What each Status word of the exceptions tracker means: the tracker's word on the left (any case), the state on the right — expiring or expired. * stands for every word not listed. The tracker only lists what is wrong, so no word here can read as valid: nothing typed in this cell can make a person look compliant."
+    },
+    {
+      "key": "ist_cert_mais_statuses",
+      "group": "certification",
+      "type": "pairs",
+      "values": ["certified", "expired", "skip"],
+      "never_value": "certified",
+      "never_words": ["expired", "revoked", "suspended", "inactive", "lapsed", "denied", "error"],
+      "value": "certified=certified, ERROR*=skip, *=expired",
+      "note": "What each Status word of the DODD MAIS scrape means: the scrape's word on the left (any case; a trailing * matches every word that starts with it), certified / expired / skip on the right. certified is valid or expiring by its date; skip ignores the row (a scraper error, not a record); * stands for every word not listed, and a word matching nothing reads expired. certified is refused for * and for words such as expired or revoked, so this cell cannot make every record look valid."
+    },
+    {
+      "key": "ist_columns",
+      "group": "screen",
+      "type": "pairs",
+      "value": "staffName:Employee, clientName:Client, house:House, status:IST, dueDate:Needed by, certNote:Certification, notifiedAt:Last notice, notifyCount:Notices",
+      "note": "THE IST RECORDS TABLE — which columns it shows, in which order, under which heading. Left of the colon is the column in the table (staffName, clientName, house, status, dueDate, certNote, notifiedAt, notifyCount, trainedAt, trainedBy, staffEmail, staffPhone, houseStatus, remindRequested); right of it is the heading. A column the screen does not ship is drawn as plain text, so any column the tab carries can be put on screen from here. Removing one hides it; it does not delete anything."
+    },
+    {
+      "key": "ist_statuses",
+      "group": "screen",
+      "type": "list",
+      "value": "owed, done",
+      "note": "The values the IST column can hold, and therefore what the filter offers. These are written into the rows themselves, so renaming one here does NOT rename it in the table — it only stops the old word being filterable. Add before you remove."
+    },
+    {
+      "key": "ist_status_tints",
+      "group": "screen",
+      "type": "pairs",
+      "values": ["mint", "peach", "lavender", "pink", "blue", "amber", "green"],
+      "value": "owed=amber, done=mint",
+      "note": "The colour each IST status reads as, on IST Records and on Workforce Compliance. The platform has seven: mint, peach, lavender, pink, blue, amber, green — any other colour is refused when you save, and a status without a usable colour keeps its shipped one. Owed reads amber and done reads mint so the eye finds the debt first, which is the whole reason the table is coloured at all."
+    },
+    {
+      "key": "ist_page_size",
+      "group": "screen",
+      "type": "int",
+      "min": 5,
+      "max": 200,
+      "value": "25",
+      "note": "How many IST rows a page of the table holds. Whole number, 5 to 200; the Settings screen refuses anything else, and a number typed straight into the sheet outside that range is ignored while 25 answers."
+    },
+    {
+      "key": "ist_matrix_columns",
+      "group": "screen",
+      "type": "list",
+      "course_entries": true,
+      "value": "dodd, cpr, med1, med2, med3, mais",
+      "note": "Which courses the STANDALONE Compliance Matrix screen shows as columns, in this order, by their short keys from the course list. That screen only: the Workforce Compliance roster and the Certifications Dashboard draw every course in the list above, because their \"needs attention\" count covers every course and a column missing from one of them would be an attention nobody can explain. A course left out here is still tracked and still reported."
+    },
+    {
+      "key": "ist_matrix_labels",
+      "group": "screen",
+      "type": "pairs",
+      "course_keys": true,
+      "value": "dodd=DODD 8-Hr, cpr=CPR/FA, med1=Med Del 1, med2=Med Del 2, med3=Med Del 3, mais=DODD MAIS",
+      "note": "The SHORT headings a matrix column uses — a few characters wide, so it cannot carry the full course name; the left side is the course key. A course with no short heading falls back to its name in the course list. Editing one here changes the heading on every certification matrix, including the Workforce Compliance roster; leaving a cell alone leaves each screen its own abbreviation."
+    },
+    {
+      "key": "ist_matrix_page_size",
+      "group": "screen",
+      "type": "int",
+      "min": 5,
+      "max": 200,
+      "value": "12",
+      "note": "How many people a page of the standalone Compliance Matrix holds. Whole number, 5 to 200; the Settings screen refuses anything else, and a number typed straight into the sheet outside that range is ignored while 12 answers."
+    },
+    {
+      "key": "ist_cert_status_tints",
+      "group": "screen",
+      "type": "pairs",
+      "keys": ["valid", "expiring", "expired", "missing"],
+      "values": ["mint", "peach", "lavender", "pink", "blue", "amber", "green"],
+      "value": "valid=mint, expiring=amber, expired=pink, missing=pink",
+      "note": "The colour each CERTIFICATION state reads as — valid, expiring, expired, missing — on the Compliance Matrix, the Certifications Dashboard and the Workforce Compliance roster. A state whose colour is EDITED here wins on every one of them; a state left at its shipped colour leaves each screen its own (the dashboard draws missing in grey, the donut in lavender). The seven colours are mint, peach, lavender, pink, blue, amber, green."
+    },
+    {
+      "key": "ist_dashboard_months",
+      "group": "screen",
+      "type": "int",
+      "min": 3,
+      "max": 24,
+      "unit": "month",
+      "value": "12",
+      "note": "How many months ahead the Certifications Dashboard's renewal timeline reaches, counting this month. Whole number, 3 to 24; the Settings screen refuses anything else, and a number typed straight into the sheet outside that range is ignored while 12 answers."
+    },
+    {
+      "key": "ist_note_no_certification",
+      "group": "wording",
+      "type": "template",
+      "placeholders": ["cert"],
+      "value": "no {cert} certification on file",
+      "note": "What the Certification cell says when the person holds no such certificate. {cert} is the short name above. This is a statement about the CERTIFICATE and never about the training: the IST row is written either way. The rebuild that fills the IST table writes it on every new row."
+    },
+    {
+      "key": "ist_note_expired",
+      "group": "wording",
+      "type": "template",
+      "placeholders": ["cert", "date"],
+      "value": "{cert} expired {date}",
+      "note": "The same cell when the certificate is past its date. {cert} is the short name, {date} the day it expired. The rebuild that fills the IST table writes it on every new row whose certificate is dated in the past."
+    },
+    {
+      "key": "ist_note_unreadable",
+      "group": "wording",
+      "type": "template",
+      "placeholders": ["cert", "value"],
+      "value": "{cert} date unreadable: {value}",
+      "note": "The same cell when a date is on file but nothing can read it. {value} is the cell as it stands, printed so somebody can go and fix it. Saying nothing here would turn a broken date into a clean record."
+    },
+    {
+      "key": "ist_stale_marker",
+      "group": "wording",
+      "type": "text",
+      "value": "house no longer mapped",
+      "note": "The word written on an IST row whose house left the map. The rows are KEPT and marked — never deleted, because a training somebody was already chasing does not disappear when a lookup changes. After this word changes, the next rebuild re-marks the rows still off the map with it, and clears the mark from rows whose house came back, whichever word they carry."
+    },
+    {
+      "key": "ist_notice_repeats",
+      "group": "notice",
+      "type": "yesno",
+      "value": "no",
+      "note": "Whether an employee already told about an IST they owe is told again without anybody asking. no: told once, and again only when somebody asks for another notice on IST Records. yes: the ist_due row's own pacing (its max attempts and frequency) decides when they are told again. An IST that lapses (ist_valid_days) is told about once either way."
+    }
+  ]
+}
