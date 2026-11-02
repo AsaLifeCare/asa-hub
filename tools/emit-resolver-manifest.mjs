@@ -31,7 +31,7 @@
  *       gate; it is armed once the count reaches zero, not before, because
  *       a build that fails on day one gets disabled on day two.
  */
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 
@@ -286,6 +286,8 @@ for (const [name, r] of Object.entries(ROUTER_ACTIONS)) {
 
 const undeclared = [...handlers.keys()].filter((a) => !policies.has(a)).sort()
 
+// the build's first step writes into dist/, which a fresh checkout does not have yet
+mkdirSync(dirname(out), { recursive: true })
 writeFileSync(out, JSON.stringify({
   version: 1,
   emitted_at: new Date().toISOString(),
